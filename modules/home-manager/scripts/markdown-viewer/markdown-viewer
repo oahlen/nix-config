@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+RESULT=$(find ./*.md | fzf) || true
+
+if [ -n "$RESULT" ]; then
+    lowdown -tterm "$RESULT" --term-columns 120 --term-hmargin 4 --term-vmargin 1 --term-shortlinks | less -R
+fi

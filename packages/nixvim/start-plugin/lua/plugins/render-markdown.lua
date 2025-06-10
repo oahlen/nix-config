@@ -1,0 +1,9 @@
+require("render-markdown").setup({
+    code = { sign = false },
+    completions = { lsp = { enabled = true } },
+    heading = { enabled = false },
+    file_types = {
+        "markdown",
+        "copilot-chat",
+    },
+})

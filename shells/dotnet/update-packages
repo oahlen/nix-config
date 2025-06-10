@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo 'Updating nuget packages ...'
+
+regex='PackageReference Include="([^"]*)" Version="([^"]*)"'
+
+for csproj in ./src/*/*.csproj ./tests/*/*.csproj; do
+    csprojFullPath=$(readlink -f "$csproj")
+
+    while read -r line; do
+        if [[ $line =~ $regex ]]; then
+            package="${BASH_REMATCH[1]}"
+            version="${BASH_REMATCH[2]}"
+
+            if [[ $version != *-* ]]; then
+                dotnet add "$csprojFullPath" package "$package"
+            fi
+        fi
+    done <"$csproj"
+done

@@ -1,0 +1,111 @@
+{
+  hm-modules,
+  lib,
+  pkgs,
+  user,
+  ...
+}:
+with lib.hm.gvariant; {
+  imports = [
+    "${hm-modules}/programs/kitty"
+  ];
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/shell" = {
+        disable-user-extensions = false;
+        enabled-extensions = with pkgs; [
+          gnomeExtensions.color-picker.extensionUuid
+          gnomeExtensions.gnome-40-ui-improvements.extensionUuid
+          gnomeExtensions.places-status-indicator.extensionUuid
+        ];
+      };
+
+      "org/gnome/tweaks" = {
+        show-extensions-notice = false;
+      };
+
+      "org/gtk/gtk4/settings/file-chooser" = {
+        show-hidden = true;
+      };
+
+      "org/gnome/desktop/interface" = {
+        accent-color = "blue";
+        icon-theme = "Papirus-Dark";
+        enable-animations = false;
+      };
+
+      "org/gnome/desktop/background" = {
+        color-shading-type = "solid";
+        picture-options = "scaled";
+        picture-uri = "file://${user.wallpaper}";
+        picture-uri-dark = "file://${user.wallpaper}";
+        primary-color = user.colorscheme.background;
+        secondary-color = user.colorscheme.background;
+      };
+
+      "org/gnome/desktop/peripherals/keyboard" = {
+        delay = mkUint32 250;
+        repeat = true;
+        repeat-interval = mkUint32 40;
+      };
+
+      "org/gnome/desktop/input-sources" = {
+        sources = [(mkTuple ["xkb" "se"])];
+        xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape"];
+      };
+
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout = "icon:minimize,maximize,close";
+        num-workspaces = 8;
+      };
+
+      "org/gnome/desktop/wm/keybindings" = {
+        move-to-workspace-1 = ["<Shift><Super>1"];
+        move-to-workspace-2 = ["<Shift><Super>2"];
+        move-to-workspace-3 = ["<Shift><Super>3"];
+        move-to-workspace-4 = ["<Shift><Super>4"];
+        move-to-workspace-5 = ["<Super><Shift>5"];
+        move-to-workspace-6 = ["<Super><Shift>6"];
+        move-to-workspace-7 = ["<Super><Shift>7"];
+        move-to-workspace-8 = ["<Super><Shift>8"];
+
+        switch-to-workspace-1 = ["<Super>1"];
+        switch-to-workspace-2 = ["<Super>2"];
+        switch-to-workspace-3 = ["<Super>3"];
+        switch-to-workspace-4 = ["<Super>4"];
+        switch-to-workspace-5 = ["<Super>5"];
+        switch-to-workspace-6 = ["<Super>6"];
+        switch-to-workspace-7 = ["<Super>7"];
+        switch-to-workspace-8 = ["<Super>8"];
+
+        switch-to-workspace-left = ["<Super>h"];
+        switch-to-workspace-right = ["<Super>l"];
+
+        close = ["<Shift><Super>q"];
+        toggle-fullscreen = ["<Super>f"];
+      };
+
+      "org/gnome/mutter" = {
+        center-new-windows = true;
+        dynamic-workspaces = false;
+        edge-tiling = true;
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        name = "Start Terminal";
+        binding = "<Super>Return";
+        command = "kitty";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        screensaver = ["<Super><Alt>l"];
+      };
+
+      "system/locale" = {
+        region = "sv_SE.UTF-8";
+      };
+    };
+  };
+}
