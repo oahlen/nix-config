@@ -5,19 +5,22 @@
 }: {
   services.mako = {
     enable = true;
-    font = "${user.font.name} ${lib.strings.floatToString user.font.size}";
-    anchor = "top-right";
 
-    defaultTimeout = 10000;
-    ignoreTimeout = true;
+    settings = {
+      font = "${user.font.name} ${lib.strings.floatToString user.font.size}";
+      anchor = "top-right";
 
-    textColor = user.colorscheme.foreground;
-    backgroundColor = user.colorscheme.background;
-    borderColor = user.colorscheme.bright-black;
-    progressColor = user.colorscheme.blue;
+      default-timeout = 10000;
+      ignore-timeout = true;
 
-    borderSize = 2;
-    borderRadius = 4;
-    padding = "12";
+      text-color = user.colorscheme.foreground;
+      background-color = user.colorscheme.background;
+      border-color = user.colorscheme.bright-black;
+      progress-color = user.colorscheme.blue;
+
+      border-size = 2;
+      border-radius = 4;
+      padding = "12";
+    };
   };
 }
