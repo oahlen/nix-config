@@ -8,15 +8,17 @@
     "${hm-modules}/programs/rbw"
   ];
 
-  programs.chromium.enable = true;
-  programs.ideavim.enable = true;
+  programs = {
+    librewolf.enable = true;
+    chromium.enable = true;
+    ideavim.enable = true;
+  };
 
   scripts.password-picker.enable = true;
 
   home.packages = with pkgs; [
     inkscape
     iwgtk
-    librewolf
     nodejs
     virt-manager
   ];
