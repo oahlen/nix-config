@@ -99,7 +99,6 @@
 
   # X11 settings
   services.xserver = {
-    # enable = true;
     excludePackages = with pkgs; [xterm];
   };
 

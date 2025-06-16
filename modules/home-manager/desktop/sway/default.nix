@@ -8,27 +8,19 @@
 }: let
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
-  swaylock = "${pkgs.swaylock}/bin/swaylock";
+  gtklock = "${pkgs.gtklock}/bin/gtklock";
 in {
   imports = [
+    "${hm-modules}/desktop/shared"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
     "${hm-modules}/programs/i3status-rust"
-    "${hm-modules}/programs/swaylock"
     "${hm-modules}/services/mako"
     "${hm-modules}/services/swayidle"
     "${hm-modules}/services/wl-sunset"
   ];
 
-  # Consistent cursor theme across all applications.
-  home.pointerCursor = {
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
-    gtk.enable = true;
-    sway.enable = true;
-    x11.enable = true;
-    size = 24;
-  };
+  home.pointerCursor.sway.enable = true;
 
   programs.fuzzel.settings.main.launch-prefix = "${pkgs.sway}/bin/swaymsg exec --";
 
@@ -126,7 +118,7 @@ in {
         modifier = config.wayland.windowManager.sway.config.modifier;
       in
         pkgs.lib.mkOptionDefault {
-          "${modifier}+Alt+l" = "exec ${swaylock} -fF";
+          "${modifier}+Alt+l" = "exec ${gtklock}";
           "Ctrl+Alt+Delete" = "exec wl-logout";
           "${modifier}+p" = "exec password-picker \"${pkgs.fuzzel}/bin/fuzzel -d\"";
           "Print" = "exec ${grim} ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
