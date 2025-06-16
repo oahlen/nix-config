@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    "${hm-modules}/programs/foot"
+    "${hm-modules}/desktop/gnome"
+    "${hm-modules}/desktop/sway"
     "${hm-modules}/programs/rbw"
   ];
 
