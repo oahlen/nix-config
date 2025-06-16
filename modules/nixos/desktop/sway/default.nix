@@ -35,11 +35,6 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
-  services.dbus = {
-    enable = true;
-    packages = with pkgs; [gcr];
-  };
-
   services.gnome.gnome-keyring.enable = true;
 
   users.users.${user.name} = {
