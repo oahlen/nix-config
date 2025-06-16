@@ -66,10 +66,10 @@ with lib.hm.gvariant; {
         move-to-workspace-2 = ["<Shift><Super>2"];
         move-to-workspace-3 = ["<Shift><Super>3"];
         move-to-workspace-4 = ["<Shift><Super>4"];
-        move-to-workspace-5 = ["<Super><Shift>5"];
-        move-to-workspace-6 = ["<Super><Shift>6"];
-        move-to-workspace-7 = ["<Super><Shift>7"];
-        move-to-workspace-8 = ["<Super><Shift>8"];
+        move-to-workspace-5 = ["<Shift><Super>5"];
+        move-to-workspace-6 = ["<Shift><Super>6"];
+        move-to-workspace-7 = ["<Shift><Super>7"];
+        move-to-workspace-8 = ["<Shift><Super>8"];
 
         switch-to-workspace-1 = ["<Super>1"];
         switch-to-workspace-2 = ["<Super>2"];
@@ -87,10 +87,28 @@ with lib.hm.gvariant; {
         toggle-fullscreen = ["<Super>f"];
       };
 
+      # Unbind shell keybindings
+      "org/gnome/shell/keybindings" = {
+        "switch-to-application-1" = [];
+        "switch-to-application-2" = [];
+        "switch-to-application-3" = [];
+        "switch-to-application-4" = [];
+        "switch-to-application-5" = [];
+        "switch-to-application-6" = [];
+        "switch-to-application-7" = [];
+        "switch-to-application-8" = [];
+      };
+
       "org/gnome/mutter" = {
         center-new-windows = true;
         dynamic-workspaces = false;
         edge-tiling = true;
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        ];
       };
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
