@@ -35,6 +35,8 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
+  services.polkit-gnome.systemd.target = "sway-session.target";
+
   services.gnome.gnome-keyring.enable = true;
 
   users.users.${user.name} = {

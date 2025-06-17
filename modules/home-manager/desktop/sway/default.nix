@@ -20,6 +20,8 @@ in {
     "${hm-modules}/services/wl-sunset"
   ];
 
+  wayland.systemdTarget = "sway-session.target";
+
   home.pointerCursor.sway.enable = true;
 
   programs.fuzzel.settings.main.launch-prefix = "${pkgs.sway}/bin/swaymsg exec --";
