@@ -97,6 +97,14 @@
   # General overrides
   services.dbus.implementation = "broker";
 
+  # System fonts
+  fonts.packages = with pkgs; [
+    dejavu_fonts
+    liberation_ttf
+    nerd-fonts.jetbrains-mono
+    noto-fonts-emoji
+  ];
+
   # X11 settings
   services.xserver = {
     excludePackages = with pkgs; [xterm];

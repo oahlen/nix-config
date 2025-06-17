@@ -5,7 +5,8 @@
   ...
 }: {
   imports = [
-    "${nixos-modules}/desktop/shared"
+    "${nixos-modules}/programs/gtklock"
+    "${nixos-modules}/services/polkit"
   ];
 
   programs.niri.enable = true;
@@ -25,6 +26,13 @@
     wl-mirror
     xdg-utils
   ];
+
+  services.polkit-gnome.enable = true;
+
+  services.dbus = {
+    enable = true;
+    packages = with pkgs; [gcr];
+  };
 
   users.users.${user.name} = {
     extraGroups = ["audio" "video"];

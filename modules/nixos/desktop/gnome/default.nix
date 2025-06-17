@@ -1,14 +1,9 @@
 {
-  nixos-modules,
   lib,
   pkgs,
   ...
 }:
 with lib; {
-  imports = [
-    "${nixos-modules}/desktop/shared/fonts.nix"
-  ];
-
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 

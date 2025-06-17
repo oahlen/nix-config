@@ -5,7 +5,8 @@
   ...
 }: {
   imports = [
-    "${nixos-modules}/desktop/shared"
+    "${nixos-modules}/programs/gtklock"
+    "${nixos-modules}/services/polkit"
   ];
 
   programs.sway = {
@@ -35,9 +36,17 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
-  services.polkit-gnome.systemd.target = "sway-session.target";
+  services.polkit-gnome = {
+    enable = true;
+    systemd.target = "sway-session.target";
+  };
 
   services.gnome.gnome-keyring.enable = true;
+
+  services.dbus = {
+    enable = true;
+    packages = with pkgs; [gcr];
+  };
 
   users.users.${user.name} = {
     extraGroups = ["audio" "video"];
