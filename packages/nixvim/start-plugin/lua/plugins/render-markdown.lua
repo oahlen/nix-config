@@ -6,4 +6,5 @@ require("render-markdown").setup({
         "markdown",
         "copilot-chat",
     },
+    latex = { enabled = false },
 })
