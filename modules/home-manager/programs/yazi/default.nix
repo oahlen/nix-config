@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.yazi = {
     enable = true;
 
@@ -7,7 +7,49 @@
         show_hidden = true;
         sort_dir_first = true;
       };
+
+      plugin = {
+        prepend_previewers = [
+          {
+            name = "*.parquet";
+            run = "duckdb";
+          }
+        ];
+
+        prepend_preloaders = [
+          {
+            name = "*.parquet";
+            run = "duckdb";
+            multi = false;
+          }
+        ];
+      };
     };
+
+    keymap = {
+      mgr.prepend_keymap = [
+        {
+          run = "plugin duckdb -1";
+          on = ["H"];
+        }
+        {
+          run = "plugin duckdb +1";
+          on = ["L"];
+        }
+        {
+          run = "plugin duckdb -open";
+          on = ["g" "o"];
+        }
+      ];
+    };
+
+    plugins = with pkgs.yaziPlugins; {
+      duckdb = duckdb;
+    };
+
+    initLua = ''
+      require("duckdb"):setup()
+    '';
 
     theme = {
       mgr = {
