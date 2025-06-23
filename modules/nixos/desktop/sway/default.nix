@@ -1,14 +1,8 @@
 {
-  nixos-modules,
   pkgs,
   user,
   ...
 }: {
-  imports = [
-    "${nixos-modules}/programs/gtklock"
-    "${nixos-modules}/services/polkit"
-  ];
-
   programs.sway = {
     enable = true;
 
@@ -36,12 +30,41 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
-  services.polkit-gnome = {
-    enable = true;
-    systemd.target = "sway-session.target";
+  security.polkit.enable = true;
+
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = ["sway-session.target"];
+      wants = ["sway-session.target"];
+      after = ["sway-session.target"];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
   };
 
   services.gnome.gnome-keyring.enable = true;
+
+  programs.gtklock = {
+    enable = true;
+
+    modules = with pkgs; [
+      gtklock-powerbar-module
+      gtklock-userinfo-module
+    ];
+
+    config = {
+      main = {
+        idle-hide = true;
+        idle-timeout = 10;
+      };
+    };
+  };
 
   services.dbus = {
     enable = true;

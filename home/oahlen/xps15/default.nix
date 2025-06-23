@@ -4,8 +4,7 @@
   ...
 }: {
   imports = [
-    "${hm-modules}/desktop/gnome"
-    "${hm-modules}/desktop/niri"
+    "${hm-modules}/desktop/hyprland"
     "${hm-modules}/programs/rbw"
   ];
 
