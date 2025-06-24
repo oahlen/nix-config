@@ -29,6 +29,8 @@ in {
   scripts.password-picker.enable = true;
   scripts.wl-logout.enable = true;
 
+  services.hyprpolkitagent.enable = true;
+
   wayland.windowManager.sway = {
     enable = true;
 
