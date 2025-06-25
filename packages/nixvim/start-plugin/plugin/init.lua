@@ -3,7 +3,12 @@ require("config.options")
 require("config.keymaps")
 require("config.commands")
 
-require("lz.n").load("lazy")
+lzn = require("lz.n")
+lzn.load("lazy")
+
+if os.getenv("NIXVIM_FULL") == "1" then
+    lzn.load("lsp")
+end
 
 -- Plugins
 require("plugins.telescope")

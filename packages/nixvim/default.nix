@@ -5,11 +5,12 @@
   pkgs,
   runCommandLocal,
   symlinkJoin,
+  full ? false,
   ...
 }: let
   packageName = "nixvim";
 
-  startPlugins = import ./plugins {inherit pkgs;};
+  startPlugins = import ./plugins.nix {inherit pkgs;};
 
   foldPlugins = builtins.foldl' (
     acc: next:
@@ -38,7 +39,13 @@ in
   symlinkJoin {
     name = "nvim";
 
-    paths = [neovim-unwrapped];
+    paths =
+      [neovim-unwrapped]
+      ++ (
+        if full
+        then (import ./tools.nix {inherit pkgs;})
+        else []
+      );
 
     nativeBuildInputs = [makeWrapper];
 
@@ -48,7 +55,8 @@ in
         --add-flags 'NORC' \
         --add-flags '--cmd' \
         --add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
-        --set-default NVIM_APPNAME nixvim
+        --set-default NVIM_APPNAME nixvim \
+        --set-default NIXVIM_FULL ${toString full}
     '';
 
     passthru = {

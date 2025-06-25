@@ -2,4 +2,5 @@
   callPackage = pkgs.callPackage;
 in {
   nixvim = callPackage ./nixvim {};
+  nixvim-full = callPackage ./nixvim {full = true;};
 }
