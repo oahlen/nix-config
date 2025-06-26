@@ -16,9 +16,11 @@
 
   networking.hostName = "xps15";
 
-  boot.loader.systemd-boot.enable = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader.systemd-boot.enable = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+    blacklistedKernelModules = ["nouveau"];
+  };
 
   services = {
     flatpak.enable = true;

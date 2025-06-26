@@ -18,9 +18,10 @@
 
   networking.hostName = "desktop";
 
-  boot.loader.systemd-boot.enable = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader.systemd-boot.enable = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   fileSystems = {
     "/".options = ["noatime" "nodiratime" "discard"];
