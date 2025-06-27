@@ -4,8 +4,7 @@
   ...
 }: {
   imports = [
-    "${hm-modules}/desktop/gnome"
-    "${hm-modules}/desktop/niri"
+    "${hm-modules}/desktop/sway"
     "${hm-modules}/programs/rbw"
   ];
 
@@ -22,6 +21,7 @@
     iwgtk
     nodejs
     virt-manager
+    waybar
   ];
 
   home.stateVersion = "25.05";

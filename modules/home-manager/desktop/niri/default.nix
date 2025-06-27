@@ -8,7 +8,7 @@
     "${hm-modules}/services/wl-sunset"
   ];
 
-  wayland.systemdTarget = "graphical-session.target";
+  wayland.systemd.target = "graphical-session.target";
 
   scripts.password-picker.enable = true;
   scripts.wl-logout.enable = true;

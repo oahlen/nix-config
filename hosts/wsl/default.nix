@@ -18,6 +18,8 @@
     useWindowsDriver = true;
   };
 
+  programs.ssh.startAgent = true;
+
   # Keep until this issue is resolved https://github.com/nix-community/NixOS-WSL/issues/650
   # Prevent systemd from mounting a tmpfs over the runtime dir (and thus hiding the wayland socket)
   systemd.services."user-runtime-dir@" = {

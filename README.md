@@ -67,7 +67,7 @@ sudo nixos-install
 ### Intitial install (NixOS WSL)
 
 ```bash
-nixos-rebuild boot --use-remote-sudo --flake .$(hostname)
+nixos-rebuild boot --sudo --flake .$(hostname)
 home-manager switch --flake .#$(whoami)@$(hostname)
 ```
 
