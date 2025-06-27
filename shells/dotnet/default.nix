@@ -17,11 +17,11 @@ in
     # For GUI based applications
     LD_LIBRARY_PATH = with pkgs;
       lib.makeLibraryPath [
-        openssl # Needed by GitVersion
         fontconfig
         libGL
         libxkbcommon
         mono # For certain tools like Microsoft sbom tool
+        openssl # Needed by GitVersion
         wayland
         xorg.libICE
         xorg.libSM

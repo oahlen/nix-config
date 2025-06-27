@@ -62,9 +62,9 @@
           };
 
           modules = [
-            nix-index-database.hmModules.nix-index
             ./home/${username}/${hostname}
             "${hm-modules}/common"
+            nix-index-database.hmModules.nix-index
           ];
         };
   in {
