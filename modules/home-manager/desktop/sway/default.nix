@@ -20,7 +20,7 @@ in {
     "${hm-modules}/services/wl-sunset"
   ];
 
-  wayland.systemdTarget = "sway-session.target";
+  wayland.systemd.target = "sway-session.target";
 
   home.pointerCursor.sway.enable = true;
 
