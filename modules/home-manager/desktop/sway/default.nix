@@ -29,6 +29,15 @@ in {
   scripts.password-picker.enable = true;
   scripts.wl-logout.enable = true;
 
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+  };
+
   wayland.windowManager.sway = {
     enable = true;
 

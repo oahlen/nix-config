@@ -31,6 +31,7 @@ with lib.hm.gvariant; {
       };
 
       "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
         accent-color = "blue";
         icon-theme = "Papirus-Dark";
         enable-animations = false;
