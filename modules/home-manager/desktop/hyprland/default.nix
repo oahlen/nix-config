@@ -21,10 +21,8 @@
 
   programs.hyprlock.enable = true;
 
-  services = {
-    hypridle.enable = true;
-    hyprpaper.enable = true;
-    hyprpolkitagent.enable = true;
-    hyprsunset.enable = true;
-  };
+  services.hypridle.enable = true;
+  services.hyprpaper.enable = true;
+  services.hyprpolkitagent.enable = true;
+  services.hyprsunset.enable = true;
 }
