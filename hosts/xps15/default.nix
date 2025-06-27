@@ -5,7 +5,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/desktop/hyprland"
+    "${nixos-modules}/desktop/gnome"
+    "${nixos-modules}/desktop/niri"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"
     "${nixos-modules}/services/networkmanager"
