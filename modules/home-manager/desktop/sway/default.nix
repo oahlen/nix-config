@@ -8,13 +8,14 @@
 }: let
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
-  gtklock = "${pkgs.gtklock}/bin/gtklock";
+  swaylock = "${pkgs.swaylock}/bin/swaylock -fF";
 in {
   imports = [
     "${hm-modules}/desktop/shared"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
-    "${hm-modules}/programs/i3status-rust"
+    "${hm-modules}/programs/swaylock"
+    "${hm-modules}/programs/waybar"
     "${hm-modules}/services/mako"
     "${hm-modules}/services/swayidle"
     "${hm-modules}/services/wl-sunset"
@@ -28,15 +29,6 @@ in {
 
   scripts.password-picker.enable = true;
   scripts.wl-logout.enable = true;
-
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-    };
-  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -129,7 +121,7 @@ in {
         modifier = config.wayland.windowManager.sway.config.modifier;
       in
         pkgs.lib.mkOptionDefault {
-          "${modifier}+Alt+l" = "exec ${gtklock}";
+          "${modifier}+Alt+l" = "exec ${swaylock}";
           "Ctrl+Alt+Delete" = "exec wl-logout";
           "${modifier}+p" = "exec password-picker \"${pkgs.fuzzel}/bin/fuzzel -d\"";
           "Print" = "exec ${grim} ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
@@ -180,62 +172,7 @@ in {
         };
       };
 
-      bars = [
-        {
-          command = "${pkgs.sway}/bin/swaybar";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-          position = "top";
-
-          fonts = {
-            names = [user.font.name];
-            size = user.font.size;
-          };
-
-          extraConfig = ''
-            position top
-            height 24
-            workspace_min_width 30
-            status_padding 0
-            status_edge_padding 0
-          '';
-
-          colors = {
-            background = user.colorscheme.statusline.background;
-            statusline = user.colorscheme.statusline.foreground;
-            separator = user.colorscheme.statusline.foreground;
-
-            focusedWorkspace = {
-              border = user.colorscheme.blue;
-              background = user.colorscheme.blue;
-              text = user.colorscheme.black;
-            };
-
-            activeWorkspace = {
-              border = user.colorscheme.statusline.foreground;
-              background = user.colorscheme.statusline.foreground;
-              text = user.colorscheme.black;
-            };
-
-            inactiveWorkspace = {
-              border = user.colorscheme.statusline.inactive;
-              background = user.colorscheme.statusline.inactive;
-              text = user.colorscheme.statusline.foreground;
-            };
-
-            urgentWorkspace = {
-              border = user.colorscheme.red;
-              background = user.colorscheme.red;
-              text = user.colorscheme.black;
-            };
-
-            bindingMode = {
-              border = user.colorscheme.yellow;
-              background = user.colorscheme.yellow;
-              text = user.colorscheme.black;
-            };
-          };
-        }
-      ];
+      bars = [];
     };
 
     extraConfig = ''

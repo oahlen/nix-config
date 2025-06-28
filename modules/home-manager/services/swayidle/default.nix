@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  gtklock = "${pkgs.gtklock}/bin/gtklock -d";
+  swaylock = "${pkgs.swaylock}/bin/swaylock -fF";
   swaymsg = "${pkgs.sway}/bin/swaymsg";
 in {
   services.swayidle = {
@@ -8,14 +8,14 @@ in {
     events = [
       {
         event = "before-sleep";
-        command = gtklock;
+        command = swaylock;
       }
     ];
 
     timeouts = [
       {
         timeout = 300;
-        command = gtklock;
+        command = swaylock;
       }
       {
         timeout = 900;

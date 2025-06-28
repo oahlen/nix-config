@@ -5,8 +5,8 @@
   ...
 }: {
   imports = [
-    "${nixos-modules}/programs/gtklock"
     "${nixos-modules}/services/polkit"
+    "${nixos-modules}/services/pipewire"
   ];
 
   programs.sway = {

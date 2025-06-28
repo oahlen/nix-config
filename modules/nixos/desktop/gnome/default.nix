@@ -1,9 +1,14 @@
 {
+  nixos-modules,
   lib,
   pkgs,
   ...
 }:
 with lib; {
+  imports = [
+    "${nixos-modules}/services/pipewire"
+  ];
+
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 

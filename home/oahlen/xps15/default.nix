@@ -21,7 +21,6 @@
     iwgtk
     nodejs
     virt-manager
-    waybar
   ];
 
   home.stateVersion = "25.05";
