@@ -9,6 +9,8 @@
     "${nixos-modules}/services/pipewire"
   ];
 
+  services.displayManager.gdm.enable = true;
+
   programs.sway = {
     enable = true;
 
