@@ -1,4 +1,8 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -16,13 +20,13 @@
           "sway/window"
         ];
         modules-right = [
+          "tray"
           "power-profiles-daemon"
           "backlight"
           "pulseaudio"
           "network"
           "battery"
           "clock"
-          "tray"
         ];
         power-profiles-daemon = {
           format = "{icon}";
@@ -60,9 +64,9 @@
             critical = 15;
           };
           format = "{icon}  {capacity}%";
-          format-charging = "";
+          format-charging = " {capacity}%";
           format-plugged = "";
-          tooltip-format = "Capacity: {capacity}%\nEstimated time left: {time}";
+          tooltip-format = "Capacity: {capacity}%\nEstimated time left: {time}\nDraw: {power}w";
           format-icons = [
             ""
             ""
@@ -77,7 +81,7 @@
           tooltip-format = "{essid}";
           format-linked = "󰈂";
           format-disconnected = "󰈂";
-          on-click = "iwgtk";
+          on-click = "${pkgs.iwgtk}/bin/iwgtk";
         };
         pulseaudio = {
           scroll-step = 5;
@@ -90,7 +94,7 @@
               ""
             ];
           };
-          on-click = "pavucontrol";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
       }
     ];
@@ -127,6 +131,7 @@
           background-color: ${user.colorscheme.bright-black};
       }
 
+      #tray,
       #power-profiles-daemon,
       #network,
       #backlight,
