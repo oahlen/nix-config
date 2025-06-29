@@ -17,6 +17,7 @@
   scripts.password-picker.enable = true;
 
   home.packages = with pkgs; [
+    _1password-gui
     inkscape
     iwgtk
     nodejs
