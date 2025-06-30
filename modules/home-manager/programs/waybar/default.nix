@@ -23,8 +23,8 @@
           "tray"
           "power-profiles-daemon"
           "backlight"
-          "pulseaudio"
           "network"
+          "pulseaudio"
           "battery"
           "clock"
         ];
@@ -76,11 +76,14 @@
           ];
         };
         network = {
-          format-wifi = "  {essid}";
+          format = "{ifname}";
+          format-wifi = " ";
           format-ethernet = "󰈀";
-          tooltip-format = "{essid}";
           format-linked = "󰈂";
           format-disconnected = "󰈂";
+          tooltip-format-wifi = "Network: {essid} ({signalStrength}%)\nIP: {ipaddr}";
+          tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}";
+          tooltip-format-linked = "Disconnected";
           on-click = "${pkgs.iwgtk}/bin/iwgtk";
         };
         pulseaudio = {
@@ -101,7 +104,7 @@
 
     style = ''
       * {
-          font-family: "JetBrainsMono Nerd Font";
+          font-family: "${user.font.name}";
           font-size: 15px;
           border: none;
           border-radius: 0;
@@ -142,12 +145,12 @@
       }
 
       #battery,
-      #battery.charging,
-      #battery.plugged {
+      #battery.charging {
           color: ${user.colorscheme.green};
       }
 
-      #battery.normal {
+      #battery.normal,
+      #battery.plugged {
           color: ${user.colorscheme.statusline.foreground};
       }
 
