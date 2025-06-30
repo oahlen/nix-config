@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   user,
@@ -12,8 +13,8 @@
     };
 
     font = {
-      name = user.font.name;
-      size = user.font.size;
+      name = config.font.name;
+      size = config.font.size;
     };
     extraConfig = ''
       shell "${lib.getExe pkgs.fish}"

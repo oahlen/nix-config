@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   user,
@@ -9,7 +10,7 @@
 
     settings = {
       main = {
-        font = "${user.font.name}:size=${lib.strings.floatToString user.font.size}";
+        font = "${config.font.name}:size=${lib.strings.floatToString config.font.size}";
         terminal = "${pkgs.foot}/bin/foot -e";
         icons-enabled = "no";
         dpi-aware = "no";

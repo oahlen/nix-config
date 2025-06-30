@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   user,
@@ -11,7 +12,7 @@
       main = {
         shell = "${lib.getExe pkgs.fish}";
         term = "xterm-256color";
-        font = "${user.font.name}:size=${lib.strings.floatToString user.font.size}";
+        font = "${config.font.name}:size=${lib.strings.floatToString config.font.size}";
         dpi-aware = "no";
         pad = "10x10";
       };

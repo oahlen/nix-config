@@ -1,4 +1,5 @@
 {
+  config,
   user,
   pkgs,
   ...
@@ -104,7 +105,7 @@
 
     style = ''
       * {
-          font-family: "${user.font.name}";
+          font-family: "${config.font.name}";
           font-size: 15px;
           border: none;
           border-radius: 0;

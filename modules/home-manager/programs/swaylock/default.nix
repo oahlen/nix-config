@@ -1,9 +1,13 @@
-{user, ...}: {
+{
+  config,
+  user,
+  ...
+}: {
   programs.swaylock = {
     enable = true;
     settings = {
       ignore-empty-password = true;
-      font = user.font.name;
+      font = config.font.name;
       font-size = 24;
 
       color = user.no_hex user.colorscheme.background;

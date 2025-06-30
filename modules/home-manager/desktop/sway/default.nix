@@ -43,8 +43,8 @@ in {
 
     config = {
       fonts = {
-        names = [user.font.name];
-        size = user.font.size;
+        names = [config.font.name];
+        size = config.font.size;
       };
 
       input = {
@@ -201,7 +201,7 @@ in {
 
       settings = {
         "<config>" = {
-          font = "${user.font.name} ${lib.strings.floatToString user.font.size}";
+          font = "${config.font.name} ${lib.strings.floatToString config.font.size}";
           edge = "bottom";
 
           border-bottom-size = 0;

@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   user,
   ...
@@ -7,7 +8,7 @@
     enable = true;
 
     settings = {
-      font = "${user.font.name} ${lib.strings.floatToString user.font.size}";
+      font = "${config.font.name} ${lib.strings.floatToString config.font.size}";
       anchor = "top-right";
 
       default-timeout = 10000;

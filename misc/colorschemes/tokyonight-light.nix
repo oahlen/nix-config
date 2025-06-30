@@ -1,4 +1,4 @@
-{...}: {
+{
   foreground = "#343B58";
   background = "#e6e7ed";
 

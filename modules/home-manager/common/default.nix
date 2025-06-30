@@ -24,6 +24,7 @@
     "${hm-modules}/programs/tmux"
     "${hm-modules}/programs/yazi"
     "${hm-modules}/scripts"
+    ./modules/font.nix
   ];
 
   # Enable home-manager
@@ -86,7 +87,7 @@
       "${config.home.sessionVariables.XDG_DATA_HOME}/cargo/bin"
     ];
 
-    home.pointerCursor = {
+    pointerCursor = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
       gtk.enable = true;
