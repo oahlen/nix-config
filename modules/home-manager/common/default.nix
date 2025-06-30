@@ -86,6 +86,14 @@
       "${config.home.sessionVariables.XDG_DATA_HOME}/cargo/bin"
     ];
 
+    home.pointerCursor = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+      gtk.enable = true;
+      x11.enable = true;
+      size = 24;
+    };
+
     packages = with pkgs; [
       calc
       dogdns

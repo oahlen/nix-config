@@ -8,7 +8,6 @@
     "${nixos-modules}/desktop/sway"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"
-    "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"
   ];

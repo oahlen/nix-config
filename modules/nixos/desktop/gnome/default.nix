@@ -6,6 +6,7 @@
 }:
 with lib; {
   imports = [
+    "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"
   ];
 

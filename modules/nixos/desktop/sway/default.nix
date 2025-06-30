@@ -5,8 +5,9 @@
   ...
 }: {
   imports = [
-    "${nixos-modules}/services/polkit"
+    "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"
+    "${nixos-modules}/services/polkit"
   ];
 
   services.displayManager.gdm.enable = true;

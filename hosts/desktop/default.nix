@@ -10,7 +10,6 @@
     "${nixos-modules}/programs/gamemode"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/services/bluetooth"
-    "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"
   ];
