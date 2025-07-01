@@ -5,7 +5,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/desktop/sway"
+    "${nixos-modules}/profiles/sway"
+    "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"
     "${nixos-modules}/services/tailscale"
@@ -27,6 +28,10 @@
     power-profiles-daemon.enable = true;
     printing.enable = true;
     thermald.enable = true;
+  };
+
+  environment.variables = {
+    BROWSER = "librewolf";
   };
 
   fileSystems."/".options = ["noatime" "nodiratime" "discard"];

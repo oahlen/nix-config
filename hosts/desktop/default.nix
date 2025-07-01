@@ -5,7 +5,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/desktop/sway"
+    "${nixos-modules}/profiles/sway"
+    "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/corectrl"
     "${nixos-modules}/programs/gamemode"
     "${nixos-modules}/programs/podman"
@@ -19,6 +20,10 @@
   boot = {
     loader.systemd-boot.enable = true;
     kernelPackages = pkgs.linuxPackages_latest;
+  };
+
+  environment.variables = {
+    BROWSER = "librewolf";
   };
 
   fileSystems = {

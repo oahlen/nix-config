@@ -3,11 +3,11 @@
   pkgs,
   ...
 }: {
-  programs.git.lfs.enable = true;
-
   imports = [
-    "${hm-modules}/programs/foot"
+    "${hm-modules}/profiles/terminal"
   ];
+
+  programs.git.lfs.enable = true;
 
   scripts = {
     markdown-viewer.enable = true;

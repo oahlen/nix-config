@@ -5,6 +5,8 @@
   ...
 }: {
   imports = [
+    "${nixos-modules}/common/wayland"
+    "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/apptainer"
     "${nixos-modules}/programs/podman"
   ];

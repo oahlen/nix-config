@@ -43,7 +43,7 @@
 
           modules = [
             ./hosts/${hostname}
-            "${nixos-modules}/common"
+            "${nixos-modules}"
             nixos-wsl.nixosModules.wsl
           ];
         };
@@ -63,7 +63,7 @@
 
           modules = [
             ./home/${username}/${hostname}
-            "${hm-modules}/common"
+            "${hm-modules}"
             nix-index-database.hmModules.nix-index
           ];
         };

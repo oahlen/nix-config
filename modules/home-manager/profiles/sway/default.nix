@@ -10,6 +10,7 @@
   swaylock = "${pkgs.swaylock}/bin/swaylock -fF";
 in {
   imports = [
+    "${hm-modules}/programs/dconf"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
     "${hm-modules}/programs/swaylock"

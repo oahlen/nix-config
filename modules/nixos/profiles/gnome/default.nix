@@ -6,6 +6,8 @@
 }:
 with lib; {
   imports = [
+    "${nixos-modules}/common/fonts"
+    "${nixos-modules}/common/wayland"
     "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"
   ];

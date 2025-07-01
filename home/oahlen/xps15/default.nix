@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    "${hm-modules}/desktop/sway"
+    "${hm-modules}/profiles/sway"
+    "${hm-modules}/profiles/terminal"
     "${hm-modules}/programs/rbw"
   ];
 

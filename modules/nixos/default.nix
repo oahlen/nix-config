@@ -1,8 +1,4 @@
-{
-  pkgs,
-  user,
-  ...
-}: {
+{user, ...}: {
   # Nixpkgs settings
   nixpkgs.config.allowUnfree = true;
 
@@ -47,22 +43,6 @@
     };
   };
 
-  # Environment settings
-  environment.variables = {
-    BROWSER = "librewolf";
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    PAGER = "less";
-  };
-
-  environment.sessionVariables = {
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    SDL_VIDEODRIVER = "wayland";
-  };
-
   # Security settings
   security = {
     sudo.enable = false;
@@ -94,27 +74,6 @@
     };
   };
 
-  # General overrides
-  services.dbus.implementation = "broker";
-
-  # System fonts
-  fonts.packages = with pkgs; [
-    dejavu_fonts
-    liberation_ttf
-    nerd-fonts.jetbrains-mono
-    noto-fonts-emoji
-  ];
-
-  # X11 settings
-  services.xserver = {
-    excludePackages = with pkgs; [xterm];
-  };
-
-  # SSH settings
-  programs.ssh = {
-    enableAskPassword = false;
-  };
-
   # User configuration
   users.users.${user.name} = {
     uid = 1000;
@@ -122,31 +81,4 @@
     isNormalUser = true;
     extraGroups = ["wheel"];
   };
-
-  # System packages
-  programs.neovim = {
-    enable = true;
-
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-
-    withNodeJs = false;
-    withPython3 = false;
-    withRuby = false;
-  };
-
-  programs.git.enable = true;
-  programs.less.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    curl
-    fd
-    nfs-utils
-    ripgrep
-    tree
-    unzip
-    wget
-    zip
-  ];
 }
