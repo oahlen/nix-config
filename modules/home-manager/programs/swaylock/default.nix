@@ -1,8 +1,6 @@
-{
-  config,
-  user,
-  ...
-}: {
+{config, ...}: let
+  no_hex = color: builtins.substring 1 (builtins.stringLength color - 1) color;
+in {
   programs.swaylock = {
     enable = true;
     settings = {
@@ -10,7 +8,7 @@
       font = config.font.name;
       font-size = 24;
 
-      color = user.no_hex user.colorscheme.background;
+      color = no_hex config.colorscheme.background;
       scaling = "solid_color";
 
       indicator-radius = 120;
@@ -22,34 +20,34 @@
       inside-ver-color = "00000000";
       inside-wrong-color = "00000000";
 
-      line-color = user.no_hex user.colorscheme.bright-black;
-      line-clear-color = user.no_hex user.colorscheme.yellow;
-      line-caps-lock-color = user.no_hex user.colorscheme.purple;
-      line-ver-color = user.no_hex user.colorscheme.blue;
-      line-wrong-color = user.no_hex user.colorscheme.red;
+      line-color = no_hex config.colorscheme.bright-black;
+      line-clear-color = no_hex config.colorscheme.yellow;
+      line-caps-lock-color = no_hex config.colorscheme.purple;
+      line-ver-color = no_hex config.colorscheme.blue;
+      line-wrong-color = no_hex config.colorscheme.red;
 
       ring-color = "00000000";
-      ring-clear-color = user.no_hex user.colorscheme.yellow;
-      ring-caps-lock-color = user.no_hex user.colorscheme.purple;
-      ring-ver-color = user.no_hex user.colorscheme.blue;
-      ring-wrong-color = user.no_hex user.colorscheme.red;
+      ring-clear-color = no_hex config.colorscheme.yellow;
+      ring-caps-lock-color = no_hex config.colorscheme.purple;
+      ring-ver-color = no_hex config.colorscheme.blue;
+      ring-wrong-color = no_hex config.colorscheme.red;
 
       separator-color = "00000000";
 
-      key-hl-color = user.no_hex user.colorscheme.blue;
-      bs-hl-color = user.no_hex user.colorscheme.yellow;
-      caps-lock-key-hl-color = user.no_hex user.colorscheme.blue;
-      caps-lock-bs-hl-color = user.no_hex user.colorscheme.yellow;
+      key-hl-color = no_hex config.colorscheme.blue;
+      bs-hl-color = no_hex config.colorscheme.yellow;
+      caps-lock-key-hl-color = no_hex config.colorscheme.blue;
+      caps-lock-bs-hl-color = no_hex config.colorscheme.yellow;
 
-      text-color = user.no_hex user.colorscheme.foreground;
-      text-clear-color = user.no_hex user.colorscheme.yellow;
-      text-caps-lock-color = user.no_hex user.colorscheme.purple;
-      text-ver-color = user.no_hex user.colorscheme.blue;
-      text-wrong-color = user.no_hex user.colorscheme.red;
+      text-color = no_hex config.colorscheme.foreground;
+      text-clear-color = no_hex config.colorscheme.yellow;
+      text-caps-lock-color = no_hex config.colorscheme.purple;
+      text-ver-color = no_hex config.colorscheme.blue;
+      text-wrong-color = no_hex config.colorscheme.red;
 
       layout-bg-color = "00000000";
       layout-border-color = "00000000";
-      layout-text-color = user.no_hex user.colorscheme.foreground;
+      layout-text-color = no_hex config.colorscheme.foreground;
     };
   };
 }

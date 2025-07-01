@@ -2,9 +2,10 @@
   config,
   lib,
   pkgs,
-  user,
   ...
-}: {
+}: let
+  no_hex = color: builtins.substring 1 (builtins.stringLength color - 1) color;
+in {
   programs.fuzzel = {
     enable = true;
 
@@ -22,17 +23,19 @@
         inner-pad = 8;
         line-height = 16;
       };
+
       colors = {
-        background = "${user.no_hex user.colorscheme.background}ff";
-        border = "${user.no_hex user.colorscheme.bright-black}ff";
-        input = "${user.no_hex user.colorscheme.foreground}ff";
-        match = "${user.no_hex user.colorscheme.bright-yellow}ff";
-        prompt = "${user.no_hex user.colorscheme.green}ff";
-        selection = "${user.no_hex user.colorscheme.selection.background}ff";
-        selection-match = "${user.no_hex user.colorscheme.yellow}ff";
-        selection-text = "${user.no_hex user.colorscheme.bright-white}ff";
-        text = "${user.no_hex user.colorscheme.foreground}ff";
+        background = "${no_hex config.colorscheme.background}ff";
+        border = "${no_hex config.colorscheme.bright-black}ff";
+        input = "${no_hex config.colorscheme.foreground}ff";
+        match = "${no_hex config.colorscheme.bright-yellow}ff";
+        prompt = "${no_hex config.colorscheme.green}ff";
+        selection = "${no_hex config.colorscheme.selection.background}ff";
+        selection-match = "${no_hex config.colorscheme.yellow}ff";
+        selection-text = "${no_hex config.colorscheme.bright-white}ff";
+        text = "${no_hex config.colorscheme.foreground}ff";
       };
+
       border = {
         width = 2;
         radius = 4;

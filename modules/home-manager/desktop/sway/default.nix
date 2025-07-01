@@ -3,7 +3,6 @@
   hm-modules,
   lib,
   pkgs,
-  user,
   ...
 }: let
   grim = "${pkgs.grim}/bin/grim";
@@ -64,7 +63,7 @@ in {
 
       output = {
         "*" = {
-          bg = "${user.wallpaper} fit ${user.colorscheme.background}";
+          bg = "${config.wallpaper} fit ${config.colorscheme.background}";
         };
       };
 
@@ -147,27 +146,27 @@ in {
 
       colors = {
         focused = {
-          border = user.colorscheme.blue;
-          background = user.colorscheme.blue;
-          text = user.colorscheme.black;
-          indicator = user.colorscheme.blue;
-          childBorder = user.colorscheme.blue;
+          border = config.colorscheme.blue;
+          background = config.colorscheme.blue;
+          text = config.colorscheme.black;
+          indicator = config.colorscheme.blue;
+          childBorder = config.colorscheme.blue;
         };
 
         focusedInactive = {
-          border = user.colorscheme.statusline.foreground;
-          background = user.colorscheme.statusline.foreground;
-          text = user.colorscheme.black;
-          indicator = user.colorscheme.statusline.foreground;
-          childBorder = user.colorscheme.statusline.foreground;
+          border = config.colorscheme.statusline.foreground;
+          background = config.colorscheme.statusline.foreground;
+          text = config.colorscheme.black;
+          indicator = config.colorscheme.statusline.foreground;
+          childBorder = config.colorscheme.statusline.foreground;
         };
 
         unfocused = {
-          border = user.colorscheme.statusline.inactive;
-          background = user.colorscheme.statusline.inactive;
-          text = user.colorscheme.statusline.foreground;
-          indicator = user.colorscheme.statusline.inactive;
-          childBorder = user.colorscheme.statusline.inactive;
+          border = config.colorscheme.statusline.inactive;
+          background = config.colorscheme.statusline.inactive;
+          text = config.colorscheme.statusline.foreground;
+          indicator = config.colorscheme.statusline.inactive;
+          childBorder = config.colorscheme.statusline.inactive;
         };
       };
 
@@ -215,25 +214,25 @@ in {
           button-dismiss-gap = 0;
         };
         info = {
-          text = user.colorscheme.black;
-          background = user.colorscheme.blue;
-          button-text = user.colorscheme.black;
-          button-background = user.colorscheme.blue;
-          details-background = user.colorscheme.blue;
+          text = config.colorscheme.black;
+          background = config.colorscheme.blue;
+          button-text = config.colorscheme.black;
+          button-background = config.colorscheme.blue;
+          details-background = config.colorscheme.blue;
         };
         warning = {
-          text = user.colorscheme.black;
-          background = user.colorscheme.yellow;
-          button-text = user.colorscheme.black;
-          button-background = user.colorscheme.yellow;
-          details-background = user.colorscheme.yellow;
+          text = config.colorscheme.black;
+          background = config.colorscheme.yellow;
+          button-text = config.colorscheme.black;
+          button-background = config.colorscheme.yellow;
+          details-background = config.colorscheme.yellow;
         };
         error = {
-          text = user.colorscheme.black;
-          background = user.colorscheme.red;
-          button-text = user.colorscheme.black;
-          button-background = user.colorscheme.red;
-          details-background = user.colorscheme.red;
+          text = config.colorscheme.black;
+          background = config.colorscheme.red;
+          button-text = config.colorscheme.black;
+          button-background = config.colorscheme.red;
+          details-background = config.colorscheme.red;
         };
       };
     };

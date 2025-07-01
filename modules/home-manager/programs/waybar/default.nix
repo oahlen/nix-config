@@ -1,6 +1,5 @@
 {
   config,
-  user,
   pkgs,
   ...
 }: {
@@ -112,18 +111,18 @@
       }
 
       window#waybar {
-          background: ${user.colorscheme.statusline.background};
-          color: ${user.colorscheme.statusline.foreground};
+          background: ${config.colorscheme.statusline.background};
+          color: ${config.colorscheme.statusline.foreground};
       }
 
       #workspaces button {
-          background-color: ${user.colorscheme.statusline.inactive};
-          color: ${user.colorscheme.statusline.foreground};
+          background-color: ${config.colorscheme.statusline.inactive};
+          color: ${config.colorscheme.statusline.foreground};
           padding: 0 7px;
       }
 
       #workspaces button.focused {
-          background: ${user.colorscheme.blue};
+          background: ${config.colorscheme.blue};
 
           color: #15161e;
           font-weight: bold;
@@ -132,7 +131,7 @@
       #workspaces button:hover {
           box-shadow: inherit;
           text-shadow: inherit;
-          background-color: ${user.colorscheme.bright-black};
+          background-color: ${config.colorscheme.bright-black};
       }
 
       #tray,
@@ -147,30 +146,30 @@
 
       #battery,
       #battery.charging {
-          color: ${user.colorscheme.green};
+          color: ${config.colorscheme.green};
       }
 
       #battery.normal,
       #battery.plugged {
-          color: ${user.colorscheme.statusline.foreground};
+          color: ${config.colorscheme.statusline.foreground};
       }
 
       #battery.warning {
-          color: ${user.colorscheme.yellow};
+          color: ${config.colorscheme.yellow};
       }
 
       #battery.critical {
-          color: ${user.colorscheme.red};
+          color: ${config.colorscheme.red};
       }
 
       tooltip {
-          background: ${user.colorscheme.background};
-          border: 1px solid ${user.colorscheme.bright-black};
+          background: ${config.colorscheme.background};
+          border: 1px solid ${config.colorscheme.bright-black};
           border-radius: 0.25rem;
       }
 
       tooltip label {
-          color: ${user.colorscheme.statusline.foreground};
+          color: ${config.colorscheme.statusline.foreground};
       }
     '';
   };

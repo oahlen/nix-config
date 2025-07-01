@@ -1,5 +1,13 @@
-{pkgs, ...}: {
+{
+  hm-modules,
+  pkgs,
+  ...
+}: {
   programs.git.lfs.enable = true;
+
+  imports = [
+    "${hm-modules}/programs/foot"
+  ];
 
   scripts = {
     markdown-viewer.enable = true;

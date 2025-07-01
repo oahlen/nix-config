@@ -2,9 +2,10 @@
   config,
   lib,
   pkgs,
-  user,
   ...
-}: {
+}: let
+  no_hex = color: builtins.substring 1 (builtins.stringLength color - 1) color;
+in {
   programs.foot = {
     enable = true;
 
@@ -18,29 +19,29 @@
       };
 
       colors = {
-        foreground = user.no_hex user.colorscheme.foreground;
-        background = user.no_hex user.colorscheme.background;
+        foreground = no_hex config.colorscheme.foreground;
+        background = no_hex config.colorscheme.background;
 
-        selection-foreground = user.no_hex user.colorscheme.selection.foreground;
-        selection-background = user.no_hex user.colorscheme.selection.background;
+        selection-foreground = no_hex config.colorscheme.selection.foreground;
+        selection-background = no_hex config.colorscheme.selection.background;
 
-        regular0 = user.no_hex user.colorscheme.black;
-        regular1 = user.no_hex user.colorscheme.red;
-        regular2 = user.no_hex user.colorscheme.green;
-        regular3 = user.no_hex user.colorscheme.yellow;
-        regular4 = user.no_hex user.colorscheme.blue;
-        regular5 = user.no_hex user.colorscheme.purple;
-        regular6 = user.no_hex user.colorscheme.cyan;
-        regular7 = user.no_hex user.colorscheme.white;
+        regular0 = no_hex config.colorscheme.black;
+        regular1 = no_hex config.colorscheme.red;
+        regular2 = no_hex config.colorscheme.green;
+        regular3 = no_hex config.colorscheme.yellow;
+        regular4 = no_hex config.colorscheme.blue;
+        regular5 = no_hex config.colorscheme.purple;
+        regular6 = no_hex config.colorscheme.cyan;
+        regular7 = no_hex config.colorscheme.white;
 
-        bright0 = user.no_hex user.colorscheme.bright-black;
-        bright1 = user.no_hex user.colorscheme.bright-red;
-        bright2 = user.no_hex user.colorscheme.bright-green;
-        bright3 = user.no_hex user.colorscheme.bright-yellow;
-        bright4 = user.no_hex user.colorscheme.bright-blue;
-        bright5 = user.no_hex user.colorscheme.bright-purple;
-        bright6 = user.no_hex user.colorscheme.bright-cyan;
-        bright7 = user.no_hex user.colorscheme.bright-white;
+        bright0 = no_hex config.colorscheme.bright-black;
+        bright1 = no_hex config.colorscheme.bright-red;
+        bright2 = no_hex config.colorscheme.bright-green;
+        bright3 = no_hex config.colorscheme.bright-yellow;
+        bright4 = no_hex config.colorscheme.bright-blue;
+        bright5 = no_hex config.colorscheme.bright-purple;
+        bright6 = no_hex config.colorscheme.bright-cyan;
+        bright7 = no_hex config.colorscheme.bright-white;
       };
     };
   };

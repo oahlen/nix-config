@@ -24,7 +24,9 @@
     "${hm-modules}/programs/tmux"
     "${hm-modules}/programs/yazi"
     "${hm-modules}/scripts"
-    ./modules/font.nix
+    ./modules/colorscheme
+    ./modules/font
+    ./modules/wallpaper
   ];
 
   # Enable home-manager

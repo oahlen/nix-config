@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  user,
   ...
 }: {
   services.mako = {
@@ -14,10 +13,10 @@
       default-timeout = 10000;
       ignore-timeout = true;
 
-      text-color = user.colorscheme.foreground;
-      background-color = user.colorscheme.background;
-      border-color = user.colorscheme.bright-black;
-      progress-color = user.colorscheme.blue;
+      text-color = config.colorscheme.foreground;
+      background-color = config.colorscheme.background;
+      border-color = config.colorscheme.bright-black;
+      progress-color = config.colorscheme.blue;
 
       border-size = 2;
       border-radius = 4;

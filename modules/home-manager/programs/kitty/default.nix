@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  user,
   ...
 }: {
   programs.kitty = {
@@ -21,29 +20,29 @@
       hide_window_decorations yes
       window_padding_width 4 8
 
-      foreground ${user.colorscheme.foreground}
-      background ${user.colorscheme.background}
+      foreground ${config.colorscheme.foreground}
+      background ${config.colorscheme.background}
 
-      selection_foreground ${user.colorscheme.selection.foreground}
-      selection_background ${user.colorscheme.selection.background}
+      selection_foreground ${config.colorscheme.selection.foreground}
+      selection_background ${config.colorscheme.selection.background}
 
-      color0 ${user.colorscheme.black}
-      color1 ${user.colorscheme.red}
-      color2 ${user.colorscheme.green}
-      color3 ${user.colorscheme.yellow}
-      color4 ${user.colorscheme.blue}
-      color5 ${user.colorscheme.purple}
-      color6 ${user.colorscheme.cyan}
-      color7 ${user.colorscheme.white}
+      color0 ${config.colorscheme.black}
+      color1 ${config.colorscheme.red}
+      color2 ${config.colorscheme.green}
+      color3 ${config.colorscheme.yellow}
+      color4 ${config.colorscheme.blue}
+      color5 ${config.colorscheme.purple}
+      color6 ${config.colorscheme.cyan}
+      color7 ${config.colorscheme.white}
 
-      color8 ${user.colorscheme.bright-black}
-      color9 ${user.colorscheme.bright-red}
-      color10 ${user.colorscheme.bright-green}
-      color11 ${user.colorscheme.bright-yellow}
-      color12 ${user.colorscheme.bright-blue}
-      color13 ${user.colorscheme.bright-purple}
-      color14 ${user.colorscheme.bright-cyan}
-      color15 ${user.colorscheme.bright-white}
+      color8 ${config.colorscheme.bright-black}
+      color9 ${config.colorscheme.bright-red}
+      color10 ${config.colorscheme.bright-green}
+      color11 ${config.colorscheme.bright-yellow}
+      color12 ${config.colorscheme.bright-blue}
+      color13 ${config.colorscheme.bright-purple}
+      color14 ${config.colorscheme.bright-cyan}
+      color15 ${config.colorscheme.bright-white}
     '';
   };
 }

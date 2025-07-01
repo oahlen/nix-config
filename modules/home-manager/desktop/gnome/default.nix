@@ -1,8 +1,8 @@
 {
+  config,
   hm-modules,
   lib,
   pkgs,
-  user,
   ...
 }:
 with lib.hm.gvariant; {
@@ -39,10 +39,10 @@ with lib.hm.gvariant; {
       "org/gnome/desktop/background" = {
         color-shading-type = "solid";
         picture-options = "scaled";
-        picture-uri = "file://${user.wallpaper}";
-        picture-uri-dark = "file://${user.wallpaper}";
-        primary-color = user.colorscheme.background;
-        secondary-color = user.colorscheme.background;
+        picture-uri = "file://${config.wallpaper}";
+        picture-uri-dark = "file://${config.wallpaper}";
+        primary-color = config.colorscheme.background;
+        secondary-color = config.colorscheme.background;
       };
 
       "org/gnome/desktop/peripherals/keyboard" = {
