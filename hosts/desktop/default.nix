@@ -5,10 +5,9 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    "${nixos-modules}/profiles/gaming"
     "${nixos-modules}/profiles/sway"
     "${nixos-modules}/profiles/terminal"
-    "${nixos-modules}/programs/corectrl"
-    "${nixos-modules}/programs/gamemode"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/services/bluetooth"
     "${nixos-modules}/services/tailscale"
