@@ -14,9 +14,6 @@
   programs.git.enable = true;
   programs.less.enable = true;
 
-  # SSH settings
-  programs.ssh.enableAskPassword = false;
-
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
