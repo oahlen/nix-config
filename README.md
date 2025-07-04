@@ -64,7 +64,7 @@ cd /mnt
 sudo nixos-install
 ```
 
-### Intitial install (NixOS WSL)
+### Initial install (NixOS WSL)
 
 ```bash
 nixos-rebuild boot --sudo --flake .$(hostname)
