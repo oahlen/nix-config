@@ -34,7 +34,5 @@
 
   services.timesyncd.enable = true;
 
-  programs.dconf.enable = true; # Needed by home-manager ...
-
   system.stateVersion = "24.11";
 }

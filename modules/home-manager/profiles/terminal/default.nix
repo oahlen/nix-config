@@ -8,7 +8,6 @@
     "${hm-modules}/programs/bash"
     "${hm-modules}/programs/bat"
     "${hm-modules}/programs/bottom"
-    "${hm-modules}/programs/dconf"
     "${hm-modules}/programs/direnv"
     "${hm-modules}/programs/fd"
     "${hm-modules}/programs/fish"

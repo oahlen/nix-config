@@ -42,4 +42,7 @@
     username = "${user.name}";
     homeDirectory = "/home/${user.name}";
   };
+
+  # Enable dconf
+  dconf.enable = true;
 }

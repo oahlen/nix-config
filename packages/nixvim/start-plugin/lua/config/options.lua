@@ -1,11 +1,15 @@
 -- Options
 
 -- Get the background and colorscheme settings from environment
-local background = os.getenv("NVIM_BACKGROUND") or "dark"
-local colorscheme = os.getenv("NVIM_COLORSCHEME") or "tokyonight"
+local theme = vim.fn.system({ "dconf", "read", "/org/gnome/desktop/interface/color-scheme" })
 
-vim.o.background = background
-vim.cmd.colorscheme(colorscheme)
+if theme:find("prefer-light", 1, true) then
+    vim.o.background = "light"
+else
+    vim.o.background = "dark"
+end
+
+vim.cmd.colorscheme(os.getenv("NVIM_COLORSCHEME") or "tokyonight")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

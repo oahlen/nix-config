@@ -10,7 +10,6 @@
   swaylock = "${pkgs.swaylock}/bin/swaylock -fF";
 in {
   imports = [
-    "${hm-modules}/programs/dconf"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
     "${hm-modules}/programs/swaylock"
@@ -26,8 +25,11 @@ in {
 
   programs.fuzzel.settings.main.launch-prefix = "${pkgs.sway}/bin/swaymsg exec --";
 
-  scripts.password-picker.enable = true;
-  scripts.wl-logout.enable = true;
+  scripts = {
+    password-picker.enable = true;
+    theme-switcher.enable = true;
+    wl-logout.enable = true;
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -123,6 +125,7 @@ in {
           "${modifier}+Alt+l" = "exec ${swaylock}";
           "Ctrl+Alt+Delete" = "exec wl-logout";
           "${modifier}+p" = "exec password-picker \"${pkgs.fuzzel}/bin/fuzzel -d\"";
+          "${modifier}+o" = "exec theme-switcher";
           "Print" = "exec ${grim} ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
           "${modifier}+Print" = "exec ${slurp} | ${grim} -g - ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
           "${modifier}+x" = "split none";

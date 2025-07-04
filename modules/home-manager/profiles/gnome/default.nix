@@ -8,7 +8,6 @@
 with lib.hm.gvariant; {
   imports = [
     "${hm-modules}/programs/kitty"
-    "${hm-modules}/programs/dconf"
   ];
 
   dconf = {

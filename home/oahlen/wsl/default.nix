@@ -18,7 +18,6 @@
   home = {
     sessionVariables = {
       COLORTERM = "truecolor"; # Windows Terminal fix
-      NVIM_BACKGROUND = "light";
     };
 
     packages = with pkgs; [

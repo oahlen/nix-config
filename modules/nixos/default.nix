@@ -93,4 +93,7 @@
 
   # General overrides
   services.dbus.implementation = "broker";
+
+  # Enable dconf system wide
+  programs.dconf.enable = true;
 }
