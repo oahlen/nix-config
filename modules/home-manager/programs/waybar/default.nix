@@ -12,22 +12,33 @@
         layer = "top";
         position = "top";
         height = 24;
-        spacing = 5;
+        spacing = 0;
         modules-left = [
           "sway/workspaces"
-        ];
-        modules-center = [
+          "sway/mode"
           "sway/window"
         ];
         modules-right = [
           "tray"
           "power-profiles-daemon"
+          "sway/language"
           "backlight"
           "network"
           "pulseaudio"
           "battery"
           "clock"
         ];
+        "sway/workspaces" = {
+          disable-scroll = true;
+        };
+        "sway/window" = {
+          max-length = 100;
+        };
+        "sway/language" = {
+          format = "  {short}";
+          tooltip-format = "Language: {long}";
+          on-click = "${pkgs.sway}/bin/swaymsg input type:keyboard xkb_switch_layout next";
+        };
         power-profiles-daemon = {
           format = "{icon}";
           tooltip-format = "Power profile: {profile}\nDriver: {driver}";
@@ -65,7 +76,7 @@
           };
           format = "{icon}  {capacity}%";
           format-charging = " {capacity}%";
-          format-plugged = "";
+          format-plugged = " {capacity}%";
           tooltip-format = "Capacity: {capacity}%\nEstimated time left: {time}\nDraw: {power}w";
           format-icons = [
             ""
@@ -106,8 +117,6 @@
       * {
           font-family: "${config.font.name}";
           font-size: 15px;
-          border: none;
-          border-radius: 0;
       }
 
       window#waybar {
@@ -115,26 +124,45 @@
           color: ${config.colorscheme.statusline.foreground};
       }
 
+      window#waybar #window {
+          padding: 0 8px;
+      }
+
       #workspaces button {
           background-color: ${config.colorscheme.statusline.inactive};
           color: ${config.colorscheme.statusline.foreground};
           padding: 0 7px;
+          border: none;
+          border-radius: 0;
+      }
+
+      #workspaces button:hover {
+          background: ${config.colorscheme.statusline.inactive};
+          box-shadow: inherit;
+          text-shadow: inherit;
       }
 
       #workspaces button.focused {
           background: ${config.colorscheme.blue};
-
-          color: #15161e;
+          color: ${config.colorscheme.statusline.background};
           font-weight: bold;
       }
 
-      #workspaces button:hover {
+      #workspaces button.focued:hover {
+          background: ${config.colorscheme.blue};
           box-shadow: inherit;
           text-shadow: inherit;
           background-color: ${config.colorscheme.bright-black};
       }
 
+      #mode {
+          background-color: ${config.colorscheme.yellow};
+          color: ${config.colorscheme.statusline.background};
+          padding: 0 8px;
+      }
+
       #tray,
+      #language,
       #power-profiles-daemon,
       #network,
       #backlight,
