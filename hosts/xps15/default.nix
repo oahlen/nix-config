@@ -9,6 +9,7 @@
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"
+    "${nixos-modules}/services/powertop"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"
   ];
