@@ -37,6 +37,8 @@ with lib; {
     baobab
     cheese
     epiphany
+    evince
+    file-roller
     geary
     gedit
     gnome-backgrounds
@@ -52,6 +54,7 @@ with lib; {
     gnome-user-docs
     gnome-weather
     orca
+    seahorse
     simple-scan
     totem
     yelp
