@@ -166,13 +166,16 @@
 
       #tray,
       #language,
-      #power-profiles-daemon,
       #network,
       #backlight,
       #pulseaudio,
       #battery,
       #clock {
           padding: 0 8px;
+      }
+
+      #power-profiles-daemon {
+          padding: 0 16px;
       }
 
       #battery,
