@@ -91,7 +91,7 @@
         };
         network = {
           format = "{ifname}";
-          format-wifi = " ";
+          format-wifi = "  {essid}";
           format-ethernet = "󰈀";
           format-linked = "󰈂";
           format-disconnected = "󰈂";
@@ -175,7 +175,8 @@
       }
 
       #power-profiles-daemon {
-          padding: 0 16px;
+          padding-left: 8px;
+          padding-right: 16px;
       }
 
       #battery,

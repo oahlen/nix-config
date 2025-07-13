@@ -45,6 +45,7 @@
       "${config.home.sessionVariables.XDG_DATA_HOME}/dotnet/tools"
       "${config.home.sessionVariables.XDG_DATA_HOME}/cargo/bin"
     ];
+
     packages = with pkgs; [
       calc
       dogdns
