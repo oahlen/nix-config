@@ -21,6 +21,8 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  services.power-profiles-daemon.enable = true;
+
   environment.variables = {
     BROWSER = "librewolf";
   };

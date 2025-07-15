@@ -18,7 +18,6 @@
 
   programs = {
     librewolf.enable = true;
-    chromium.enable = true;
     obsidian.enable = true;
     keepassxc.enable = true;
     mangohud.enable = true;
