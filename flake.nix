@@ -64,7 +64,7 @@
           modules = [
             ./home/${username}/${hostname}
             "${hm-modules}"
-            nix-index-database.hmModules.nix-index
+            nix-index-database.homeModules.nix-index
           ];
         };
   in {

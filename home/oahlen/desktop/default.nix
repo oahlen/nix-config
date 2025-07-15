@@ -27,12 +27,10 @@
 
   home.packages = with pkgs; [
     bitwarden-desktop
-    gimp
     heroic
     inkscape
     iwgtk
     pinta
-    prismlauncher
     transmission_4-gtk
   ];
 
