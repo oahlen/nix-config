@@ -39,6 +39,9 @@
           tooltip-format = "Language: {long}";
           on-click = "${pkgs.sway}/bin/swaymsg input type:keyboard xkb_switch_layout next";
         };
+        tray = {
+          spacing = 8;
+        };
         power-profiles-daemon = {
           format = "{icon}";
           tooltip-format = "Power profile: {profile}\nDriver: {driver}";
