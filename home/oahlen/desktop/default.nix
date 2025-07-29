@@ -6,6 +6,7 @@
   imports = [
     "${hm-modules}/profiles/sway"
     "${hm-modules}/profiles/terminal"
+    "${hm-modules}/programs/firefox"
     "${hm-modules}/programs/rbw"
   ];
 
@@ -17,7 +18,6 @@
   '';
 
   programs = {
-    librewolf.enable = true;
     obsidian.enable = true;
     keepassxc.enable = true;
     mangohud.enable = true;

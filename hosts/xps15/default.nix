@@ -31,10 +31,6 @@
     thermald.enable = true;
   };
 
-  environment.variables = {
-    BROWSER = "librewolf";
-  };
-
   fileSystems."/".options = ["noatime" "nodiratime" "discard"];
 
   system.stateVersion = "25.05";

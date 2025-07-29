@@ -6,11 +6,11 @@
   imports = [
     "${hm-modules}/profiles/sway"
     "${hm-modules}/profiles/terminal"
+    "${hm-modules}/programs/firefox"
     "${hm-modules}/programs/rbw"
   ];
 
   programs = {
-    librewolf.enable = true;
     chromium.enable = true;
     ideavim.enable = true;
   };
@@ -19,9 +19,11 @@
 
   home.packages = with pkgs; [
     _1password-gui
+    hyprpicker
     inkscape
     iwgtk
     nodejs
+    pinta
     virt-manager
   ];
 

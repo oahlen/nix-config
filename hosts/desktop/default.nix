@@ -23,10 +23,6 @@
 
   services.power-profiles-daemon.enable = true;
 
-  environment.variables = {
-    BROWSER = "librewolf";
-  };
-
   fileSystems = {
     "/".options = ["noatime" "nodiratime" "discard"];
     "/mnt/backup".options = ["noatime" "nodiratime" "discard"];
