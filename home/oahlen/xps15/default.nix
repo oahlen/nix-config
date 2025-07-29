@@ -17,6 +17,8 @@
 
   scripts.password-picker.enable = true;
 
+  wallpaper = ./forest_3840_2400.jpg;
+
   home.packages = with pkgs; [
     _1password-gui
     hyprpicker

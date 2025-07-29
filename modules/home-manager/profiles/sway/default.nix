@@ -86,7 +86,7 @@ in {
 
       window = {
         border = 1;
-        hideEdgeBorders = "smart";
+        # hideEdgeBorders = "smart";
         titlebar = false;
 
         commands = [
@@ -116,6 +116,10 @@ in {
             app_id = "iwgtk";
           }
         ];
+      };
+
+      gaps = {
+        inner = 10;
       };
 
       keybindings = let

@@ -123,8 +123,15 @@
       }
 
       window#waybar {
+          background: transparent
+      }
+
+      window > box {
+          margin: 10px 10px 0px 10px;
           background: ${config.colorscheme.statusline.background};
           color: ${config.colorscheme.statusline.foreground};
+          padding: 0px 4px 0px 0px;
+          border-radius: 8px;
       }
 
       window#waybar #window {
@@ -134,9 +141,14 @@
       #workspaces button {
           background-color: ${config.colorscheme.statusline.inactive};
           color: ${config.colorscheme.statusline.foreground};
-          padding: 0 7px;
+          padding: 4px 8px;
           border: none;
           border-radius: 0;
+          border: 1px solid ${config.colorscheme.statusline.inactive};
+      }
+
+      #workspaces button:first-child {
+          border-radius: 8px 0px 0px 8px;
       }
 
       #workspaces button:hover {

@@ -24,6 +24,8 @@
     spotify-player.enable = true;
   };
 
+  wallpaper = ./forest_3440_1440.jpg;
+
   home.packages = with pkgs; [
     bitwarden-desktop
     heroic
