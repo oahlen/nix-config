@@ -17,7 +17,7 @@
 
   scripts.password-picker.enable = true;
 
-  wallpaper = ./forest_3840_2400.jpg;
+  wallpaper = ./sunset.jpg;
 
   home.packages = with pkgs; [
     _1password-gui

@@ -85,7 +85,7 @@ in {
       defaultWorkspace = "workspace number 1";
 
       window = {
-        border = 1;
+        border = 2;
         # hideEdgeBorders = "smart";
         titlebar = false;
 
@@ -119,7 +119,7 @@ in {
       };
 
       gaps = {
-        inner = 10;
+        inner = 8;
       };
 
       keybindings = let

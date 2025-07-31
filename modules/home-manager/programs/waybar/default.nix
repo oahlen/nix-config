@@ -11,7 +11,7 @@
       {
         layer = "top";
         position = "top";
-        height = 24;
+        height = 32;
         spacing = 0;
         modules-left = [
           "sway/workspaces"
@@ -127,32 +127,29 @@
       }
 
       window > box {
-          margin: 10px 10px 0px 10px;
+          margin: 8px 8px 0px 8px;
           background: ${config.colorscheme.statusline.background};
           color: ${config.colorscheme.statusline.foreground};
-          padding: 0px 4px 0px 0px;
+          padding: 4px;
           border-radius: 8px;
       }
 
       window#waybar #window {
-          padding: 0 8px;
+          padding: 0 12px;
       }
 
       #workspaces button {
-          background-color: ${config.colorscheme.statusline.inactive};
           color: ${config.colorscheme.statusline.foreground};
-          padding: 4px 8px;
+          padding: 0px 6px;
+          margin: 0 2px;
           border: none;
-          border-radius: 0;
-          border: 1px solid ${config.colorscheme.statusline.inactive};
-      }
-
-      #workspaces button:first-child {
-          border-radius: 8px 0px 0px 8px;
+          border-radius: 8px;
+          transition: none;
       }
 
       #workspaces button:hover {
-          background: ${config.colorscheme.statusline.inactive};
+          background: ${config.colorscheme.bright-white};
+          color: ${config.colorscheme.statusline.background};
           box-shadow: inherit;
           text-shadow: inherit;
       }
@@ -174,6 +171,8 @@
           background-color: ${config.colorscheme.yellow};
           color: ${config.colorscheme.statusline.background};
           padding: 0 8px;
+          margin: 0 0 0 8px;
+          border-radius: 8px;
       }
 
       #tray,
