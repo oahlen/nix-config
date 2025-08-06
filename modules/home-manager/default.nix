@@ -31,9 +31,26 @@
   # XDG settings
   xdg = {
     enable = true;
+
     userDirs = {
       enable = true;
       createDirectories = true;
+    };
+
+    mimeApps = {
+      enable = true;
+      associations.added = {
+        "inode/directory" = ["org.gnome.Nautilus.desktop"];
+        "image/png" = ["org.gnome.Loupe.desktop"];
+        "image/jpeg" = ["org.gnome.Loupe.desktop"];
+        "text/plain" = ["org.gnome.TextEditor.desktop"];
+      };
+      defaultApplications = {
+        "inode/directory" = ["org.gnome.Nautilus.desktop"];
+        "image/png" = ["org.gnome.Loupe.desktop"];
+        "image/jpeg" = ["org.gnome.Loupe.desktop"];
+        "text/plain" = ["org.gnome.TextEditor.desktop"];
+      };
     };
   };
 

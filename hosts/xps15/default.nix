@@ -27,7 +27,6 @@
     fwupd.enable = true;
     hardware.bolt.enable = true;
     power-profiles-daemon.enable = true;
-    printing.enable = true;
     thermald.enable = true;
   };
 
