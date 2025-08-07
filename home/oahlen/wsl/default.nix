@@ -15,6 +15,8 @@
     toPdf.enable = true;
   };
 
+  colorscheme = import "${hm-modules}/common/colorscheme/tokyonight-light.nix";
+
   home = {
     sessionVariables = {
       COLORTERM = "truecolor"; # Windows Terminal fix

@@ -1,4 +1,8 @@
-{user, ...}: {
+{
+  config,
+  user,
+  ...
+}: {
   programs.git = {
     enable = true;
 
@@ -35,7 +39,10 @@
     delta = {
       enable = true;
 
-      options = {
+      options = let
+        added_bg = config.colorscheme.diff.added_bg;
+        deleted_bg = config.colorscheme.diff.deleted_bg;
+      in {
         navigate = "true";
         side-by-side = "true";
         syntax-theme = "base16";
@@ -46,16 +53,16 @@
         hunk-header-decoration-style = "brightblack box";
         hunk-header-file-style = "white";
         hunk-header-line-number-style = "white";
-        minus-style = "syntax #433347";
-        minus-non-emph-style = "syntax #433347";
+        minus-style = "syntax ${deleted_bg}";
+        minus-non-emph-style = "syntax ${deleted_bg}";
         minus-emph-style = "black red";
-        minus-empty-line-marker-style = "syntax #433347";
-        plus-style = "syntax #364042";
-        plus-non-emph-style = "syntax #364042";
+        minus-empty-line-marker-style = "syntax ${deleted_bg}";
+        plus-style = "syntax ${added_bg}";
+        plus-non-emph-style = "syntax ${added_bg}";
         plus-emph-style = "black green";
-        plus-empty-line-marker-style = "syntax #364042";
-        line-numbers-minus-style = "syntax #433347";
-        line-numbers-plus-style = "syntax #364042";
+        plus-empty-line-marker-style = "syntax ${added_bg}";
+        line-numbers-minus-style = "syntax ${deleted_bg}";
+        line-numbers-plus-style = "syntax ${added_bg}";
         line-numbers-zero-style = "brightblack";
         line-numbers-left-style = "brightblack";
         line-numbers-right-style = "brightblack";

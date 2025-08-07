@@ -30,4 +30,9 @@
     foreground = "#2b3048";
     background = "#d7d9e2";
   };
+
+  diff = {
+    added_bg = "#c3cbc0";
+    deleted_bg = "#d4c6cd";
+  };
 }
