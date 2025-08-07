@@ -50,7 +50,7 @@
   };
 
   # Systemd settings
-  services.journald.extraConfig = "SystemMaxUse=100M";
+  services.journald.storage = "volatile";
 
   # Nix settings
   nix = {
