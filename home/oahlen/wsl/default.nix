@@ -23,7 +23,6 @@
     packages = with pkgs; [
       # awscli2
       _1password-cli
-      act
       duckdb
       hyperfine
       nodejs # For Github Copilot
