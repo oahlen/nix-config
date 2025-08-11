@@ -11,8 +11,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "oahlen";
           repo = "base16.tmTheme";
-          rev = "80657e11999ea6ac483934ad299daa04e002e2f9";
-          sha256 = "sha256-u76DSzsv8TQxfe+2GUnZU3JzmXsgrTsKDt0qzO85j/I=";
+          rev = "878abdbe8001f79eb40078067f8b4a0e7a2dd93a";
+          sha256 = "sha256-FmCvGw48cePmU9S9Y/TrNkfxNxvqnyVCoRsIK92jxME=";
         };
         file = "base16.tmTheme";
       };
