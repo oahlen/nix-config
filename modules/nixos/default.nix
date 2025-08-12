@@ -4,8 +4,6 @@
 
   # Boot settings
   boot = {
-    kernelParams = ["quiet" "splash"];
-
     kernel.sysctl = {
       "vm.swappiness" = 10;
       "vm.vfs_cache_pressure" = 50;

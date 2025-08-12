@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    "${nixos-modules}/common/boot"
     "${nixos-modules}/profiles/sway"
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
