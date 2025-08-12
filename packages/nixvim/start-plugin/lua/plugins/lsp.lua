@@ -1,3 +1,8 @@
+local on_init = function(client, _)
+    -- Disable semantic tokens
+    client.server_capabilities.semanticTokensProvider = nil
+end
+
 local on_attach = function(_, bufnr)
     local map = function(keys, func, desc)
         vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
@@ -27,7 +32,7 @@ local on_attach = function(_, bufnr)
     end, "Format Code")
 end
 
-vim.lsp.config("*", { on_attach = on_attach })
+vim.lsp.config("*", { on_init = on_init, on_attach = on_attach })
 
 vim.lsp.config("lua_ls", {
     settings = {
