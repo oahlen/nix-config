@@ -7,6 +7,7 @@
   combined = with pkgs.dotnetCorePackages;
     combinePackages [
       sdk_8_0
+      sdk_9_0
     ];
 in
   pkgs.mkShell {
@@ -36,8 +37,8 @@ in
       netcoredbg
       nodejs
       nodePackages.npm
-      omnisharp-roslyn
       openssl
+      roslyn-ls
       (
         writeShellApplication {
           name = "update-packages";

@@ -6,16 +6,16 @@ require("config.commands")
 lzn = require("lz.n")
 lzn.load("lazy")
 
-if os.getenv("NIXVIM_FULL") == "1" then
-    lzn.load("lsp")
-end
-
 -- Plugins
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.cmp")
 require("plugins.gitsigns")
 require("plugins.heirline")
+
+if os.getenv("NIXVIM_FULL") == "1" then
+    require("plugins.lsp")
+end
 
 require("nvim-autopairs").setup()
 require("Comment").setup()

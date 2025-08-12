@@ -23,7 +23,6 @@ with pkgs.vimPlugins;
     nvim-surround
     nvim-tree-lua
     nvim-web-devicons
-    omnisharp-extended-lsp-nvim
     render-markdown-nvim
     telescope-fzf-native-nvim
     telescope-nvim
