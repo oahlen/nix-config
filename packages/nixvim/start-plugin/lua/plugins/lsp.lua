@@ -3,13 +3,19 @@ local on_init = function(client, _)
     client.server_capabilities.semanticTokensProvider = nil
 end
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     local map = function(keys, func, desc)
         vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
     end
 
-    map("gd", vim.lsp.buf.definition, "Goto Definition")
-    map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+    if client.name == "omnisharp" then
+        local omnisharp_extended = require("omnisharp_extended")
+        map("gd", omnisharp_extended.lsp_definition, "Goto Definition")
+        map("gD", omnisharp_extended.lsp_type_definition, "Goto Declaration")
+    else
+        map("gd", vim.lsp.buf.definition, "Goto Definition")
+        map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+    end
 
     map("gn", function()
         vim.diagnostic.jump({ count = 1, float = true })
@@ -71,11 +77,23 @@ vim.lsp.config("nixd", {
     },
 })
 
-vim.lsp.config("roslyn_ls", {
+vim.lsp.config("omnisharp", {
+    cmd = {
+        "OmniSharp",
+        "-z",
+        "--hostPID",
+        tostring(vim.fn.getpid()),
+        "DotNet:enablePackageRestore=false",
+        "--encoding",
+        "utf-8",
+        "--languageserver",
+    },
     settings = {
-        ["csharp|background_analysis"] = {
-            dotnet_analyzer_diagnostics_scope = "none",
-            dotnet_compiler_diagnostics_scope = "openFiles",
+        RoslynExtensionsOptions = {
+            EnableAnalyzersSupport = true,
+            EnableImportCompletion = true,
+            AnalyzeOpenDocumentsOnly = true,
+            EnableDecompilationSupport = true,
         },
     },
 })
@@ -85,8 +103,8 @@ vim.lsp.enable({
     "html",
     "lua_ls",
     "nixd",
+    "omnisharp",
     "pyright",
-    "roslyn_ls",
     "rust_analyzer",
     "svelte",
     "ts_ls",
