@@ -96,6 +96,10 @@
         };
         dotnet = import ./shells/dotnet {inherit nixpkgs system;};
         fhs = import ./shells/fhs {inherit nixpkgs system;};
+        huey = import ./shells/huey {
+          customPackages = self.outputs.packages.${system};
+          inherit nixpkgs system;
+        };
         hugo = import ./shells/hugo {inherit nixpkgs system;};
         java = import ./shells/java {inherit nixpkgs system;};
         python = import ./shells/python {inherit nixpkgs system;};
