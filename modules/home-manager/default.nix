@@ -1,4 +1,8 @@
-{user, ...}: {
+{
+  pkgs,
+  user,
+  ...
+}: {
   imports = [
     ./common
     ./scripts
@@ -27,6 +31,13 @@
 
   # Nix index
   programs.nix-index.enable = true;
+
+  # Nix tooling
+  home.packages = with pkgs; [
+    nix-tree
+    nix-prefetch-git
+    nix-search-cli
+  ];
 
   # XDG settings
   xdg = {
