@@ -19,7 +19,7 @@
 
   boot = {
     loader.systemd-boot.enable = true;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_15;
   };
 
   services = {

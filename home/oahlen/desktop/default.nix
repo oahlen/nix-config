@@ -29,6 +29,7 @@
   home.packages = with pkgs; [
     bitwarden-desktop
     heroic
+    hyprpicker
     inkscape
     iwgtk
     pinta
