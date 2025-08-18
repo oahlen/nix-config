@@ -8,13 +8,17 @@ local on_attach = function(client, bufnr)
         vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
     end
 
+    local telescope = require("telescope.builtin")
+    map("gi", telescope.lsp_implementations, "Goto Implementation")
+    map("gr", telescope.lsp_references, "Goto References")
+
     if client.name == "omnisharp" then
         local omnisharp_extended = require("omnisharp_extended")
         map("gd", omnisharp_extended.lsp_definition, "Goto Definition")
         map("gD", omnisharp_extended.lsp_type_definition, "Goto Declaration")
     else
-        map("gd", vim.lsp.buf.definition, "Goto Definition")
-        map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+        map("gd", telescope.lsp_definitions, "Goto Definition")
+        map("gD", telescope.lsp_type_definitions, "Goto Declaration")
     end
 
     map("gn", function()
@@ -23,10 +27,6 @@ local on_attach = function(client, bufnr)
     map("gN", function()
         vim.diagnostic.jump({ count = -1, float = true })
     end, "Goto Prev")
-
-    local telescope = require("telescope.builtin")
-    map("gi", telescope.lsp_implementations, "Goto Implementation")
-    map("gr", telescope.lsp_references, "Goto References")
 
     map("K", vim.lsp.buf.hover, "Hover Documentation")
     map("<C-s>", vim.lsp.buf.signature_help, "Signature Help")
