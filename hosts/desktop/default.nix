@@ -22,7 +22,10 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  services.power-profiles-daemon.enable = true;
+  services = {
+    fstrim.enable = true;
+    power-profiles-daemon.enable = true;
+  };
 
   fileSystems = {
     "/".options = ["noatime" "nodiratime" "discard"];

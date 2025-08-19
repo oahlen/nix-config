@@ -94,4 +94,7 @@
 
   # Enable dconf system wide
   programs.dconf.enable = true;
+
+  # Disable man pages
+  documentation.man.enable = false;
 }

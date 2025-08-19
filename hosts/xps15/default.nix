@@ -25,6 +25,7 @@
 
   services = {
     flatpak.enable = true;
+    fstrim.enable = true;
     fwupd.enable = true;
     hardware.bolt.enable = true;
     power-profiles-daemon.enable = true;

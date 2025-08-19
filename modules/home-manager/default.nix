@@ -99,4 +99,7 @@
 
   # Enable dconf
   dconf.enable = true;
+
+  # Disable man pages
+  programs.man.enable = false;
 }
