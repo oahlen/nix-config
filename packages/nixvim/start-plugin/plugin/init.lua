@@ -9,7 +9,7 @@ lzn.load("lazy")
 -- Plugins
 require("plugins.telescope")
 require("plugins.treesitter")
-require("plugins.cmp")
+require("plugins.blink")
 require("plugins.gitsigns")
 require("plugins.heirline")
 

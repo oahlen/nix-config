@@ -1,11 +1,7 @@
 {pkgs}:
 with pkgs.vimPlugins;
   [
-    cmp-buffer
-    cmp_luasnip
-    cmp-nvim-lsp
-    cmp-nvim-lua
-    cmp-path
+    blink-cmp
     comment-nvim
     conform-nvim
     CopilotChat-nvim
@@ -17,7 +13,6 @@ with pkgs.vimPlugins;
     luasnip
     lz-n
     nvim-autopairs
-    nvim-cmp
     nvim-colorizer-lua
     nvim-lspconfig
     nvim-surround
