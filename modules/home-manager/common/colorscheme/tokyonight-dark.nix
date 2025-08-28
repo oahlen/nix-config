@@ -11,7 +11,7 @@
   cyan = "#7dcfff";
   white = "#a9b1d6";
 
-  bright-black = "#565f89";
+  bright-black = "#606a99";
   bright-red = "#f7768e";
   bright-green = "#9ece6a";
   bright-yellow = "#e0af68";
@@ -22,7 +22,7 @@
 
   statusline = {
     foreground = "#9aa5ce";
-    background = "#16161e";
+    background = "#15161e";
     inactive = "#292d40";
   };
 
