@@ -22,6 +22,9 @@
       if test -e $EXTRA_CONFIG
         source $EXTRA_CONFIG
       end
+
+      # The superior note taking system
+      bind \cn 'nvim $HOME/notes.txt'
     '';
 
     shellAbbrs = {
