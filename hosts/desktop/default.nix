@@ -23,6 +23,8 @@
   };
 
   services = {
+    xserver.videoDrivers = ["amdgpu"];
+
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
   };
