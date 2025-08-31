@@ -20,11 +20,10 @@
   boot = {
     loader.systemd-boot.enable = true;
     kernelPackages = pkgs.linuxPackages_6_15;
+    kernelModules = ["amdgpu"];
   };
 
   services = {
-    xserver.videoDrivers = ["amdgpu"];
-
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
   };

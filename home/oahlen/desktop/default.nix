@@ -7,6 +7,7 @@
     "${hm-modules}/profiles/sway"
     "${hm-modules}/profiles/terminal"
     "${hm-modules}/programs/firefox"
+    "${hm-modules}/programs/mangohud"
     "${hm-modules}/programs/rbw"
   ];
 
@@ -20,7 +21,6 @@
   programs = {
     obsidian.enable = true;
     keepassxc.enable = true;
-    mangohud.enable = true;
     spotify-player.enable = true;
   };
 
