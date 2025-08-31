@@ -24,7 +24,7 @@ in
 
       systemd = {
         user.services.polkit-gnome-authentication-agent-1 = {
-          description = "polkit-gnome-authentication-agent-1";
+          description = "Authentication agent";
           wantedBy = [cfg.systemd.target];
           wants = [cfg.systemd.target];
           after = [cfg.systemd.target];
