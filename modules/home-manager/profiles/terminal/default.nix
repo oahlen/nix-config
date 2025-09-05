@@ -14,7 +14,6 @@
     "${hm-modules}/programs/fzf"
     "${hm-modules}/programs/git"
     "${hm-modules}/programs/gitui"
-    "${hm-modules}/programs/ideavim"
     "${hm-modules}/programs/jq"
     "${hm-modules}/programs/navi"
     "${hm-modules}/programs/neovim"

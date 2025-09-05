@@ -7,12 +7,12 @@
     "${hm-modules}/profiles/sway"
     "${hm-modules}/profiles/terminal"
     "${hm-modules}/programs/firefox"
+    "${hm-modules}/programs/ideavim"
     "${hm-modules}/programs/rbw"
   ];
 
   programs = {
     chromium.enable = true;
-    ideavim.enable = true;
   };
 
   scripts.password-picker.enable = true;
