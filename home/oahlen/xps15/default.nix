@@ -8,6 +8,7 @@
     "${hm-modules}/profiles/terminal"
     "${hm-modules}/programs/firefox"
     "${hm-modules}/programs/ideavim"
+    "${hm-modules}/programs/iwgtk"
     "${hm-modules}/programs/rbw"
   ];
 
@@ -17,7 +18,6 @@
 
   home.packages = with pkgs; [
     hyprpicker
-    iwgtk
     nodejs
     virt-manager
   ];

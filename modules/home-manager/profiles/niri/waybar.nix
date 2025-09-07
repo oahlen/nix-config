@@ -9,7 +9,6 @@
       "power-profiles-daemon"
       "niri/language"
       "backlight"
-      "network"
       "pulseaudio"
       "battery"
       "clock"
