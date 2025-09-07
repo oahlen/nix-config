@@ -1,4 +1,8 @@
-{hm-modules, ...}: {
+{
+  hm-modules,
+  pkgs,
+  ...
+}: {
   imports = [
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
@@ -12,6 +16,8 @@
   ];
 
   wayland.systemd.target = "niri-session.target";
+
+  programs.fuzzel.settings.main.launch-prefix = "${pkgs.niri}/bin/niri msg action spawn --";
 
   scripts = {
     password-picker.enable = true;
