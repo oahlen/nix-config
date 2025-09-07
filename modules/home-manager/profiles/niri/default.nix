@@ -19,6 +19,8 @@
 
   programs.fuzzel.settings.main.launch-prefix = "${pkgs.niri}/bin/niri msg action spawn --";
 
+  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+
   scripts = {
     password-picker.enable = true;
     theme-switcher.enable = true;
