@@ -15,8 +15,9 @@ in {
     "${hm-modules}/programs/swaylock"
     "${hm-modules}/programs/waybar"
     "${hm-modules}/services/mako"
-    "${hm-modules}/services/swayidle"
     "${hm-modules}/services/wl-sunset"
+    ./swayidle.nix
+    ./waybar.nix
   ];
 
   wayland.systemd.target = "sway-session.target";

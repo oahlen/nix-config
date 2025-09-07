@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/common/boot"
-    "${nixos-modules}/profiles/sway"
+    "${nixos-modules}/profiles/niri"
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"

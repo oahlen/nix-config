@@ -7,114 +7,86 @@
     enable = true;
     systemd.enable = true;
 
-    settings = [
-      {
-        layer = "top";
-        position = "top";
-        height = 32;
-        spacing = 0;
-        modules-left = [
-          "sway/workspaces"
-          "sway/mode"
-          "sway/window"
+    settings.mainBar = {
+      layer = "top";
+      position = "top";
+      height = 32;
+      spacing = 0;
+      tray = {
+        spacing = 8;
+      };
+      power-profiles-daemon = {
+        format = "{icon}";
+        tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+        format-icons = {
+          "default" = "";
+          "performance" = "";
+          "balanced" = "";
+          "power-saver" = "";
+        };
+      };
+      clock = {
+        format = "{:%Y-%m-%d %H:%M}";
+        tooltip = false;
+      };
+      backlight = {
+        format = "{icon} {percent}%";
+        format-icons = [
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
         ];
-        modules-right = [
-          "tray"
-          "power-profiles-daemon"
-          "sway/language"
-          "backlight"
-          "network"
-          "pulseaudio"
-          "battery"
-          "clock"
+        scroll-step = 5;
+      };
+      battery = {
+        states = {
+          normal = 75;
+          warning = 30;
+          critical = 15;
+        };
+        format = "{icon}  {capacity}%";
+        format-charging = " {capacity}%";
+        format-plugged = " {capacity}%";
+        tooltip-format = "Capacity: {capacity}%\nEstimated time left: {time}\nDraw: {power}w";
+        format-icons = [
+          ""
+          ""
+          ""
+          ""
+          ""
         ];
-        "sway/workspaces" = {
-          disable-scroll = true;
-        };
-        "sway/window" = {
-          max-length = 100;
-        };
-        "sway/language" = {
-          format = "  {short}";
-          tooltip-format = "Language: {long}";
-          on-click = "${pkgs.sway}/bin/swaymsg input type:keyboard xkb_switch_layout next";
-        };
-        tray = {
-          spacing = 8;
-        };
-        power-profiles-daemon = {
-          format = "{icon}";
-          tooltip-format = "Power profile: {profile}\nDriver: {driver}";
-          format-icons = {
-            "default" = "";
-            "performance" = "";
-            "balanced" = "";
-            "power-saver" = "";
-          };
-        };
-        clock = {
-          format = "{:%Y-%m-%d %H:%M}";
-          tooltip = false;
-        };
-        backlight = {
-          format = "{icon} {percent}%";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          scroll-step = 5;
-        };
-        battery = {
-          states = {
-            normal = 75;
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon}  {capacity}%";
-          format-charging = " {capacity}%";
-          format-plugged = " {capacity}%";
-          tooltip-format = "Capacity: {capacity}%\nEstimated time left: {time}\nDraw: {power}w";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
+      };
+      network = {
+        format = "{ifname}";
+        format-wifi = "  {essid}";
+        format-ethernet = "󰈀";
+        format-linked = "󰈂";
+        format-disconnected = "󰈂";
+        tooltip-format-wifi = "Network: {essid} ({signalStrength}%)\nIP: {ipaddr}";
+        tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}";
+        tooltip-format-linked = "Disconnected";
+        on-click = "${pkgs.iwgtk}/bin/iwgtk";
+      };
+      pulseaudio = {
+        scroll-step = 5;
+        format = "{icon}  {volume}%";
+        format-muted = " ";
+        format-icons = {
+          default = [
+            ""
+            ""
+            ""
           ];
         };
-        network = {
-          format = "{ifname}";
-          format-wifi = "  {essid}";
-          format-ethernet = "󰈀";
-          format-linked = "󰈂";
-          format-disconnected = "󰈂";
-          tooltip-format-wifi = "Network: {essid} ({signalStrength}%)\nIP: {ipaddr}";
-          tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}";
-          tooltip-format-linked = "Disconnected";
-          on-click = "${pkgs.iwgtk}/bin/iwgtk";
-        };
-        pulseaudio = {
-          scroll-step = 5;
-          format = "{icon}  {volume}%";
-          format-muted = " ";
-          format-icons = {
-            default = [
-              ""
-              ""
-              ""
-            ];
-          };
-          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-        };
-      }
-    ];
+        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+      };
+    };
 
     style = ''
       * {

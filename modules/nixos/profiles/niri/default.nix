@@ -15,12 +15,19 @@
 
   programs.niri.enable = true;
 
+  systemd.user.targets.niri-session = {
+    description = "niri compositor session";
+    documentation = ["man:systemd.special(7)"];
+    bindsTo = ["graphical-session.target"];
+    wants = ["graphical-session-pre.target"];
+    after = ["graphical-session-pre.target"];
+  };
+
   environment.systemPackages = with pkgs; [
     brightnessctl
     gnome-multi-writer
     gnome-text-editor
     libnotify
-    swaybg
     loupe
     nautilus
     papirus-icon-theme
@@ -30,9 +37,13 @@
     wl-clipboard
     wl-mirror
     xdg-utils
+    xwayland-satellite
   ];
 
-  services.polkit-gnome.enable = true;
+  services.polkit-gnome = {
+    enable = true;
+    systemd.target = "niri-session.target";
+  };
 
   services.dbus = {
     enable = true;
