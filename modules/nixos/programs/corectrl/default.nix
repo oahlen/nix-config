@@ -16,8 +16,8 @@
   in {
     packages = [pkgs.corectrl];
 
-    user.services.corectrl-user-service = {
-      description = "CoreCtrl user service";
+    user.services.corectrl = {
+      description = "CoreCtrl";
       wantedBy = [target];
       wants = [target];
       after = [target];
