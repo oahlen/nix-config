@@ -24,4 +24,10 @@
     theme-switcher.enable = true;
     wl-logout.enable = true;
   };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      icon-theme = "Papirus-Dark";
+    };
+  };
 }
