@@ -17,7 +17,6 @@
   wallpaper = ./sunset.jpg;
 
   home.packages = with pkgs; [
-    hyprpicker
     nodejs
   ];
 

@@ -19,6 +19,7 @@
     extraPackages = with pkgs; [
       brightnessctl
       grim
+      hyprpicker
       libnotify
       papirus-icon-theme
       pavucontrol

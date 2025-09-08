@@ -1,8 +1,4 @@
-{
-  hm-modules,
-  pkgs,
-  ...
-}: {
+{hm-modules, ...}: {
   imports = [
     "${hm-modules}/profiles/sway"
     "${hm-modules}/profiles/terminal"
@@ -24,11 +20,6 @@
   };
 
   wallpaper = ./sunset.jpg;
-
-  home.packages = with pkgs; [
-    heroic
-    hyprpicker
-  ];
 
   home.stateVersion = "22.11";
 }

@@ -21,4 +21,10 @@
   services.udev.packages = with pkgs; [
     game-devices-udev-rules
   ];
+
+  # Game launchers and utilities
+  environment.systemPackages = with pkgs; [
+    heroic
+    mangohud
+  ];
 }
