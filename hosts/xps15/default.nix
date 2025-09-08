@@ -10,6 +10,7 @@
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"
+    "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/powertop"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"
@@ -24,7 +25,12 @@
   };
 
   services = {
-    flatpak.enable = true;
+    flatpak.packages = [
+      "com.github.PintaProject.Pinta"
+      "org.chromium.Chromium"
+      "org.inskscape.Inskscape"
+    ];
+
     fstrim.enable = true;
     fwupd.enable = true;
     hardware.bolt.enable = true;

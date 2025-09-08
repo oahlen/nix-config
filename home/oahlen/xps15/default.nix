@@ -19,14 +19,7 @@
   home.packages = with pkgs; [
     hyprpicker
     nodejs
-    virt-manager
   ];
-
-  # Flatpak programs
-  # chromium
-  # 1password
-  # inskscape
-  # Pinta
 
   home.stateVersion = "25.05";
 }

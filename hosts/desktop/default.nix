@@ -11,6 +11,7 @@
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/services/bluetooth"
+    "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"
   ];
@@ -24,6 +25,14 @@
   };
 
   services = {
+    flatpak.packages = [
+      "com.bitwarden.desktop"
+      "com.github.PintaProject.Pinta"
+      "md.obsidian.Obsidian"
+      "org.inskscape.Inskscape"
+      "org.keepassxc.KeePassXC"
+    ];
+
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
   };

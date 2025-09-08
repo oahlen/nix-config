@@ -20,20 +20,14 @@
   '';
 
   programs = {
-    obsidian.enable = true;
-    keepassxc.enable = true;
     spotify-player.enable = true;
   };
 
   wallpaper = ./sunset.jpg;
 
   home.packages = with pkgs; [
-    bitwarden-desktop
     heroic
     hyprpicker
-    inkscape
-    pinta
-    transmission_4-gtk
   ];
 
   home.stateVersion = "22.11";
