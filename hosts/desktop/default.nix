@@ -29,7 +29,7 @@
       "com.bitwarden.desktop"
       "com.github.PintaProject.Pinta"
       "md.obsidian.Obsidian"
-      "org.inskscape.Inskscape"
+      "org.inkscape.Inkscape"
       "org.keepassxc.KeePassXC"
     ];
 

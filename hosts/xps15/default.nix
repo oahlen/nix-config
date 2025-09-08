@@ -28,7 +28,7 @@
     flatpak.packages = [
       "com.github.PintaProject.Pinta"
       "org.chromium.Chromium"
-      "org.inskscape.Inskscape"
+      "org.inkscape.Inkscape"
     ];
 
     fstrim.enable = true;
