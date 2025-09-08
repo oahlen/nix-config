@@ -29,6 +29,7 @@
       "com.github.PintaProject.Pinta"
       "org.chromium.Chromium"
       "org.inkscape.Inkscape"
+      "org.mozilla.firefox"
     ];
 
     fstrim.enable = true;

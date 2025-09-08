@@ -6,7 +6,6 @@
   imports = [
     "${hm-modules}/profiles/niri"
     "${hm-modules}/profiles/terminal"
-    "${hm-modules}/programs/firefox"
     "${hm-modules}/programs/ideavim"
     "${hm-modules}/programs/iwgtk"
     "${hm-modules}/programs/rbw"
