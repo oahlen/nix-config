@@ -27,6 +27,7 @@
     brightnessctl
     gnome-multi-writer
     gnome-text-editor
+    hyprpicker
     libnotify
     loupe
     nautilus
