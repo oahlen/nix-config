@@ -1,8 +1,4 @@
-{
-  nixos-modules,
-  pkgs,
-  ...
-}: {
+{nixos-modules, ...}: {
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/common/boot"
@@ -20,7 +16,6 @@
 
   boot = {
     loader.systemd-boot.enable = true;
-    kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = ["nouveau"];
   };
 
