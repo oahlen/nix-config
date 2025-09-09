@@ -13,6 +13,8 @@
 
   scripts.password-picker.enable = true;
 
+  services.kanshi.enable = true;
+
   wallpaper = ./sunset.jpg;
 
   home.packages = with pkgs; [
