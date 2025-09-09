@@ -25,19 +25,20 @@
   };
 
   services = {
-    flatpak.packages = [
-      "com.github.PintaProject.Pinta"
-      "org.chromium.Chromium"
-      "org.inkscape.Inkscape"
-      "org.mozilla.firefox"
-    ];
-
     fstrim.enable = true;
     fwupd.enable = true;
     hardware.bolt.enable = true;
     power-profiles-daemon.enable = true;
     thermald.enable = true;
   };
+
+  services.flatpak.packages = [
+    "com.github.PintaProject.Pinta"
+    "org.chromium.Chromium"
+    "org.inkscape.Inkscape"
+    "org.mozilla.firefox"
+    "https://downloads.1password.com/linux/flatpak/1Password.flatpakref"
+  ];
 
   fileSystems."/".options = ["noatime" "nodiratime" "discard"];
 

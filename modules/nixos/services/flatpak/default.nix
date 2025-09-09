@@ -4,31 +4,82 @@
   pkgs,
   ...
 }: let
-  cfg = config.services.flatpak.packages;
+  cfg = config.services.flatpak;
 in
   with lib; {
-    options.services.flatpak.packages = lib.mkOption {
-      type = with lib.types; listOf str;
-      description = ''
-        The flathub packages to install
-      '';
-      default = [];
+    options.services.flatpak = {
+      repositories = mkOption {
+        type = types.listOf (types.submodule {
+          options = {
+            name = mkOption {
+              type = types.str;
+              description = "The flatpak repository name";
+            };
+            location = mkOption {
+              type = types.str;
+              description = "The flatpak repository location";
+            };
+          };
+        });
+
+        description = " The flatpak repositories to configure";
+        default = [
+          {
+            name = "flathub";
+            location = "https://flathub.org/repo/flathub.flatpakrepo";
+          }
+        ];
+      };
+
+      packages = mkOption {
+        type = types.listOf (types.either
+          (types.submodule {
+            options = {
+              repository = mkOption {
+                type = types.str;
+                description = "The flatpak repository";
+                default = "flathub";
+              };
+              ref = mkOption {
+                type = types.str;
+                description = "The flatpak package reference";
+              };
+            };
+          })
+          types.str);
+        description = "The flatpak packages to install";
+        default = [];
+      };
     };
 
-    config = mkIf (builtins.length cfg > 0) {
+    config = mkIf (builtins.length cfg.packages > 0) {
       services.flatpak.enable = true;
 
-      environment.systemPackages = with pkgs; [
-        (writeShellApplication {
-          name = "sync-flatpaks";
-          runtimeInputs = [flatpak];
-          text = ''
-            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            ${
-              lib.concatMapStrings (x: "flatpak install --or-update flathub " + x + "\n") cfg
-            }
-          '';
-        })
-      ];
+      environment.systemPackages = let
+        isUrl = str: builtins.match "^https?://[^ ]+$" str != null;
+        mapEntry = entry:
+          if builtins.isString entry
+          then
+            if isUrl entry
+            then entry
+            else "flathub " + entry + "\"\n"
+          else entry.repository + " " + entry.ref + "\"\n";
+      in
+        with pkgs; [
+          (writeShellApplication {
+            name = "flatpak-sync";
+            runtimeInputs = [flatpak];
+            text = ''
+              ${
+                concatMapStrings (x: "flatpak remote-add --if-not-exists " + x.name + " " + x.location + "\n")
+                cfg.repositories
+              }
+              ${
+                concatMapStrings (x: "flatpak install --or-update ${mapEntry x}\n")
+                cfg.packages
+              }
+            '';
+          })
+        ];
     };
   }

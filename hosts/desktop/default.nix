@@ -25,18 +25,18 @@
   };
 
   services = {
-    flatpak.packages = [
-      "com.bitwarden.desktop"
-      "com.github.PintaProject.Pinta"
-      "md.obsidian.Obsidian"
-      "org.inkscape.Inkscape"
-      "org.keepassxc.KeePassXC"
-      "org.mozilla.firefox"
-    ];
-
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
   };
+
+  services.flatpak.packages = [
+    "com.bitwarden.desktop"
+    "com.github.PintaProject.Pinta"
+    "md.obsidian.Obsidian"
+    "org.inkscape.Inkscape"
+    "org.keepassxc.KeePassXC"
+    "org.mozilla.firefox"
+  ];
 
   fileSystems = {
     "/".options = ["noatime" "nodiratime" "discard"];
