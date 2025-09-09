@@ -44,7 +44,7 @@ in {
     systemd = {
       enable = true;
       dbusImplementation = "broker";
-      xdgAutoStart = true;
+      xdgAutostart = true;
     };
 
     wrapperFeatures = {
