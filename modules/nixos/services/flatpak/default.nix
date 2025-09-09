@@ -62,7 +62,7 @@ in
           then
             if isUrl entry
             then entry
-            else "flathub " + entry + "\"\n"
+            else "flathub " + entry + "\n"
           else entry.repository + " " + entry.ref + "\"\n";
       in
         with pkgs; [
