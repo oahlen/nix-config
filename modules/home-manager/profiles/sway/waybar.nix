@@ -10,7 +10,6 @@
       "power-profiles-daemon"
       "sway/language"
       "backlight"
-      "network"
       "pulseaudio"
       "battery"
       "clock"

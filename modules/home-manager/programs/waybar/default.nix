@@ -62,17 +62,6 @@
           ""
         ];
       };
-      network = {
-        format = "{ifname}";
-        format-wifi = "  {essid}";
-        format-ethernet = "󰈀";
-        format-linked = "󰈂";
-        format-disconnected = "󰈂";
-        tooltip-format-wifi = "Network: {essid} ({signalStrength}%)\nIP: {ipaddr}";
-        tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}";
-        tooltip-format-linked = "Disconnected";
-        on-click = "${pkgs.iwgtk}/bin/iwgtk";
-      };
       pulseaudio = {
         scroll-step = 5;
         format = "{icon}  {volume}%";
@@ -149,7 +138,6 @@
 
       #tray,
       #language,
-      #network,
       #backlight,
       #pulseaudio,
       #battery,
