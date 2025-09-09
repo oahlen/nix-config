@@ -41,7 +41,11 @@ in {
   wayland.windowManager.sway = {
     enable = true;
 
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      dbusImplementation = "broker";
+      xdgAutoStart = true;
+    };
 
     wrapperFeatures = {
       base = true;
@@ -76,12 +80,6 @@ in {
           bg = "${config.wallpaper} fit ${config.colorscheme.background}";
         };
       };
-
-      startup = [
-        {
-          command = "${pkgs.mako}/bin/mako";
-        }
-      ];
 
       modifier = "Mod4";
 
