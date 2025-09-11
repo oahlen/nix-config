@@ -30,6 +30,9 @@ local kind_icons = {
 
 require("blink.cmp").setup({
     completion = {
+        accept = {
+            auto_brackets = { enabled = true },
+        },
         documentation = {
             auto_show = true,
             auto_show_delay_ms = 250,
@@ -54,7 +57,17 @@ require("blink.cmp").setup({
     fuzzy = { implementation = "rust" },
     keymap = {
         preset = "default",
-        ["<Enter>"] = { "select_and_accept", "fallback" },
+        ["<Enter>"] = {
+            function(cmp)
+                if cmp.snippet_active() then
+                    return cmp.accept()
+                else
+                    return cmp.select_and_accept()
+                end
+            end,
+            "select_and_accept",
+            "fallback",
+        },
         ["<Tab>"] = { "select_next", "fallback" },
         ["<S-Tab>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
