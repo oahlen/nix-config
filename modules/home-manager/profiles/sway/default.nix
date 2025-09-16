@@ -10,6 +10,7 @@
   swaylock = "${pkgs.swaylock}/bin/swaylock -fF";
 in {
   imports = [
+    "${hm-modules}/profiles/shared"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
     "${hm-modules}/programs/swaylock"
@@ -30,12 +31,6 @@ in {
     password-picker.enable = true;
     theme-switcher.enable = true;
     wl-logout.enable = true;
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      icon-theme = "Papirus-Dark";
-    };
   };
 
   wayland.windowManager.sway = {

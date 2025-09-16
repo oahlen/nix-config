@@ -22,8 +22,5 @@
     [indicator.colors.disabled]
     device=${config.colorscheme.statusline.foreground}
     adapter=${config.colorscheme.statusline.foreground}
-
-    [window]
-    dark=true
   '';
 }

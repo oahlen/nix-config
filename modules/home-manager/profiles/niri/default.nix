@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    "${hm-modules}/profiles/shared"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
     "${hm-modules}/programs/swaylock"
@@ -25,11 +26,5 @@
     password-picker.enable = true;
     theme-switcher.enable = true;
     wl-logout.enable = true;
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      icon-theme = "Papirus-Dark";
-    };
   };
 }

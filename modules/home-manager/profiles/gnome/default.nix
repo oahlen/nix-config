@@ -7,6 +7,7 @@
 }:
 with lib.hm.gvariant; {
   imports = [
+    "${hm-modules}/profiles/shared"
     "${hm-modules}/programs/kitty"
   ];
 
@@ -24,13 +25,8 @@ with lib.hm.gvariant; {
       show-extensions-notice = false;
     };
 
-    "org/gtk/gtk4/settings/file-chooser" = {
-      show-hidden = true;
-    };
-
     "org/gnome/desktop/interface" = {
       accent-color = "blue";
-      icon-theme = "Papirus-Dark";
       enable-animations = false;
     };
 
