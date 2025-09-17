@@ -23,7 +23,7 @@
     };
 
     packages = with pkgs; [
-      # awscli2
+      awscli2
       _1password-cli
       duckdb
       hyperfine
