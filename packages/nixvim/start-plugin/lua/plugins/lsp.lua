@@ -38,9 +38,13 @@ local on_attach = function(client, bufnr)
     end, "Format Code")
 end
 
-vim.lsp.config("*", { on_init = on_init, on_attach = on_attach })
+local enable = function(name, opts)
+    local config = vim.tbl_deep_extend("force", { on_init = on_init, on_attach = on_attach }, opts or {})
+    vim.lsp.config(name, config)
+    vim.lsp.enable(name)
+end
 
-vim.lsp.config("lua_ls", {
+enable("lua_ls", {
     settings = {
         Lua = {
             completion = {
@@ -64,7 +68,7 @@ vim.lsp.config("lua_ls", {
     },
 })
 
-vim.lsp.config("nixd", {
+enable("nixd", {
     settings = {
         nixd = {
             nixpkgs = {
@@ -77,7 +81,7 @@ vim.lsp.config("nixd", {
     },
 })
 
-vim.lsp.config("omnisharp", {
+enable("omnisharp", {
     cmd = {
         "OmniSharp",
         "-z",
@@ -98,14 +102,9 @@ vim.lsp.config("omnisharp", {
     },
 })
 
-vim.lsp.enable({
-    "cssls",
-    "html",
-    "lua_ls",
-    "nixd",
-    "omnisharp",
-    "pyright",
-    "rust_analyzer",
-    "svelte",
-    "ts_ls",
-})
+enable("cssls")
+enable("html")
+enable("pyright")
+enable("rust_analyzer")
+enable("svelte")
+enable("ts_ls")
