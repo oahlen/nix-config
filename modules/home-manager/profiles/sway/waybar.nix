@@ -20,7 +20,7 @@
       max-length = 100;
     };
     "sway/language" = {
-      format = "  {short}";
+      format = " ";
       tooltip-format = "Language: {long}";
       on-click = "${pkgs.sway}/bin/swaymsg input type:keyboard xkb_switch_layout next";
     };

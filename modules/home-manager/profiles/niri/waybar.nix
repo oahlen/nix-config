@@ -19,7 +19,7 @@
       max-length = 100;
     };
     "niri/language" = {
-      format = "  {short}";
+      format = " ";
       tooltip-format = "Language: {long}";
       on-click = "${pkgs.niri}/bin/niri msg action switch-layout next";
     };
