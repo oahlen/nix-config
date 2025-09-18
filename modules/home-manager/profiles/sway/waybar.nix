@@ -3,7 +3,6 @@
     modules-left = [
       "sway/workspaces"
       "sway/mode"
-      "sway/window"
     ];
     modules-right = [
       "tray"
@@ -15,9 +14,6 @@
     ];
     "sway/workspaces" = {
       disable-scroll = true;
-    };
-    "sway/window" = {
-      max-length = 100;
     };
     "sway/language" = {
       format = " ";

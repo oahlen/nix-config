@@ -2,7 +2,6 @@
   programs.waybar.settings.mainBar = {
     modules-left = [
       "niri/workspaces"
-      "niri/window"
     ];
     modules-right = [
       "tray"
@@ -14,9 +13,6 @@
     ];
     "niri/workspaces" = {
       disable-scroll = true;
-    };
-    "niri/window" = {
-      max-length = 100;
     };
     "niri/language" = {
       format = " ";
