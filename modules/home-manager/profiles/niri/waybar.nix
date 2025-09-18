@@ -8,7 +8,6 @@
       "tray"
       "power-profiles-daemon"
       "niri/language"
-      "backlight"
       "pulseaudio"
       "battery"
       "clock"

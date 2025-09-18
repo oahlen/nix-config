@@ -15,35 +15,6 @@
       tray = {
         spacing = 8;
       };
-      power-profiles-daemon = {
-        format = "{icon}";
-        tooltip-format = "Power profile: {profile}\nDriver: {driver}";
-        format-icons = {
-          "default" = "";
-          "performance" = "";
-          "balanced" = "";
-          "power-saver" = "";
-        };
-      };
-      clock = {
-        format = "{:%Y-%m-%d %H:%M}";
-        tooltip = false;
-      };
-      backlight = {
-        format = "{icon} {percent}%";
-        format-icons = [
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-        ];
-        scroll-step = 5;
-      };
       battery = {
         states = {
           normal = 75;
@@ -61,6 +32,20 @@
           ""
           ""
         ];
+      };
+      clock = {
+        format = "{:%Y-%m-%d %H:%M}";
+        tooltip = false;
+      };
+      power-profiles-daemon = {
+        format = "{icon}";
+        tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+        format-icons = {
+          "default" = "";
+          "performance" = "";
+          "balanced" = "";
+          "power-saver" = "";
+        };
       };
       pulseaudio = {
         scroll-step = 5;
@@ -138,7 +123,6 @@
 
       #tray,
       #language,
-      #backlight,
       #pulseaudio,
       #battery,
       #clock {

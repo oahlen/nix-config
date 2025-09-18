@@ -9,7 +9,6 @@
       "tray"
       "power-profiles-daemon"
       "sway/language"
-      "backlight"
       "pulseaudio"
       "battery"
       "clock"

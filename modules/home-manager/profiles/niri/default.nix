@@ -23,6 +23,7 @@
   xdg.configFile."niri/config.kdl".source = ./config.kdl;
 
   scripts = {
+    brightness.enable = true;
     password-picker.enable = true;
     theme-switcher.enable = true;
     wl-logout.enable = true;
