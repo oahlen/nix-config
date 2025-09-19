@@ -1,8 +1,8 @@
 return {
     "copilot",
     keys = {
-        { "<leader>ac", "<CMD>CopilotChatToggle<CR>", desc = "Copilot Chat Toggle" },
-        { "<leader>ax", "<CMD>CopilotChatReset<CR>", desc = "Copilot Chat Reset" },
+        { "<leader>m", "<CMD>CopilotChatToggle<CR>", desc = "Copilot Chat Toggle" },
+        { "<leader>x", "<CMD>CopilotChatReset<CR>", desc = "Copilot Chat Reset" },
     },
     after = function()
         require("copilot").setup({

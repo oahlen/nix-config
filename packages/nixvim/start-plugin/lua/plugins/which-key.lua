@@ -7,7 +7,6 @@ wk.setup({
 })
 
 wk.add({
-    { "<leader>a", group = "Copilot" },
     { "<leader>c", group = "Clear" },
     { "<leader>h", group = "Blame Actions" },
     { "<leader>i", group = "Insert" },
