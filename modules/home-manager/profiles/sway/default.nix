@@ -28,7 +28,6 @@ in {
   programs.fuzzel.settings.main.launch-prefix = "${pkgs.sway}/bin/swaymsg exec --";
 
   scripts = {
-    brightness.enable = true;
     password-picker.enable = true;
     theme-switcher.enable = true;
     wl-logout.enable = true;
@@ -187,8 +186,8 @@ in {
       for_window [shell=".*"] inhibit_idle fullscreen
 
       # Screen brightness
-      bindsym --locked XF86MonBrightnessUp exec brightness up
-      bindsym --locked XF86MonBrightnessDown exec brightness down
+      bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+      bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 
       # Volume control
       bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ .05+
