@@ -5,7 +5,7 @@
   black = "#292d40";
   red = "#f7768e";
   green = "#9ece6a";
-  yellow = "#e0af68";
+  yellow = "#ff9e64";
   blue = "#7aa2f7";
   purple = "#bb9af7";
   cyan = "#7dcfff";
