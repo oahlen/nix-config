@@ -12,53 +12,117 @@
       position = "top";
       height = 32;
       spacing = 0;
-      tray = {
-        spacing = 8;
+
+      network = {
+        interval = 10;
+        format = "󰤨";
+        format-ethernet = "󰈀";
+        format-wifi = "{icon}";
+        format-disconnected = "󰤯";
+        format-disabled = "󰤮";
+        format-icons = [
+          "󰤟"
+          "󰤢"
+          "󰤥"
+          "󰤨"
+        ];
+        min-length = 2;
+        max-length = 2;
+        on-click = "${pkgs.iwgtk}/bin/iwgtk";
+        tooltip-format = "Gateway: {gwaddr}";
+        tooltip-format-ethernet = "Interface: {ifname}";
+        tooltip-format-wifi = "Network: {essid}\nIP Addr: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency} GHz";
+        tooltip-format-disconnected = "Wi-Fi Disconnected";
+        tooltip-format-disabled = "Wi-Fi Disabled";
       };
+
+      bluetooth = {
+        format = "󰂯";
+        format-disabled = "󰂲";
+        format-off = "󰂲";
+        format-on = "󰂰";
+        format-connected = "󰂱";
+        min-length = 2;
+        max-length = 2;
+        # TODO Add on-click event
+        tooltip-format = "Device Addr: {device_address}";
+        tooltip-format-disabled = "Bluetooth Disabled";
+        tooltip-format-off = "Bluetooth Off";
+        tooltip-format-on = "Bluetooth Disconnected";
+        tooltip-format-connected = "Device: {device_alias}";
+        tooltip-format-enumerate-connected = "Device: {device_alias}";
+        tooltip-format-connected-battery = "Device: {device_alias}\nBattery: {device_battery_percentage}%";
+        tooltip-format-enumerate-connected-battery = "Device: {device_alias}\nBattery: {device_battery_percentage}%";
+      };
+
+      pulseaudio = {
+        format = "{icon} {volume}%";
+        format-muted = "󰝟 {volume}%";
+        format-icons = {
+          default = ["󰕿" "󰖀" "󰕾"];
+          headphone = "󰋋";
+          headset = "󰋋";
+        };
+        min-length = 7;
+        max-length = 7;
+        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+        tooltip-format = "Output Device: {desc}";
+        scroll-step = 5;
+      };
+
+      backlight = {
+        format = "{icon} {percent}%";
+        format-icons = [
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+        ];
+        min-length = 7;
+        max-length = 7;
+        tooltip = false;
+        scroll-step = 5;
+      };
+
       battery = {
         states = {
-          normal = 75;
           warning = 30;
           critical = 15;
         };
-        format = "{icon}  {capacity}%";
-        format-charging = " {capacity}%";
-        format-plugged = " {capacity}%";
-        tooltip-format = "Capacity: {capacity}%\nEstimated time left: {time}\nDraw: {power}w";
+        format = "{icon} {capacity}%";
+        format-time = "{H} hr {M} min";
         format-icons = [
-          ""
-          ""
-          ""
-          ""
-          ""
+          "󰂎"
+          "󰁻"
+          "󰁼"
+          "󰁽"
+          "󰁾"
+          "󰁿"
+          "󰂀"
+          "󰂁"
+          "󰂂"
+          "󰁹"
         ];
+        format-charging = "󰉁 {capacity}%";
+        min-length = 7;
+        max-length = 7;
+        tooltip-format = "Discharging: {time}";
+        tooltip-format-charging = "Charging: {time}";
+        events = {
+          on-discharging-warning = "notify-send 'Low Battery' '{capacity}% battery remaining'";
+          on-discharging-critical = "notify-send 'Low Battery' '{capacity}% battery remaining' -u critical";
+          on-charging-100 = "notify-send 'Battery full' 'Battery is at {capacity}%'";
+        };
       };
+
       clock = {
-        format = "{:%Y-%m-%d %H:%M}";
+        format = "󰸗 {:%Y-%m-%d %H:%M}";
         tooltip = false;
-      };
-      power-profiles-daemon = {
-        format = "{icon}";
-        tooltip-format = "Power profile: {profile}\nDriver: {driver}";
-        format-icons = {
-          "default" = "";
-          "performance" = "";
-          "balanced" = "";
-          "power-saver" = "";
-        };
-      };
-      pulseaudio = {
-        scroll-step = 5;
-        format = "{icon}  {volume}%";
-        format-muted = " ";
-        format-icons = {
-          default = [
-            ""
-            ""
-            ""
-          ];
-        };
-        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
       };
     };
 
@@ -121,27 +185,18 @@
           border-radius: 8px;
       }
 
-      #tray,
       #language,
+      #bluetooth,
+      #network,
       #pulseaudio,
       #battery,
       #clock {
           padding: 0 8px;
       }
 
-      #power-profiles-daemon {
-          padding-left: 8px;
-          padding-right: 16px;
-      }
-
-      #battery,
-      #battery.charging {
-          color: ${config.colorscheme.green};
-      }
-
-      #battery.normal,
+      #battery.charging,
       #battery.plugged {
-          color: ${config.colorscheme.statusline.foreground};
+          color: ${config.colorscheme.green};
       }
 
       #battery.warning {
@@ -154,8 +209,8 @@
 
       tooltip {
           background: ${config.colorscheme.background};
-          border: 1px solid ${config.colorscheme.bright-black};
-          border-radius: 0.25rem;
+          border: 2px solid ${config.colorscheme.bright-black};
+          border-radius: 8px;
       }
 
       tooltip label {

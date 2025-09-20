@@ -4,10 +4,11 @@
       "niri/workspaces"
     ];
     modules-right = [
-      "tray"
-      "power-profiles-daemon"
       "niri/language"
+      "bluetooth"
+      "network"
       "pulseaudio"
+      "backlight"
       "battery"
       "clock"
     ];
@@ -15,7 +16,7 @@
       disable-scroll = true;
     };
     "niri/language" = {
-      format = " ";
+      format = "{short}";
       tooltip-format = "Language: {long}";
       on-click = "${pkgs.niri}/bin/niri msg action switch-layout next";
     };

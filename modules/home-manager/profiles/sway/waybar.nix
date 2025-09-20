@@ -5,10 +5,11 @@
       "sway/mode"
     ];
     modules-right = [
-      "tray"
-      "power-profiles-daemon"
       "sway/language"
+      "bluetooth"
+      "network"
       "pulseaudio"
+      "backlight"
       "battery"
       "clock"
     ];
@@ -16,7 +17,7 @@
       disable-scroll = true;
     };
     "sway/language" = {
-      format = " ";
+      format = "{short}";
       tooltip-format = "Language: {long}";
       on-click = "${pkgs.sway}/bin/swaymsg input type:keyboard xkb_switch_layout next";
     };
