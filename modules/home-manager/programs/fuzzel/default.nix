@@ -26,7 +26,7 @@ in {
 
       colors = {
         background = "${no_hex config.colorscheme.background}ff";
-        border = "${no_hex config.colorscheme.yellow}ff";
+        border = "${no_hex config.colorscheme.blue}ff";
         input = "${no_hex config.colorscheme.foreground}ff";
         match = "${no_hex config.colorscheme.bright-yellow}ff";
         prompt = "${no_hex config.colorscheme.green}ff";

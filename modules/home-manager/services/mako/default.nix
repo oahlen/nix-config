@@ -15,12 +15,13 @@
 
       text-color = config.colorscheme.foreground;
       background-color = config.colorscheme.background;
-      border-color = config.colorscheme.green;
+      border-color = config.colorscheme.blue;
       progress-color = config.colorscheme.blue;
 
       border-size = 2;
       border-radius = 8;
       padding = "12";
+      margin = "8";
     };
   };
 }
