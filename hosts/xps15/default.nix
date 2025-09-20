@@ -6,6 +6,7 @@
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"
+    "${nixos-modules}/services/bluetooth"
     "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/powertop"
     "${nixos-modules}/services/tailscale"
