@@ -5,12 +5,12 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/common/boot"
     "${nixos-modules}/profiles/gaming"
     "${nixos-modules}/profiles/sway"
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/services/bluetooth"
+    "${nixos-modules}/services/bootscreen"
     "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"

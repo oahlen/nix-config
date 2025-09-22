@@ -7,7 +7,7 @@
 }:
 with lib.hm.gvariant; {
   imports = [
-    "${hm-modules}/profiles/shared"
+    "${hm-modules}/profiles/shared/desktop"
     "${hm-modules}/programs/kitty"
   ];
 

@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    "${nixos-modules}/common/fonts"
+    "${nixos-modules}/profiles/shared/fonts"
     "${nixos-modules}/programs/gtklock"
     "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"

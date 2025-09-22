@@ -1,12 +1,12 @@
 {nixos-modules, ...}: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/common/boot"
     "${nixos-modules}/profiles/niri"
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/virt-manager"
     "${nixos-modules}/services/bluetooth"
+    "${nixos-modules}/services/bootscreen"
     "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/powertop"
     "${nixos-modules}/services/tailscale"
