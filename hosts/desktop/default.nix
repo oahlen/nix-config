@@ -38,6 +38,8 @@
     "org.mozilla.firefox"
   ];
 
+  wallpaper = ./sunset.jpg;
+
   fileSystems = {
     "/".options = ["noatime" "nodiratime" "discard"];
     "/mnt/backup".options = ["noatime" "nodiratime" "discard"];

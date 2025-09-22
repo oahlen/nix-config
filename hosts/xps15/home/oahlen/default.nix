@@ -15,7 +15,7 @@
 
   services.kanshi.enable = true;
 
-  wallpaper = ./sunset.jpg;
+  wallpaper = ./../../sunset.jpg;
 
   home.packages = with pkgs; [
     nodejs

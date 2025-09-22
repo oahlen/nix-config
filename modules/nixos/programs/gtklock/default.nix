@@ -16,10 +16,10 @@
 
     style = ''
       window {
-          /* background-image: url("${config.wallpaper}"); */
-          /* ackground-size: cover; */
-          /* ackground-repeat: no-repeat; */
-          /* ackground-position: center; */
+          background-image: url("${config.wallpaper}");
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
           background-color: ${config.colorscheme.background};
       }
     '';

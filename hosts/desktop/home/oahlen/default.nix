@@ -18,7 +18,7 @@
     spotify-player.enable = true;
   };
 
-  wallpaper = ./sunset.jpg;
+  wallpaper = ./../../sunset.jpg;
 
   home.stateVersion = "22.11";
 }

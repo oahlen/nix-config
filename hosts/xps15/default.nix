@@ -36,6 +36,8 @@
     "https://downloads.1password.com/linux/flatpak/1Password.flatpakref"
   ];
 
+  wallpaper = ./sunset.jpg;
+
   fileSystems."/".options = ["noatime" "nodiratime" "discard"];
 
   system.stateVersion = "25.05";
