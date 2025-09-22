@@ -1,5 +1,7 @@
 {...}: {
   boot = {
+    plymouth.enable = true;
+
     consoleLogLevel = 3;
     initrd.verbose = false;
     initrd.systemd.enable = true;
@@ -12,7 +14,5 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
-
-    plymouth.enable = true;
   };
 }

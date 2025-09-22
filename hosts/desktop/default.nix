@@ -10,8 +10,8 @@
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/services/bluetooth"
-    "${nixos-modules}/services/bootscreen"
     "${nixos-modules}/services/flatpak"
+    "${nixos-modules}/services/plymouth"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"
   ];
