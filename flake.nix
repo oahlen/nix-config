@@ -30,6 +30,7 @@
   } @ inputs: let
     lib = import ./lib.nix {defaultSystems = ["x86_64-linux"];};
     users = import ./users.nix;
+    common-modules = "${self}/modules/common";
 
     makeNixosConfiguration = let
       nixos-modules = "${self}/modules/nixos";
@@ -43,6 +44,7 @@
 
           modules = [
             ./hosts/${hostname}
+            "${common-modules}"
             "${nixos-modules}"
             nixos-wsl.nixosModules.wsl
           ];
@@ -63,6 +65,7 @@
 
           modules = [
             ./home/${username}/${hostname}
+            "${common-modules}"
             "${hm-modules}"
             nix-index-database.homeModules.nix-index
           ];

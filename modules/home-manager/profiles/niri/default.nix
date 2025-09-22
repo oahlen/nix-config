@@ -7,7 +7,6 @@
     "${hm-modules}/profiles/shared"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
-    "${hm-modules}/programs/swaylock"
     "${hm-modules}/programs/waybar"
     "${hm-modules}/services/mako"
     "${hm-modules}/services/swaybg"

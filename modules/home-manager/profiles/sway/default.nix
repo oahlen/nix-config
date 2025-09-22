@@ -7,13 +7,12 @@
 }: let
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
-  swaylock = "${pkgs.swaylock}/bin/swaylock -fF";
+  gtklock = "${pkgs.gtklock}/bin/gtklock";
 in {
   imports = [
     "${hm-modules}/profiles/shared"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
-    "${hm-modules}/programs/swaylock"
     "${hm-modules}/programs/waybar"
     "${hm-modules}/services/mako"
     "${hm-modules}/services/wl-sunset"
@@ -126,7 +125,7 @@ in {
         modifier = config.wayland.windowManager.sway.config.modifier;
       in
         pkgs.lib.mkOptionDefault {
-          "${modifier}+Alt+l" = "exec ${swaylock}";
+          "${modifier}+Alt+l" = "exec ${gtklock}";
           "Ctrl+Alt+Delete" = "exec wl-logout";
           "${modifier}+p" = "exec password-picker \"${pkgs.fuzzel}/bin/fuzzel -d\"";
           "${modifier}+o" = "exec theme-switcher";
