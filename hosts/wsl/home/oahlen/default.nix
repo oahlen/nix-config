@@ -1,4 +1,5 @@
 {
+  common-modules,
   hm-modules,
   pkgs,
   ...
@@ -15,7 +16,7 @@
     toPdf.enable = true;
   };
 
-  colorscheme = import "${hm-modules}/common/colorscheme/tokyonight-light.nix";
+  colorscheme = import "${common-modules}/colorscheme/tokyonight-light.nix";
 
   home = {
     sessionVariables = {

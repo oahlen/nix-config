@@ -38,7 +38,7 @@
       hostname: username:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nixos-modules;
+            inherit inputs common-modules nixos-modules;
             user = users.${username};
           };
 
@@ -58,7 +58,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
 
           extraSpecialArgs = {
-            inherit inputs hm-modules system;
+            inherit inputs common-modules hm-modules system;
             user = users.${username};
             customPackages = self.outputs.packages.${system};
           };
