@@ -16,7 +16,7 @@
     toPdf.enable = true;
   };
 
-  colorscheme = import "${common-modules}/colorscheme/tokyonight-light.nix";
+  colors = import "${common-modules}/colors/tokyonight-light.nix";
 
   home = {
     sessionVariables = {

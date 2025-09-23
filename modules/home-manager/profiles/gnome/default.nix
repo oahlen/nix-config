@@ -35,8 +35,8 @@ with lib.hm.gvariant; {
       picture-options = "scaled";
       picture-uri = "file://${config.wallpaper}";
       picture-uri-dark = "file://${config.wallpaper}";
-      primary-color = config.colorscheme.background;
-      secondary-color = config.colorscheme.background;
+      primary-color = config.colors.background;
+      secondary-color = config.colors.background;
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {

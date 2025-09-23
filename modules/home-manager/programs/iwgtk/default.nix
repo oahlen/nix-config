@@ -7,20 +7,20 @@
 
   xdg.configFile."iwgtk.conf".text = ''
     [indicator.colors.station]
-    connected=${config.colorscheme.statusline.foreground}
-    connecting=${config.colorscheme.yellow}
-    disconnected=${config.colorscheme.bright-black}
+    connected=${config.colors.statusline.foreground}
+    connecting=${config.colors.yellow}
+    disconnected=${config.colors.bright-black}
 
     [indicator.colors.ap]
-    up=${config.colorscheme.statusline.foreground}
-    down=${config.colorscheme.bright-black}
+    up=${config.colors.statusline.foreground}
+    down=${config.colors.bright-black}
 
     [indicator.colors.adhoc]
-    up=${config.colorscheme.statusline.foreground}
-    down=${config.colorscheme.bright-black}
+    up=${config.colors.statusline.foreground}
+    down=${config.colors.bright-black}
 
     [indicator.colors.disabled]
-    device=${config.colorscheme.statusline.foreground}
-    adapter=${config.colorscheme.statusline.foreground}
+    device=${config.colors.statusline.foreground}
+    adapter=${config.colors.statusline.foreground}
   '';
 }

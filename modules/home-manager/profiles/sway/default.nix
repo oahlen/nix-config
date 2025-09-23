@@ -71,7 +71,7 @@ in {
 
       output = {
         "*" = {
-          bg = "${config.wallpaper} fit ${config.colorscheme.background}";
+          bg = "${config.wallpaper} fit ${config.colors.background}";
         };
       };
 
@@ -153,27 +153,27 @@ in {
 
       colors = {
         focused = {
-          border = config.colorscheme.blue;
-          background = config.colorscheme.blue;
-          text = config.colorscheme.black;
-          indicator = config.colorscheme.blue;
-          childBorder = config.colorscheme.blue;
+          border = config.colors.blue;
+          background = config.colors.blue;
+          text = config.colors.black;
+          indicator = config.colors.blue;
+          childBorder = config.colors.blue;
         };
 
         focusedInactive = {
-          border = config.colorscheme.statusline.foreground;
-          background = config.colorscheme.statusline.foreground;
-          text = config.colorscheme.black;
-          indicator = config.colorscheme.statusline.foreground;
-          childBorder = config.colorscheme.statusline.foreground;
+          border = config.colors.statusline.foreground;
+          background = config.colors.statusline.foreground;
+          text = config.colors.black;
+          indicator = config.colors.statusline.foreground;
+          childBorder = config.colors.statusline.foreground;
         };
 
         unfocused = {
-          border = config.colorscheme.statusline.inactive;
-          background = config.colorscheme.statusline.inactive;
-          text = config.colorscheme.statusline.foreground;
-          indicator = config.colorscheme.statusline.inactive;
-          childBorder = config.colorscheme.statusline.inactive;
+          border = config.colors.statusline.inactive;
+          background = config.colors.statusline.inactive;
+          text = config.colors.statusline.foreground;
+          indicator = config.colors.statusline.inactive;
+          childBorder = config.colors.statusline.inactive;
         };
       };
 
@@ -222,25 +222,25 @@ in {
           button-dismiss-gap = 0;
         };
         info = {
-          text = config.colorscheme.black;
-          background = config.colorscheme.blue;
-          button-text = config.colorscheme.black;
-          button-background = config.colorscheme.blue;
-          details-background = config.colorscheme.blue;
+          text = config.colors.black;
+          background = config.colors.blue;
+          button-text = config.colors.black;
+          button-background = config.colors.blue;
+          details-background = config.colors.blue;
         };
         warning = {
-          text = config.colorscheme.black;
-          background = config.colorscheme.yellow;
-          button-text = config.colorscheme.black;
-          button-background = config.colorscheme.yellow;
-          details-background = config.colorscheme.yellow;
+          text = config.colors.black;
+          background = config.colors.yellow;
+          button-text = config.colors.black;
+          button-background = config.colors.yellow;
+          details-background = config.colors.yellow;
         };
         error = {
-          text = config.colorscheme.black;
-          background = config.colorscheme.red;
-          button-text = config.colorscheme.black;
-          button-background = config.colorscheme.red;
-          details-background = config.colorscheme.red;
+          text = config.colors.black;
+          background = config.colors.red;
+          button-text = config.colors.black;
+          button-background = config.colors.red;
+          details-background = config.colors.red;
         };
       };
     };

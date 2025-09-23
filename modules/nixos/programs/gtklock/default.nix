@@ -20,7 +20,7 @@
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
-          background-color: ${config.colorscheme.background};
+          background-color: ${config.colors.background};
       }
     '';
 

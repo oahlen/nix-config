@@ -13,10 +13,10 @@
       default-timeout = 10000;
       ignore-timeout = true;
 
-      text-color = config.colorscheme.foreground;
-      background-color = config.colorscheme.background;
-      border-color = config.colorscheme.blue;
-      progress-color = config.colorscheme.blue;
+      text-color = config.colors.foreground;
+      background-color = config.colors.background;
+      border-color = config.colors.blue;
+      progress-color = config.colors.blue;
 
       border-size = 2;
       border-radius = 8;

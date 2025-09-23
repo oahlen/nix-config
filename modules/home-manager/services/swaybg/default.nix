@@ -17,7 +17,7 @@ in {
     };
 
     Service = {
-      ExecStart = "${pkgs.swaybg}/bin/swaybg -o '*' -c ${no_hex config.colorscheme.background} -i ${config.wallpaper} -m fit";
+      ExecStart = "${pkgs.swaybg}/bin/swaybg -o '*' -c ${no_hex config.colors.background} -i ${config.wallpaper} -m fit";
       Restart = "on-failure";
     };
 

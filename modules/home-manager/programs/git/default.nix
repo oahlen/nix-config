@@ -40,8 +40,8 @@
       enable = true;
 
       options = let
-        added_bg = config.colorscheme.diff.added_bg;
-        deleted_bg = config.colorscheme.diff.deleted_bg;
+        added_bg = config.colors.diff.added_bg;
+        deleted_bg = config.colors.diff.deleted_bg;
       in {
         navigate = "true";
         side-by-side = "true";

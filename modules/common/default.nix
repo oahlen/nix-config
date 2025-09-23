@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./colorscheme
+    ./colors
     ./font
     ./wallpaper
   ];
