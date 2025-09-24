@@ -3,8 +3,6 @@
   user,
   ...
 }: {
-  hardware.amdgpu.overdrive.enable = true;
-
   programs.corectrl.enable = true;
 
   users.users.${user.name} = {
