@@ -142,8 +142,9 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id="iwgtk"
+    match app-id="nm-connection-editor"
     match app-id="pavucontrol"
+    match app-id="blueman-manager"
     open-floating true
 
     default-column-width { fixed 1280; }
@@ -436,6 +437,9 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     Mod+P { spawn "password-picker" "fuzzel -d"; }
+
+    // Toggle Waybar
+    Mod+B { spawn "pkill" "-USR1" "waybar"; }
 
     Mod+Shift+O { spawn "theme-switcher"; }
 }

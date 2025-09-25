@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }: {
   programs.waybar = {
@@ -13,80 +12,13 @@
       height = 32;
       spacing = 0;
 
-      network = {
-        interval = 10;
-        format = "󰤨";
-        format-ethernet = "󰈀";
-        format-wifi = "{icon}";
-        format-disconnected = "󰤯";
-        format-disabled = "󰤮";
-        format-icons = [
-          "󰤟"
-          "󰤢"
-          "󰤥"
-          "󰤨"
-        ];
-        min-length = 2;
-        max-length = 2;
-        on-click = "${pkgs.iwgtk}/bin/iwgtk";
-        tooltip-format = "Gateway: {gwaddr}";
-        tooltip-format-ethernet = "Interface: {ifname}";
-        tooltip-format-wifi = "Network: {essid}\nIP Addr: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency} GHz";
-        tooltip-format-disconnected = "Wi-Fi Disconnected";
-        tooltip-format-disabled = "Wi-Fi Disabled";
-      };
-
-      bluetooth = {
-        format = "󰂯";
-        format-disabled = "󰂲";
-        format-off = "󰂲";
-        format-on = "󰂰";
-        format-connected = "󰂱";
-        min-length = 2;
-        max-length = 2;
-        # TODO Add on-click event
-        tooltip-format = "Device Addr: {device_address}";
-        tooltip-format-disabled = "Bluetooth Disabled";
-        tooltip-format-off = "Bluetooth Off";
-        tooltip-format-on = "Bluetooth Disconnected";
-        tooltip-format-connected = "Device: {device_alias}";
-        tooltip-format-enumerate-connected = "Device: {device_alias}";
-        tooltip-format-connected-battery = "Device: {device_alias}\nBattery: {device_battery_percentage}%";
-        tooltip-format-enumerate-connected-battery = "Device: {device_alias}\nBattery: {device_battery_percentage}%";
-      };
-
-      pulseaudio = {
-        format = "{icon} {volume}%";
-        format-muted = "󰝟 {volume}%";
-        format-icons = {
-          default = ["󰕿" "󰖀" "󰕾"];
-          headphone = "󰋋";
-          headset = "󰋋";
-        };
-        min-length = 7;
-        max-length = 7;
-        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-        tooltip-format = "Output Device: {desc}";
-        scroll-step = 5;
-      };
-
-      backlight = {
-        format = "{icon} {percent}%";
-        format-icons = [
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-        ];
-        min-length = 7;
-        max-length = 7;
+      clock = {
+        format = "{:%Y-%m-%d %H:%M}";
         tooltip = false;
-        scroll-step = 5;
+      };
+
+      tray = {
+        spacing = 12;
       };
 
       battery = {
@@ -113,11 +45,6 @@
         max-length = 7;
         tooltip-format = "Discharging: {time}";
         tooltip-format-charging = "Charging: {time}";
-      };
-
-      clock = {
-        format = "󰸗 {:%Y-%m-%d %H:%M}";
-        tooltip = false;
       };
     };
 
@@ -180,12 +107,8 @@
           border-radius: 8px;
       }
 
-      #language,
-      #bluetooth,
-      #network,
-      #pulseaudio,
       #battery,
-      #clock {
+      #tray {
           padding: 0 8px;
       }
 
@@ -204,7 +127,7 @@
 
       tooltip {
           background: ${config.colors.background};
-          border: 2px solid ${config.colors.bright-black};
+          border: 2px solid ${config.colors.blue};
           border-radius: 8px;
       }
 

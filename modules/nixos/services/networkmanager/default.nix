@@ -10,6 +10,8 @@
     };
   };
 
+  programs.nm-applet.enable = true;
+
   users.users.${user.name} = {
     extraGroups = ["networkmanager"];
   };

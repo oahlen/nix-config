@@ -2,7 +2,6 @@
   imports = [
     "${hm-modules}/profiles/sway"
     "${hm-modules}/profiles/terminal"
-    "${hm-modules}/programs/iwgtk"
     "${hm-modules}/programs/mangohud"
     "${hm-modules}/programs/rbw"
   ];
