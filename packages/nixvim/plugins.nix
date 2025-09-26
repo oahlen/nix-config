@@ -90,6 +90,7 @@ with pkgs.vimPlugins;
         todotxt
         toml
         typescript
+        typst
         vim
         vimdoc
         xml
