@@ -1,10 +1,10 @@
 {
   nixos-modules,
   pkgs,
-  user,
   ...
 }: {
   imports = [
+    "${nixos-modules}/profiles/shared/desktop"
     "${nixos-modules}/profiles/shared/fonts"
     "${nixos-modules}/programs/gtklock"
     "${nixos-modules}/services/networkmanager"
@@ -26,12 +26,8 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
-    gnome-multi-writer
-    gnome-text-editor
     hyprpicker
     libnotify
-    loupe
-    nautilus
     papirus-icon-theme
     pavucontrol
     playerctl
@@ -46,18 +42,4 @@
     enable = true;
     systemd.target = "niri-session.target";
   };
-
-  services.dbus = {
-    enable = true;
-    packages = with pkgs; [gcr];
-  };
-
-  users.users.${user.name} = {
-    extraGroups = ["audio" "video"];
-  };
-
-  programs.gnome-disks.enable = true;
-
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
 }

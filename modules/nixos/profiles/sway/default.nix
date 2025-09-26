@@ -1,10 +1,10 @@
 {
   nixos-modules,
   pkgs,
-  user,
   ...
 }: {
   imports = [
+    "${nixos-modules}/profiles/shared/desktop"
     "${nixos-modules}/profiles/shared/fonts"
     "${nixos-modules}/programs/gtklock"
     "${nixos-modules}/services/networkmanager"
@@ -48,25 +48,4 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
-
-  services.dbus = {
-    enable = true;
-    packages = with pkgs; [gcr];
-  };
-
-  users.users.${user.name} = {
-    extraGroups = ["audio" "video"];
-  };
-
-  environment.systemPackages = with pkgs; [
-    gnome-multi-writer
-    gnome-text-editor
-    loupe
-    nautilus
-  ];
-
-  programs.gnome-disks.enable = true;
-
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
 }
