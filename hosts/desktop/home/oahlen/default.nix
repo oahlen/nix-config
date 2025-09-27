@@ -1,6 +1,6 @@
 {hm-modules, ...}: {
   imports = [
-    "${hm-modules}/profiles/sway"
+    "${hm-modules}/profiles/niri"
     "${hm-modules}/profiles/terminal"
     "${hm-modules}/programs/mangohud"
     "${hm-modules}/programs/rbw"
@@ -17,7 +17,7 @@
     spotify-player.enable = true;
   };
 
-  wallpaper = ./../../sunset.jpg;
+  wallpaper = ./../../lake.png;
 
   home.stateVersion = "22.11";
 }

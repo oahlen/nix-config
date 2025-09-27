@@ -23,6 +23,10 @@ input {
     focus-follows-mouse max-scroll-amount="95%"
 }
 
+output "DP-2" {
+    variable-refresh-rate on-demand=true
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
@@ -117,7 +121,7 @@ overview {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    off
+    // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
@@ -149,6 +153,11 @@ window-rule {
 
     default-column-width { fixed 1280; }
     default-window-height { fixed 720; }
+}
+
+window-rule {
+    match app-id="^steam_app.*$"
+    variable-refresh-rate true
 }
 
 // Example: block out two password managers from screen capture.

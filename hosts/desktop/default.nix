@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/profiles/gaming"
-    "${nixos-modules}/profiles/sway"
+    "${nixos-modules}/profiles/niri"
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/services/bluetooth"
@@ -20,7 +20,7 @@
 
   boot = {
     loader.systemd-boot.enable = true;
-    kernelPackages = pkgs.linuxPackages_6_16;
+    kernelPackages = pkgs.linuxPackages_6_15;
     kernelModules = ["amdgpu"];
   };
 
@@ -38,7 +38,7 @@
     "org.mozilla.firefox"
   ];
 
-  wallpaper = ./sunset.jpg;
+  wallpaper = ./lake.png;
 
   fileSystems = {
     "/".options = ["noatime" "nodiratime" "discard"];

@@ -1,4 +1,5 @@
 {
+  inputs,
   nixos-modules,
   pkgs,
   ...
@@ -13,6 +14,12 @@
   ];
 
   services.displayManager.gdm.enable = true;
+
+  nixpkgs.overlays = [
+    (self: super: {
+      niri = inputs.niri.packages.${pkgs.system}.default;
+    })
+  ];
 
   programs.niri.enable = true;
 

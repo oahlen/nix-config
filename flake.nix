@@ -18,6 +18,11 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri = {
+      url = "github:YaLTeR/niri/01be0e65f4eb91a9cd624ac0b76aaeab765c7294";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
