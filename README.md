@@ -1,5 +1,7 @@
 # Nix Config
 
+![Screenshot](https://github.com/oahlen/assets/raw/main/nix-config/laptop.png)
+
 ## Installation (NixOS)
 
 Download the latest image from [NixOS website](https://nixos.org/download/)
