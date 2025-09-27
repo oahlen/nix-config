@@ -4,17 +4,14 @@
   lib,
   pkgs,
   ...
-}: let
-  grim = "${pkgs.grim}/bin/grim";
-  slurp = "${pkgs.slurp}/bin/slurp";
-  gtklock = "${pkgs.gtklock}/bin/gtklock";
-in {
+}: {
   imports = [
     "${hm-modules}/profiles/shared/desktop"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
     "${hm-modules}/programs/waybar"
     "${hm-modules}/services/mako"
+    "${hm-modules}/services/swayosd"
     "${hm-modules}/services/wl-sunset"
     ./swayidle.nix
     ./waybar.nix
@@ -77,9 +74,9 @@ in {
 
       modifier = "Mod4";
 
-      terminal = "${pkgs.foot}/bin/foot";
+      terminal = "foot";
 
-      menu = "${pkgs.fuzzel}/bin/fuzzel";
+      menu = "fuzzel";
 
       defaultWorkspace = "workspace number 1";
 
@@ -125,12 +122,12 @@ in {
         modifier = config.wayland.windowManager.sway.config.modifier;
       in
         pkgs.lib.mkOptionDefault {
-          "${modifier}+Alt+l" = "exec ${gtklock}";
+          "${modifier}+Alt+l" = "exec gtklock";
           "Ctrl+Alt+Delete" = "exec wl-logout";
           "${modifier}+p" = "exec password-picker \"${pkgs.fuzzel}/bin/fuzzel -d\"";
           "${modifier}+o" = "exec theme-switcher";
-          "Print" = "exec ${grim} ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
-          "${modifier}+Print" = "exec ${slurp} | ${grim} -g - ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
+          "Print" = "exec grim ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
+          "${modifier}+Print" = "exec slurp | grim -g - ~/Pictures/$(date +\"%Y-%m-%d-%H-%M-%S\").png";
           "${modifier}+x" = "split none";
           "${modifier}+Tab" = "workspace next";
           "${modifier}+Shift+Tab" = "workspace prev";
@@ -185,14 +182,14 @@ in {
       for_window [shell=".*"] inhibit_idle fullscreen
 
       # Screen brightness
-      bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
-      bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+      bindsym --locked XF86MonBrightnessUp exec swayosd-client --brightness raise
+      bindsym --locked XF86MonBrightnessDown exec swayosd-client --brightness lower
 
       # Volume control
-      bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ .05+
-      bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ .05-
-      bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
-      bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+      bindsym --locked XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+      bindsym --locked XF86AudioLowerVolume exec swayosd-client --output-volume lower
+      bindsym --locked XF86AudioMute exec swayosd-client --output-volume mute-toggle
+      bindsym --locked XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
 
       # Multimedia
       bindsym --locked XF86AudioPlay exec playerctl play
