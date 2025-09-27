@@ -20,12 +20,6 @@
   bright-cyan = "#006c86";
   bright-white = "#2b3048";
 
-  statusline = {
-    foreground = "#343B58";
-    background = "#d7d9e2";
-    inactive = "#c8cbd8";
-  };
-
   selection = {
     foreground = "#2b3048";
     background = "#d7d9e2";

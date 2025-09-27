@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -12,13 +9,19 @@
       height = 32;
       spacing = 0;
 
+      modules-center = [
+        "clock"
+      ];
+      modules-right = [
+        "tray"
+        "battery"
+        "pulseaudio"
+        "custom/power"
+      ];
+
       clock = {
         format = "{:%Y-%m-%d %H:%M}";
         tooltip = false;
-      };
-
-      tray = {
-        spacing = 12;
       };
 
       battery = {
@@ -26,25 +29,69 @@
           warning = 30;
           critical = 15;
         };
-        format = "{icon} {capacity}%";
-        format-time = "{H} hr {M} min";
-        format-icons = [
-          "󰂎"
-          "󰁻"
-          "󰁼"
-          "󰁽"
-          "󰁾"
-          "󰁿"
-          "󰂀"
-          "󰂁"
-          "󰂂"
-          "󰁹"
-        ];
-        format-charging = "󰉁 {capacity}%";
-        min-length = 7;
-        max-length = 7;
-        tooltip-format = "Discharging: {time}";
-        tooltip-format-charging = "Charging: {time}";
+        format = "{icon}";
+        format-plugged = "";
+        format-icons = {
+          charging = [
+            "󰢜"
+            "󰂆"
+            "󰂇"
+            "󰂈"
+            "󰢝"
+            "󰂉"
+            "󰢞"
+            "󰂊"
+            "󰂋"
+            "󰂅"
+          ];
+          default = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+        };
+        format-full = "󰂅";
+        tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
+        tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+        interval = 15;
+      };
+
+      pulseaudio = {
+        format = "{icon}";
+        on-click = "pavucontrol";
+        tooltip-format = "Playing at {volume}%";
+        scroll-step = 5;
+        format-muted = "";
+        format-icons = {
+          default = [
+            " "
+            " "
+            " "
+          ];
+        };
+      };
+
+      "custom/power" = {
+        format = "⏻";
+        tooltip = false;
+        menu = "on-click";
+        menu-file = "${./power_menu.xml}";
+        menu-actions = {
+          shutdown = "systemctl poweroff";
+          suspend = "systemctl suspend";
+          reboot = "systemctl reboot";
+        };
+      };
+
+      tray = {
+        spacing = 12;
       };
     };
 
@@ -60,18 +107,14 @@
 
       window > box {
           margin: 8px 8px 0px 8px;
-          background: ${config.colors.statusline.background};
-          color: ${config.colors.statusline.foreground};
+          background: ${config.colors.background};
+          color: ${config.colors.foreground};
           padding: 4px;
           border-radius: 8px;
       }
 
-      window#waybar #window {
-          padding: 0 12px;
-      }
-
       #workspaces button {
-          color: ${config.colors.statusline.foreground};
+          color: ${config.colors.foreground};
           padding: 0px 6px;
           margin: 0 2px;
           border: none;
@@ -81,35 +124,46 @@
 
       #workspaces button:hover {
           background: ${config.colors.bright-white};
-          color: ${config.colors.statusline.background};
+          color: ${config.colors.background};
           box-shadow: inherit;
           text-shadow: inherit;
       }
 
       #workspaces button.focused {
           background: ${config.colors.blue};
-          color: ${config.colors.statusline.background};
+          color: ${config.colors.background};
           font-weight: bold;
       }
 
-      #workspaces button.focued:hover {
-          background: ${config.colors.blue};
+      #workspaces button.focused:hover {
+          background: ${config.colors.bright-white};
           box-shadow: inherit;
           text-shadow: inherit;
-          background-color: ${config.colors.bright-black};
       }
 
       #mode {
-          background-color: ${config.colors.yellow};
-          color: ${config.colors.statusline.background};
+          background: ${config.colors.yellow};
+          color: ${config.colors.background};
           padding: 0 8px;
           margin: 0 0 0 8px;
           border-radius: 8px;
       }
 
-      #battery,
       #tray {
+          padding: 0 6px;
+      }
+
+      #battery,
+      #pulseaudio {
+          font-size: 18px;
+          color: #DFDFDF;
           padding: 0 8px;
+      }
+
+      #custom-power {
+        font-size: 16px;
+        color: #DFDFDF;
+        padding: 0 12px 0 16px;
       }
 
       #battery.charging,
@@ -132,7 +186,7 @@
       }
 
       tooltip label {
-          color: ${config.colors.statusline.foreground};
+          color: ${config.colors.foreground};
       }
     '';
   };

@@ -158,19 +158,19 @@
         };
 
         focusedInactive = {
-          border = config.colors.statusline.foreground;
-          background = config.colors.statusline.foreground;
+          border = config.colors.foreground;
+          background = config.colors.foreground;
           text = config.colors.black;
-          indicator = config.colors.statusline.foreground;
-          childBorder = config.colors.statusline.foreground;
+          indicator = config.colors.foreground;
+          childBorder = config.colors.foreground;
         };
 
         unfocused = {
-          border = config.colors.statusline.inactive;
-          background = config.colors.statusline.inactive;
-          text = config.colors.statusline.foreground;
-          indicator = config.colors.statusline.inactive;
-          childBorder = config.colors.statusline.inactive;
+          border = config.colors.black;
+          background = config.colors.black;
+          text = config.colors.foreground;
+          indicator = config.colors.black;
+          childBorder = config.colors.black;
         };
       };
 
