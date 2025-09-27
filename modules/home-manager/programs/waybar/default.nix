@@ -149,6 +149,10 @@
           border-radius: 8px;
       }
 
+      #clock {
+          font-weight: bold;
+      }
+
       #tray {
           padding: 0 6px;
       }
