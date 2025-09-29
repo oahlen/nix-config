@@ -13,6 +13,7 @@ require("fzf-lua").setup({
         ["hl"] = { "fg", { "Constant" } },
         ["bg+"] = { "bg", { "Visual", "Normal" } },
         ["hl+"] = { "fg", { "Constant" } },
+        ["info"] = { "fg", { "LineNr" } },
     },
 })
 
