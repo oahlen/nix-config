@@ -1,4 +1,4 @@
-require("plugins.telescope")
+require("plugins.fzf-lua")
 require("plugins.treesitter")
 require("plugins.blink")
 require("plugins.gitsigns")

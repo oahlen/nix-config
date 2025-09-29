@@ -24,7 +24,7 @@
       pointer = "3";
       marker = "6";
       spinner = "5";
-      scrollbar = "4";
+      scrollbar = "8";
     };
   };
 }

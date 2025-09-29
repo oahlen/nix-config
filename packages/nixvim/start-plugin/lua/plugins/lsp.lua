@@ -8,17 +8,17 @@ local on_attach = function(client, bufnr)
         vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
     end
 
-    local telescope = require("telescope.builtin")
-    map("gi", telescope.lsp_implementations, "Goto Implementation")
-    map("gr", telescope.lsp_references, "Goto References")
+    local finder = require("fzf-lua")
+    map("gi", finder.lsp_implementations, "Goto Implementation")
+    map("gr", finder.lsp_references, "Goto References")
 
     if client.name == "omnisharp" then
         local omnisharp_extended = require("omnisharp_extended")
         map("gd", omnisharp_extended.lsp_definition, "Goto Definition")
         map("gD", omnisharp_extended.lsp_type_definition, "Goto Declaration")
     else
-        map("gd", telescope.lsp_definitions, "Goto Definition")
-        map("gD", telescope.lsp_type_definitions, "Goto Declaration")
+        map("gd", finder.lsp_definitions, "Goto Definition")
+        map("gD", finder.lsp_declarations, "Goto Declaration")
     end
 
     map("gn", function()
@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
     map("<C-s>", vim.lsp.buf.signature_help, "Signature Help")
     map("<leader>D", vim.lsp.buf.type_definition, "Type Definition")
     map("<leader>rn", vim.lsp.buf.rename, "LSP Rename")
-    map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+    map("<leader>ca", finder.lsp_code_actions, "Code Action")
     map("==", function()
         vim.lsp.buf.format({ async = true })
     end, "Format Code")

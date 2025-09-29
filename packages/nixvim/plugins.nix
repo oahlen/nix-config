@@ -7,6 +7,7 @@ with pkgs.vimPlugins;
     CopilotChat-nvim
     copilot-lua
     friendly-snippets
+    fzf-lua
     gitsigns-nvim
     heirline-nvim
     indent-blankline-nvim
@@ -20,9 +21,6 @@ with pkgs.vimPlugins;
     nvim-web-devicons
     omnisharp-extended-lsp-nvim
     render-markdown-nvim
-    telescope-fzf-native-nvim
-    telescope-nvim
-    telescope-ui-select-nvim
     which-key-nvim
     (nvim-treesitter.withPlugins (plugins:
       with plugins; [
