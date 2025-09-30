@@ -1,4 +1,6 @@
-require("fzf-lua").setup({
+local fzf_lua = require("fzf-lua")
+
+fzf_lua.setup({
     winopts = {
         backdrop = 100,
         preview = {
@@ -16,6 +18,8 @@ require("fzf-lua").setup({
         ["info"] = { "fg", { "LineNr" } },
     },
 })
+
+fzf_lua.register_ui_select()
 
 vim.keymap.set("n", "<leader><space>", "<CMD>FzfLua<CR>", { desc = "Open Picker" })
 vim.keymap.set("n", "<leader>f", "<CMD>FzfLua files<CR>", { desc = "Find Files" })

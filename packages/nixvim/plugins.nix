@@ -117,8 +117,8 @@ with pkgs.vimPlugins;
         src = pkgs.fetchFromGitHub {
           owner = "oahlen";
           repo = "tokyonight.nvim";
-          rev = "170026841c2d59ae4cae42b72efb9873b28b34b2";
-          sha256 = "sha256-df3cKI9Esu0v9AHnPZ6IH536xwZ6hFHlSvr4+4x179Y=";
+          rev = "79225c45393d6749eca5054bc2c20b932f24015b";
+          sha256 = "sha256-j2TGYBLSJI6xDM+iFSrKOt0h9iBuV5ctWH/1iUNr/Ts=";
         };
 
         meta.homepage = "https://github.com/oahlen/tokyonight.nvim";
