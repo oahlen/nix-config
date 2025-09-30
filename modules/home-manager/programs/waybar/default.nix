@@ -228,7 +228,7 @@
 
       #custom-power {
         font-size: 16px;
-        padding: 0 12px 0 8px;
+        padding: 0 12px 0 4px;
       }
 
       #battery.charging,
