@@ -12,7 +12,9 @@
       modules-center = [
         "clock"
       ];
+
       modules-right = [
+        "group/expander"
         "tray"
         "battery"
         "pulseaudio"
@@ -22,6 +24,42 @@
       clock = {
         format = "{:%Y-%m-%d %H:%M}";
         tooltip = false;
+      };
+
+      "group/expander" = {
+        orientation = "inherit";
+        drawer = {
+          transition-duration = 250;
+          children-class = "expander-group-item";
+        };
+        modules = [
+          "custom/expand-icon"
+          "custom/color-picker"
+          "power-profiles-daemon"
+        ];
+      };
+
+      "custom/expand-icon" = {
+        format = " ";
+        tooltip = false;
+      };
+
+      "custom/color-picker" = {
+        format = "";
+        on-click = "hyprpicker -a";
+        on-click-right = "hyprpicker -a -f hsl";
+        tooltip-format = "Color Picker";
+      };
+
+      power-profiles-daemon = {
+        format = "{icon}";
+        format-icons = {
+          "default" = "";
+          "performance" = "";
+          "balanced" = "";
+          "power-saver" = "";
+        };
+        tooltip-format = "Power profile: {profile}";
       };
 
       battery = {
@@ -58,8 +96,8 @@
           ];
         };
         format-full = "󰂅";
-        tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
-        tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+        tooltip-format-discharging = "{power:>1.0f}W ↓ {capacity}%";
+        tooltip-format-charging = "{power:>1.0f}W ↑ {capacity}%";
         interval = 15;
       };
 
@@ -157,17 +195,40 @@
           padding: 0 6px;
       }
 
+      #custom-expand-icon,
+      #custom-color-picker,
+      #power-profiles-daemon,
+      #battery,
+      #pulseaudio,
+      #custom-power
+      {
+          color: #DFDFDF;
+      }
+
+      #custom-expand-icon {
+          font-size: 18px;
+          padding-right: 2px;
+      }
+
+      #custom-color-picker {
+          font-size: 16px;
+          padding: 0 16px 0 6px;
+      }
+
+      #power-profiles-daemon {
+          font-size: 16px;
+          padding: 0 16px 0 4px;
+      }
+
       #battery,
       #pulseaudio {
           font-size: 18px;
-          color: #DFDFDF;
           padding: 0 8px;
       }
 
       #custom-power {
         font-size: 16px;
-        color: #DFDFDF;
-        padding: 0 12px 0 16px;
+        padding: 0 12px 0 8px;
       }
 
       #battery.charging,
