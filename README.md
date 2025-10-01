@@ -1,6 +1,7 @@
 # Nix Config
 
 ![Screenshot](https://github.com/oahlen/assets/raw/main/nix-config/laptop.png)
+![Screenshot](https://github.com/oahlen/assets/raw/main/nix-config/desktop.png)
 
 ## Installation (NixOS)
 
