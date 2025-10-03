@@ -30,7 +30,6 @@
       DOTNET_CLI_HOME = "${config.home.sessionVariables.XDG_DATA_HOME}/dotnet";
       FLAKE = "${config.home.homeDirectory}/nix-config";
       LESSHISTFILE = "${config.home.sessionVariables.XDG_DATA_HOME}/less/history";
-      MANPAGER = "less -R --use-color -Dd+b -Du+G -DP+kb -DS+ky";
       NUGET_PACKAGES = "${config.home.sessionVariables.XDG_CONFIG_HOME}/NuGetPackages";
       PGPASSFILE = "${config.home.sessionVariables.XDG_CONFIG_HOME}/pg/pgpass";
       PSQL_HISTORY = "${config.home.sessionVariables.XDG_DATA_HOME}/psql_history";
