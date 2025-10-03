@@ -5,8 +5,11 @@
       "--hidden"
       "--glob"
       "!.cache/"
+      "--glob"
       "!.dotnet/"
+      "--glob"
       "!.git/"
+      "--glob"
       "!.mozilla/"
     ];
   };
