@@ -14,7 +14,6 @@
     "${hm-modules}/programs/git"
     "${hm-modules}/programs/gitui"
     "${hm-modules}/programs/jq"
-    "${hm-modules}/programs/navi"
     "${hm-modules}/programs/neovim"
     "${hm-modules}/programs/ssh"
     "${hm-modules}/programs/tmux"

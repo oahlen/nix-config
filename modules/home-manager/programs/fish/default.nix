@@ -33,12 +33,10 @@
 
     shellAliases = {
       cat = "bat";
-      cheat-edit = "tmuxp load -y cheats";
       di = "dev-session";
       gi = "gitui";
       lf = "yazi";
       nix-edit = "tmuxp load -y nix-config";
-      n = "navi";
       note-edit = "tmuxp load -y notes";
       tree = "exa --tree";
       vim = "nvim";
