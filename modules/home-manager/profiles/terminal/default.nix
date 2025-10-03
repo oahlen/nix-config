@@ -15,6 +15,7 @@
     "${hm-modules}/programs/gitui"
     "${hm-modules}/programs/jq"
     "${hm-modules}/programs/neovim"
+    "${hm-modules}/programs/ripgrep"
     "${hm-modules}/programs/ssh"
     "${hm-modules}/programs/tmux"
     "${hm-modules}/programs/yazi"
@@ -62,7 +63,6 @@
   programs = {
     eza.enable = true;
     fastfetch.enable = true;
-    ripgrep.enable = true;
     zoxide.enable = true;
   };
 }
