@@ -38,7 +38,7 @@
       lf = "yazi";
       nix-edit = "tmuxp load -y nix-config";
       note-edit = "tmuxp load -y notes";
-      tree = "exa --tree";
+      tree = "eza --tree";
       vim = "nvim";
       vi = "nvim";
     };
