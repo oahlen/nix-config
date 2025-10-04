@@ -1,8 +1,4 @@
-{
-  hm-modules,
-  pkgs,
-  ...
-}: {
+{hm-modules, ...}: {
   imports = [
     "${hm-modules}/profiles/shared/desktop"
     "${hm-modules}/programs/foot"
@@ -17,8 +13,6 @@
   ];
 
   wayland.systemd.target = "niri-session.target";
-
-  programs.fuzzel.settings.main.launch-prefix = "${pkgs.niri}/bin/niri msg action spawn --";
 
   xdg.configFile."niri/config.kdl".source = ./config.kdl;
 
