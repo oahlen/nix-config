@@ -28,9 +28,6 @@
     };
   };
 
-  # Nix index
-  programs.nix-index.enable = true;
-
   # Nix tooling
   programs.direnv = {
     enable = true;

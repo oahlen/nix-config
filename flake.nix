@@ -13,16 +13,6 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    niri = {
-      url = "github:YaLTeR/niri/01be0e65f4eb91a9cd624ac0b76aaeab765c7294";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -30,7 +20,6 @@
     nixpkgs,
     home-manager,
     nixos-wsl,
-    nix-index-database,
     ...
   } @ inputs: let
     lib = import ./lib.nix {defaultSystems = ["x86_64-linux"];};
@@ -72,7 +61,6 @@
             ./hosts/${hostname}/home/${username}
             "${common-modules}"
             "${hm-modules}"
-            nix-index-database.homeModules.nix-index
           ];
         };
   in {
