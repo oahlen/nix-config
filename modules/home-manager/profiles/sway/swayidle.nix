@@ -1,6 +1,10 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   gtklock = "${pkgs.gtklock}/bin/gtklock -d";
-  swaymsg = "${pkgs.sway}/bin/swaymsg";
+  swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
 in {
   services.swayidle = {
     enable = true;
