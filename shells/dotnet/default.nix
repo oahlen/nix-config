@@ -33,7 +33,7 @@ in
 
     buildInputs = with pkgs; [
       combined
-      netcoredbg
+      # netcoredbg # Currently broken
       nodejs
       nodePackages.npm
       omnisharp-roslyn

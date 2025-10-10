@@ -24,7 +24,7 @@
     };
 
     packages = with pkgs; [
-      awscli2
+      # awscli2 # Currently broken
       _1password-cli
       duckdb
       hyperfine
