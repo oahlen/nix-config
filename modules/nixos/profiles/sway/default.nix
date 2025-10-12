@@ -16,7 +16,6 @@
 
   programs.sway = {
     enable = true;
-    package = pkgs.swayfx;
 
     extraPackages = with pkgs; [
       brightnessctl
