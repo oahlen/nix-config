@@ -1,7 +1,6 @@
 {
   config,
   hm-modules,
-  pkgs,
   ...
 }: {
   imports = [
@@ -38,22 +37,6 @@
     sessionPath = [
       "${config.home.sessionVariables.XDG_DATA_HOME}/dotnet/tools"
       "${config.home.sessionVariables.XDG_DATA_HOME}/cargo/bin"
-    ];
-
-    packages = with pkgs; [
-      calc
-      dogdns
-      dos2unix
-      du-dust
-      figlet
-      hexyl
-      jless
-      pokeget-rs
-      procs
-      rage
-      scooter
-      sd
-      tokei
     ];
   };
 

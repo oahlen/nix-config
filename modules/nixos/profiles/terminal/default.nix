@@ -22,10 +22,23 @@
 
   environment.systemPackages = with pkgs; [
     bottom
+    calc
     curl
+    dogdns
+    dos2unix
+    du-dust
     fd
+    figlet
+    hexyl
+    jless
     nfs-utils
+    pokeget-rs
+    procs
+    rage
     ripgrep
+    scooter
+    sd
+    tokei
     tree
     unzip
     wget
