@@ -6,10 +6,6 @@
     "${hm-modules}/programs/rbw"
   ];
 
-  programs = {
-    spotify-player.enable = true;
-  };
-
   wallpaper = ./../../lake.png;
 
   home.stateVersion = "22.11";
