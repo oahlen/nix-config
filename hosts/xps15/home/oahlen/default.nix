@@ -2,7 +2,6 @@
   imports = [
     "${hm-modules}/profiles/niri"
     "${hm-modules}/profiles/terminal"
-    "${hm-modules}/programs/ideavim"
     "${hm-modules}/programs/rbw"
   ];
 
