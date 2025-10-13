@@ -32,8 +32,10 @@
     fd
     figlet
     fish
+    fzf
     hexyl
     jless
+    jq
     nfs-utils
     pokeget-rs
     procs
