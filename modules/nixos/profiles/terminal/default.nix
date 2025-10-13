@@ -29,6 +29,7 @@
     du-dust
     fd
     figlet
+    fish
     hexyl
     jless
     nfs-utils
