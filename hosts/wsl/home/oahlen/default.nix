@@ -10,12 +10,6 @@
 
   programs.git.lfs.enable = true;
 
-  scripts = {
-    markdown-viewer.enable = true;
-    op-password-picker.enable = true;
-    toPdf.enable = true;
-  };
-
   colors = import "${common-modules}/colors/tokyonight-light.nix";
 
   home = {

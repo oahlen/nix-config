@@ -1,23 +1,10 @@
-{pkgs, ...}: {
-  imports = [
-    ./markdown-viewer
-    ./op-password-picker
-    ./password-picker
-    ./theme-switcher
-    ./toPdf
-    ./wl-logout
-  ];
+{config, ...}: {
+  xdg.configFile."scripts" = {
+    source = ./.;
+    recursive = true;
+  };
 
-  home.packages = with pkgs; [
-    (writeShellApplication {
-      name = "kernels";
-      runtimeInputs = [curl jq];
-      text = builtins.readFile ./kernels;
-    })
-    (writeShellApplication {
-      name = "nix-kernels";
-      runtimeInputs = [curl jq];
-      text = builtins.readFile ./nix-kernels;
-    })
+  home.sessionPath = [
+    "${config.home.sessionVariables.XDG_CONFIG_HOME}/scripts"
   ];
 }

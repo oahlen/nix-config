@@ -21,12 +21,6 @@
 
   home.pointerCursor.sway.enable = true;
 
-  scripts = {
-    password-picker.enable = true;
-    theme-switcher.enable = true;
-    wl-logout.enable = true;
-  };
-
   wayland.windowManager.sway = {
     enable = true;
 

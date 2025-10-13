@@ -15,10 +15,4 @@
   wayland.systemd.target = "niri-session.target";
 
   xdg.configFile."niri/config.kdl".source = ./config.kdl;
-
-  scripts = {
-    password-picker.enable = true;
-    theme-switcher.enable = true;
-    wl-logout.enable = true;
-  };
 }

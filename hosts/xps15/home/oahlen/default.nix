@@ -10,8 +10,6 @@
     "${hm-modules}/programs/rbw"
   ];
 
-  scripts.password-picker.enable = true;
-
   services.kanshi.enable = true;
 
   wallpaper = ./../../sunset.jpg;

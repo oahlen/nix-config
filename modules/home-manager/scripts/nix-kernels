@@ -1,4 +1,5 @@
 #!/bin/sh
+
 URL="https://raw.githubusercontent.com/NixOS/nixpkgs/refs/heads/nixos-unstable/pkgs/os-specific/linux/kernel/kernels-org.json"
 curl -s "$URL" | jq -r '
   to_entries[] |

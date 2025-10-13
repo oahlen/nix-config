@@ -1,4 +1,5 @@
 #!/bin/sh
+
 URL="https://www.kernel.org/releases.json"
 curl -s "$URL" | jq -r '
   .releases[] |
