@@ -1,8 +1,4 @@
-{
-  hm-modules,
-  pkgs,
-  ...
-}: {
+{hm-modules, ...}: {
   imports = [
     "${hm-modules}/profiles/niri"
     "${hm-modules}/profiles/terminal"
@@ -13,10 +9,6 @@
   services.kanshi.enable = true;
 
   wallpaper = ./../../sunset.jpg;
-
-  home.packages = with pkgs; [
-    nodejs
-  ];
 
   home.stateVersion = "25.05";
 }

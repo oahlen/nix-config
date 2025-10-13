@@ -1,4 +1,8 @@
-{nixos-modules, ...}: {
+{
+  nixos-modules,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/profiles/niri"
@@ -34,6 +38,10 @@
     "org.inkscape.Inkscape"
     "org.mozilla.firefox"
     "https://downloads.1password.com/linux/flatpak/1Password.flatpakref"
+  ];
+
+  environment.systemPackages = with pkgs; [
+    nodejs
   ];
 
   wallpaper = ./sunset.jpg;
