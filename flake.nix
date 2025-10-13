@@ -71,7 +71,6 @@
     };
 
     homeConfigurations = {
-      "oahlen@debian" = makeHomeConfiguration "x86_64-linux" "generic" "oahlen";
       "oahlen@desktop" = makeHomeConfiguration "x86_64-linux" "desktop" "oahlen";
       "oahlen@nixos" = makeHomeConfiguration "x86_64-linux" "wsl" "oahlen";
       "oahlen@xps15" = makeHomeConfiguration "x86_64-linux" "xps15" "oahlen";
