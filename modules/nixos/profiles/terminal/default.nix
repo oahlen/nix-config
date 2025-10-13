@@ -1,16 +1,4 @@
 {pkgs, ...}: {
-  programs.neovim = {
-    enable = true;
-
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-
-    withNodeJs = false;
-    withPython3 = false;
-    withRuby = false;
-  };
-
   programs.git.enable = true;
   programs.less.enable = true;
 
@@ -29,6 +17,8 @@
     dogdns
     dos2unix
     du-dust
+    eza
+    fastfetch
     fd
     figlet
     fish
@@ -37,16 +27,22 @@
     jless
     jq
     nfs-utils
+    nix-prefetch-git
+    nix-search-cli
+    nix-tree
     pokeget-rs
     procs
     rage
     ripgrep
     scooter
     sd
+    tmux
+    tmuxp
     tokei
     tree
     unzip
     wget
     zip
+    zoxide
   ];
 }

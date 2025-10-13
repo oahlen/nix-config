@@ -1,13 +1,8 @@
 {
   common-modules,
-  hm-modules,
   pkgs,
   ...
 }: {
-  imports = [
-    "${hm-modules}/profiles/terminal"
-  ];
-
   programs.git.lfs.enable = true;
 
   colors = import "${common-modules}/colors/tokyonight-light.nix";

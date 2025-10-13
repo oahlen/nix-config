@@ -1,12 +1,4 @@
-{
-  pkgs,
-  user,
-  ...
-}: {
-  imports = [
-    ./scripts
-  ];
-
+{user, ...}: {
   # Enable home-manager
   programs.home-manager.enable = true;
 
@@ -34,12 +26,6 @@
     nix-direnv.enable = true;
   };
 
-  home.packages = with pkgs; [
-    nix-tree
-    nix-prefetch-git
-    nix-search-cli
-  ];
-
   # XDG settings
   xdg = {
     enable = true;
@@ -47,48 +33,6 @@
     userDirs = {
       enable = true;
       createDirectories = true;
-    };
-
-    mimeApps = {
-      enable = true;
-      associations.added = {
-        "inode/directory" = ["org.gnome.Nautilus.desktop"];
-
-        "text/plain" = ["org.gnome.TextEditor.desktop"];
-
-        "application/x-extension-htm" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-html" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-shtml" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-xht" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-xhtml" = ["org.mozilla.firefox.desktop"];
-        "application/xhtml+xml" = ["org.mozilla.firefox.desktop"];
-        "text/html" = ["org.mozilla.firefox.desktop"];
-        "x-scheme-handler/chrome" = ["org.mozilla.firefox.desktop"];
-        "x-scheme-handler/http" = ["org.mozilla.firefox.desktop"];
-        "x-scheme-handler/https" = ["org.mozilla.firefox.desktop"];
-
-        "image/jpeg" = ["org.gnome.Loupe.desktop"];
-        "image/png" = ["org.gnome.Loupe.desktop"];
-      };
-      defaultApplications = {
-        "inode/directory" = ["org.gnome.Nautilus.desktop"];
-
-        "text/plain" = ["org.gnome.TextEditor.desktop"];
-
-        "application/x-extension-htm" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-html" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-shtml" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-xht" = ["org.mozilla.firefox.desktop"];
-        "application/x-extension-xhtml" = ["org.mozilla.firefox.desktop"];
-        "application/xhtml+xml" = ["org.mozilla.firefox.desktop"];
-        "text/html" = ["org.mozilla.firefox.desktop"];
-        "x-scheme-handler/chrome" = ["org.mozilla.firefox.desktop"];
-        "x-scheme-handler/http" = ["org.mozilla.firefox.desktop"];
-        "x-scheme-handler/https" = ["org.mozilla.firefox.desktop"];
-
-        "image/jpeg" = ["org.gnome.Loupe.desktop"];
-        "image/png" = ["org.gnome.Loupe.desktop"];
-      };
     };
   };
 

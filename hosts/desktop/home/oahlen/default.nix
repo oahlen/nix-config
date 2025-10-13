@@ -1,7 +1,6 @@
 {hm-modules, ...}: {
   imports = [
     "${hm-modules}/profiles/niri"
-    "${hm-modules}/profiles/terminal"
     "${hm-modules}/programs/mangohud"
     "${hm-modules}/programs/rbw"
   ];

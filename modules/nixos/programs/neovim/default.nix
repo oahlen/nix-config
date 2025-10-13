@@ -4,7 +4,7 @@
   ...
 }: {
   # Language servers and tools
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     customPackages.nixvim-full
     alejandra
     stylua
