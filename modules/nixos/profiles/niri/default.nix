@@ -10,11 +10,17 @@
     "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"
     "${nixos-modules}/services/polkit"
+    "${nixos-modules}/services/swayidle"
   ];
 
   services.displayManager.gdm.enable = true;
 
   programs.niri.enable = true;
+
+  programs.waybar = {
+    enable = true;
+    systemd.target = "niri-session.target";
+  };
 
   systemd.user.targets.niri-session = {
     description = "niri compositor session";
@@ -25,6 +31,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    adw-gtk3
     brightnessctl
     hyprpicker
     libnotify
@@ -38,8 +45,15 @@
     xwayland-satellite
   ];
 
-  services.polkit-gnome = {
-    enable = true;
-    systemd.target = "niri-session.target";
+  services = {
+    polkit-gnome = {
+      enable = true;
+      systemd.target = "niri-session.target";
+    };
+
+    swayidle = {
+      enable = true;
+      systemd.target = "niri-session.target";
+    };
   };
 }

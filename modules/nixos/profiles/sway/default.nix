@@ -18,6 +18,7 @@
     enable = true;
 
     extraPackages = with pkgs; [
+      adw-gtk3
       brightnessctl
       grim
       hyprpicker

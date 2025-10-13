@@ -19,16 +19,19 @@ in
       };
     };
     config = mkIf cfg.enable {
-      environment.systemPackages = with pkgs; [
-        kanshi
+      environment.systemPackages = [
+        pkgs.kanshi
       ];
 
       systemd.user.services.kanshi = {
         description = "Dynamic output configuration";
         documentation = ["man:kanshi(1)"];
+
+        after = [cfg.systemd.target];
         partOf = [cfg.systemd.target];
         requires = [cfg.systemd.target];
-        after = [cfg.systemd.target];
+        wantedBy = [cfg.systemd.target];
+        wants = [cfg.systemd.target];
 
         unitConfig = {
           ConditionEnvironment = "WAYLAND_DISPLAY";
