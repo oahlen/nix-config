@@ -21,6 +21,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    bottom
     curl
     fd
     nfs-utils
