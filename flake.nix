@@ -33,6 +33,7 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs common-modules nixos-modules;
+            customPackages = self.outputs.packages;
             user = users.${username};
           };
 
@@ -85,10 +86,6 @@
 
     devShells = lib.forEachDefaultSystem (
       system: {
-        default = import ./shells {
-          customPackages = self.outputs.packages.${system};
-          inherit nixpkgs system;
-        };
         dotnet = import ./shells/dotnet {inherit nixpkgs system;};
         fhs = import ./shells/fhs {inherit nixpkgs system;};
         huey = import ./shells/huey {

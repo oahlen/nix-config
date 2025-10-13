@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{
+  nixos-modules,
+  pkgs,
+  ...
+}: {
+  imports = [
+    "${nixos-modules}/programs/direnv"
+    "${nixos-modules}/programs/neovim"
+  ];
+
   programs.git.enable = true;
   programs.less.enable = true;
 
@@ -23,6 +32,7 @@
     figlet
     fish
     fzf
+    gitui
     hexyl
     jless
     jq
@@ -42,6 +52,8 @@
     tree
     unzip
     wget
+    xdg-user-dirs
+    yazi
     zip
     zoxide
   ];

@@ -1,5 +1,6 @@
 {
   nixos-modules,
+  pkgs,
   user,
   ...
 }: {
@@ -18,7 +19,22 @@
     useWindowsDriver = true;
   };
 
+  programs.git.lfs.enable = true;
   programs.ssh.startAgent = true;
+
+  environment.systemPackages = with pkgs; [
+    # awscli2 # Currently broken
+    _1password-cli
+    duckdb
+    hyperfine
+    nodejs # For Github Copilot
+    pqrs
+    qsv
+    stow
+    typst
+    wl-clipboard
+    xdg-utils
+  ];
 
   services.timesyncd.enable = true;
 

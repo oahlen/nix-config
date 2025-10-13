@@ -9,6 +9,7 @@
     "${nixos-modules}/profiles/niri"
     "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
+    "${nixos-modules}/programs/rbw"
     "${nixos-modules}/services/bluetooth"
     "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/plymouth"
