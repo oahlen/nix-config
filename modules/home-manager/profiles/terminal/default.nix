@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    "${hm-modules}/programs/bat"
     "${hm-modules}/programs/fzf"
     "${hm-modules}/programs/git"
     "${hm-modules}/programs/gitui"

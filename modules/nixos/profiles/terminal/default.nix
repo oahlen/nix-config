@@ -21,6 +21,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    bat
+    bat-extras.batman
     bottom
     calc
     curl
