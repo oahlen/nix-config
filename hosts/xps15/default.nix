@@ -12,6 +12,7 @@
     "${nixos-modules}/programs/virt-manager"
     "${nixos-modules}/services/bluetooth"
     "${nixos-modules}/services/flatpak"
+    "${nixos-modules}/services/kanshi"
     "${nixos-modules}/services/plymouth"
     "${nixos-modules}/services/powertop"
     "${nixos-modules}/services/tailscale"
@@ -31,6 +32,11 @@
     hardware.bolt.enable = true;
     power-profiles-daemon.enable = true;
     thermald.enable = true;
+
+    kanshi = {
+      enable = true;
+      systemd.target = "niri-session.target";
+    };
   };
 
   services.flatpak.packages = [
@@ -44,8 +50,6 @@
   environment.systemPackages = with pkgs; [
     nodejs
   ];
-
-  wallpaper = ./sunset.jpg;
 
   fileSystems."/".options = ["noatime" "nodiratime" "discard"];
 

@@ -13,6 +13,4 @@
   ];
 
   wayland.systemd.target = "niri-session.target";
-
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
 }

@@ -30,7 +30,6 @@
     nodejs # For Github Copilot
     pqrs
     qsv
-    stow
     typst
     wl-clipboard
     xdg-utils

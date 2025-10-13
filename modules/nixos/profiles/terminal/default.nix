@@ -46,6 +46,7 @@
     ripgrep
     scooter
     sd
+    stow
     tmux
     tmuxp
     tokei

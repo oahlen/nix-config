@@ -13,7 +13,7 @@ in
       systemd.target = lib.mkOption {
         type = lib.types.str;
         description = ''
-          The systemd target that will automatically start the polkit service.
+          The systemd target that will automatically start the service.
         '';
         default = "graphical-session.target";
       };
