@@ -26,24 +26,20 @@
     users = import ./users.nix;
     common-modules = "${self}/modules/common";
 
-    makeNixosConfiguration = let
-      nixos-modules = "${self}/modules/nixos";
-    in
-      hostname: username:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs common-modules nixos-modules;
-            customPackages = self.outputs.packages;
-            user = users.${username};
-          };
-
-          modules = [
-            ./hosts/${hostname}
-            "${common-modules}"
-            "${nixos-modules}"
-            nixos-wsl.nixosModules.wsl
-          ];
+    makeNixosConfiguration = hostname: username:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          customPackages = self.outputs.packages;
+          user = users.${username};
         };
+
+        modules = [
+          ./hosts/${hostname}
+          ./modules/nixos
+          nixos-wsl.nixosModules.wsl
+        ];
+      };
 
     makeHomeConfiguration = let
       hm-modules = "${self}/modules/home-manager";

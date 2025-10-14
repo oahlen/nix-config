@@ -1,5 +1,5 @@
 {lib, ...}: {
-  # Common settings
+  # Top level options
   options.wayland.systemd.target = lib.mkOption {
     type = lib.types.str;
     default = "graphical-session.target";

@@ -1,12 +1,10 @@
 {
   customPackages,
-  nixos-modules,
   pkgs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/profiles/niri"
   ];
 
   networking.hostName = "xps15";
@@ -23,6 +21,7 @@
   modules = {
     development.enable = true;
     fonts.enable = true;
+    niri.enable = true;
     podman.enable = true;
     splashscreen.enable = true;
     tailscale.enable = true;

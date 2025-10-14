@@ -1,12 +1,10 @@
 {
   customPackages,
-  nixos-modules,
   pkgs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/profiles/niri"
   ];
 
   networking.hostName = "desktop";
@@ -23,6 +21,7 @@
     development.enable = true;
     fonts.enable = true;
     gaming.enable = true;
+    niri.enable = true;
     podman.enable = true;
     splashscreen.enable = true;
     tailscale.enable = true;
@@ -46,8 +45,6 @@
   environment.systemPackages = [
     customPackages.${pkgs.stdenv.hostPlatform.system}.rbw
   ];
-
-  wallpaper = ./lake.png;
 
   fileSystems = {
     "/".options = ["noatime" "nodiratime" "discard"];
