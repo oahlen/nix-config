@@ -2,11 +2,10 @@
   config,
   nixos-modules,
   pkgs,
+  user,
   ...
 }: {
   imports = [
-    "${nixos-modules}/profiles/shared/desktop"
-    "${nixos-modules}/profiles/shared/fonts"
     "${nixos-modules}/programs/gtklock"
     "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"
@@ -23,9 +22,13 @@
     extraPackages = with pkgs; [
       adw-gtk3
       brightnessctl
+      gnome-multi-writer
+      gnome-text-editor
       grim
       hyprpicker
       libnotify
+      loupe
+      nautilus
       papirus-icon-theme
       pavucontrol
       playerctl
@@ -38,6 +41,10 @@
     ];
   };
 
+  users.users.${user.name} = {
+    extraGroups = ["audio" "video"];
+  };
+
   programs.xwayland.enable = true;
 
   xdg.portal = {
@@ -46,15 +53,26 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
-  services.polkit-gnome = {
-    enable = true;
-    systemd.target = "sway-session.target";
+  services = {
+    dbus = {
+      enable = true;
+      packages = with pkgs; [gcr_4];
+    };
+
+    gnome.gnome-keyring.enable = true;
+    gvfs.enable = true;
+    polkit-gnome.enable = true;
+    tumbler.enable = true;
   };
 
-  programs.waybar = {
-    enable = true;
-    systemd.target = config.wayland.systemd.target;
+  programs = {
+    gnome-disks.enable = true;
+
+    waybar = {
+      enable = true;
+      systemd.target = config.wayland.systemd.target;
+    };
   };
 
-  services.gnome.gnome-keyring.enable = true;
+  fonts.packages = import ./../shared/fonts {inherit pkgs;};
 }

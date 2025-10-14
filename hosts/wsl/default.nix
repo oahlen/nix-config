@@ -1,18 +1,10 @@
 {
-  nixos-modules,
   pkgs,
   user,
   ...
 }: {
-  imports = [
-    "${nixos-modules}/programs/apptainer"
-    "${nixos-modules}/programs/podman"
-  ];
-
   # Since we don't have a hardware-configuration.nix
   nixpkgs.hostPlatform = "x86_64-linux";
-
-  modules.development.enable = true;
 
   wsl = {
     enable = true;
@@ -20,8 +12,16 @@
     useWindowsDriver = true;
   };
 
-  programs.git.lfs.enable = true;
-  programs.ssh.startAgent = true;
+  modules = {
+    apptainer.enable = true;
+    development.enable = true;
+    podman.enable = true;
+  };
+
+  programs = {
+    git.lfs.enable = true;
+    ssh.startAgent = true;
+  };
 
   environment.systemPackages = with pkgs; [
     # awscli2 # Currently broken

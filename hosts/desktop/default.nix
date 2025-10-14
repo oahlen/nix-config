@@ -6,10 +6,8 @@
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/profiles/niri"
-    "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/rbw"
     "${nixos-modules}/services/bluetooth"
-    "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/plymouth"
     "${nixos-modules}/services/tailscale"
     "${nixos-modules}/services/yubikey"
@@ -23,22 +21,25 @@
     kernelModules = ["amdgpu"];
   };
 
-  modules.development.enable = true;
-  modules.gaming.enable = true;
+  modules = {
+    development.enable = true;
+    gaming.enable = true;
+    podman.enable = true;
+  };
 
   services = {
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
-  };
 
-  services.flatpak.packages = [
-    "com.bitwarden.desktop"
-    "com.github.PintaProject.Pinta"
-    "md.obsidian.Obsidian"
-    "org.inkscape.Inkscape"
-    "org.keepassxc.KeePassXC"
-    "org.mozilla.firefox"
-  ];
+    flatpak.packages = [
+      "com.bitwarden.desktop"
+      "com.github.PintaProject.Pinta"
+      "md.obsidian.Obsidian"
+      "org.inkscape.Inkscape"
+      "org.keepassxc.KeePassXC"
+      "org.mozilla.firefox"
+    ];
+  };
 
   wallpaper = ./lake.png;
 

@@ -7,7 +7,6 @@
 }:
 with lib.hm.gvariant; {
   imports = [
-    "${hm-modules}/profiles/shared/desktop"
     "${hm-modules}/programs/kitty"
   ];
 
@@ -27,6 +26,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/desktop/interface" = {
       accent-color = "blue";
+      icon-theme = "Papirus-Dark";
       enable-animations = false;
     };
 
@@ -113,6 +113,10 @@ with lib.hm.gvariant; {
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
       screensaver = ["<Super><Alt>l"];
+    };
+
+    "org/gtk/gtk4/settings/file-chooser" = {
+      show-hidden = true;
     };
 
     "system/locale" = {

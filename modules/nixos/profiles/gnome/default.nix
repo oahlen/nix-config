@@ -6,7 +6,6 @@
 }:
 with lib; {
   imports = [
-    "${nixos-modules}/profiles/shared/fonts"
     "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"
   ];
@@ -59,4 +58,6 @@ with lib; {
     totem
     yelp
   ];
+
+  fonts.packages = import ./../shared/fonts {inherit pkgs;};
 }

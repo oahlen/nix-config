@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    "${hm-modules}/profiles/shared/desktop"
     "${hm-modules}/programs/foot"
     "${hm-modules}/programs/fuzzel"
     "${hm-modules}/programs/waybar"

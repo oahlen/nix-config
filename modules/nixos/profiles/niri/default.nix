@@ -2,11 +2,10 @@
   config,
   nixos-modules,
   pkgs,
+  user,
   ...
 }: {
   imports = [
-    "${nixos-modules}/profiles/shared/desktop"
-    "${nixos-modules}/profiles/shared/fonts"
     "${nixos-modules}/programs/gtklock"
     "${nixos-modules}/services/networkmanager"
     "${nixos-modules}/services/pipewire"
@@ -31,8 +30,15 @@
   environment.systemPackages = with pkgs; [
     adw-gtk3
     brightnessctl
+    foot
+    fuzzel
+    gnome-multi-writer
+    gnome-text-editor
     hyprpicker
     libnotify
+    loupe
+    mako
+    nautilus
     papirus-icon-theme
     pavucontrol
     playerctl
@@ -43,13 +49,30 @@
     xwayland-satellite
   ];
 
-  services = {
-    polkit-gnome.enable = true;
-    swayidle.enable = true;
+  users.users.${user.name} = {
+    extraGroups = ["audio" "video"];
   };
 
-  programs.waybar = {
-    enable = true;
-    systemd.target = config.wayland.systemd.target;
+  services = {
+    dbus = {
+      enable = true;
+      packages = with pkgs; [gcr_4 mako];
+    };
+
+    gvfs.enable = true;
+    polkit-gnome.enable = true;
+    swayidle.enable = true;
+    tumbler.enable = true;
   };
+
+  programs = {
+    gnome-disks.enable = true;
+
+    waybar = {
+      enable = true;
+      systemd.target = config.wayland.systemd.target;
+    };
+  };
+
+  fonts.packages = import ./../shared/fonts {inherit pkgs;};
 }

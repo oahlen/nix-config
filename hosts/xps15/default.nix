@@ -6,11 +6,8 @@
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/profiles/niri"
-    "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/rbw"
-    "${nixos-modules}/programs/virt-manager"
     "${nixos-modules}/services/bluetooth"
-    "${nixos-modules}/services/flatpak"
     "${nixos-modules}/services/kanshi"
     "${nixos-modules}/services/plymouth"
     "${nixos-modules}/services/powertop"
@@ -25,7 +22,11 @@
     blacklistedKernelModules = ["nouveau"];
   };
 
-  modules.development.enable = true;
+  modules = {
+    development.enable = true;
+    podman.enable = true;
+    virt-manager.enable = true;
+  };
 
   services = {
     fstrim.enable = true;
@@ -38,15 +39,15 @@
       enable = true;
       systemd.target = "niri-session.target";
     };
-  };
 
-  services.flatpak.packages = [
-    "com.github.PintaProject.Pinta"
-    "org.chromium.Chromium"
-    "org.inkscape.Inkscape"
-    "org.mozilla.firefox"
-    "https://downloads.1password.com/linux/flatpak/1Password.flatpakref"
-  ];
+    flatpak.packages = [
+      "com.github.PintaProject.Pinta"
+      "org.chromium.Chromium"
+      "org.inkscape.Inkscape"
+      "org.mozilla.firefox"
+      "https://downloads.1password.com/linux/flatpak/1Password.flatpakref"
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     nodejs
