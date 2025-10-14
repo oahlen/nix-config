@@ -1,14 +1,13 @@
 {
-  nixos-modules,
   lib,
   pkgs,
   ...
 }:
 with lib; {
-  imports = [
-    "${nixos-modules}/services/networkmanager"
-    "${nixos-modules}/services/pipewire"
-  ];
+  modules = {
+    networkmanager.enable = true;
+    pipewire.enable = true;
+  };
 
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -58,6 +57,4 @@ with lib; {
     totem
     yelp
   ];
-
-  fonts.packages = import ./../shared/fonts {inherit pkgs;};
 }

@@ -1,4 +1,5 @@
 {
+  customPackages,
   nixos-modules,
   pkgs,
   ...
@@ -6,13 +7,6 @@
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/profiles/niri"
-    "${nixos-modules}/programs/rbw"
-    "${nixos-modules}/services/bluetooth"
-    "${nixos-modules}/services/kanshi"
-    "${nixos-modules}/services/plymouth"
-    "${nixos-modules}/services/powertop"
-    "${nixos-modules}/services/tailscale"
-    "${nixos-modules}/services/yubikey"
   ];
 
   networking.hostName = "xps15";
@@ -22,23 +16,27 @@
     blacklistedKernelModules = ["nouveau"];
   };
 
+  hardware.bluetooth.enable = true;
+
+  powerManagement.powertop.enable = true;
+
   modules = {
     development.enable = true;
+    fonts.enable = true;
     podman.enable = true;
+    splashscreen.enable = true;
+    tailscale.enable = true;
     virt-manager.enable = true;
+    yubikey.enable = true;
   };
 
   services = {
     fstrim.enable = true;
     fwupd.enable = true;
     hardware.bolt.enable = true;
+    kanshi.enable = true;
     power-profiles-daemon.enable = true;
     thermald.enable = true;
-
-    kanshi = {
-      enable = true;
-      systemd.target = "niri-session.target";
-    };
 
     flatpak.packages = [
       "com.github.PintaProject.Pinta"
@@ -51,6 +49,8 @@
 
   environment.systemPackages = with pkgs; [
     nodejs
+    powertop
+    customPackages.${pkgs.stdenv.hostPlatform.system}.rbw
   ];
 
   fileSystems."/".options = ["noatime" "nodiratime" "discard"];

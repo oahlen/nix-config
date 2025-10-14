@@ -1,4 +1,5 @@
 {
+  customPackages,
   nixos-modules,
   pkgs,
   ...
@@ -6,11 +7,6 @@
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/profiles/niri"
-    "${nixos-modules}/programs/rbw"
-    "${nixos-modules}/services/bluetooth"
-    "${nixos-modules}/services/plymouth"
-    "${nixos-modules}/services/tailscale"
-    "${nixos-modules}/services/yubikey"
   ];
 
   networking.hostName = "desktop";
@@ -21,10 +17,16 @@
     kernelModules = ["amdgpu"];
   };
 
+  hardware.bluetooth.enable = true;
+
   modules = {
     development.enable = true;
+    fonts.enable = true;
     gaming.enable = true;
     podman.enable = true;
+    splashscreen.enable = true;
+    tailscale.enable = true;
+    yubikey.enable = true;
   };
 
   services = {
@@ -40,6 +42,10 @@
       "org.mozilla.firefox"
     ];
   };
+
+  environment.systemPackages = [
+    customPackages.${pkgs.stdenv.hostPlatform.system}.rbw
+  ];
 
   wallpaper = ./lake.png;
 

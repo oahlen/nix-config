@@ -1,17 +1,15 @@
 {
   config,
-  nixos-modules,
   pkgs,
   user,
   ...
 }: {
-  imports = [
-    "${nixos-modules}/programs/gtklock"
-    "${nixos-modules}/services/networkmanager"
-    "${nixos-modules}/services/pipewire"
-    "${nixos-modules}/services/polkit"
-    "${nixos-modules}/services/swayidle"
-  ];
+  modules = {
+    networkmanager.enable = true;
+    pipewire.enable = true;
+    polkit.enable = true;
+    screenlocker.enable = true;
+  };
 
   wayland.systemd.target = "niri-session.target";
 
@@ -54,14 +52,14 @@
   };
 
   services = {
+    blueman.enable = config.hardware.bluetooth.enable;
+
     dbus = {
       enable = true;
       packages = with pkgs; [gcr_4 mako];
     };
 
     gvfs.enable = true;
-    polkit-gnome.enable = true;
-    swayidle.enable = true;
     tumbler.enable = true;
   };
 
@@ -73,6 +71,4 @@
       systemd.target = config.wayland.systemd.target;
     };
   };
-
-  fonts.packages = import ./../shared/fonts {inherit pkgs;};
 }

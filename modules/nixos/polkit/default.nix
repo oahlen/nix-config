@@ -5,10 +5,10 @@
   ...
 }:
 with lib; let
-  cfg = config.services.polkit-gnome;
+  cfg = config.modules.polkit;
 in {
-  options.services.polkit-gnome = {
-    enable = mkEnableOption "Custom polkit-gnome service";
+  options.modules.polkit = {
+    enable = mkEnableOption "Enable polkit";
 
     systemd.target = lib.mkOption {
       type = lib.types.str;

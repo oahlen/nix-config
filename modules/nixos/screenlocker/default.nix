@@ -5,21 +5,43 @@
   ...
 }:
 with lib; let
-  cfg = config.services.swayidle;
+  cfg = config.modules.screenlocker;
 in {
-  options.services.swayidle = {
-    enable = mkEnableOption "Idle manager for Wayland";
+  options.modules.screenlocker = {
+    enable = mkEnableOption "Enable screenlocker";
 
     systemd.target = lib.mkOption {
       type = lib.types.str;
       description = ''
-        The systemd target that will automatically start the service.
+        The systemd target that will automatically start the screenlocker idle service.
       '';
       default = config.wayland.systemd.target;
     };
   };
 
   config = mkIf cfg.enable {
+    programs.gtklock = {
+      enable = true;
+
+      config = {
+        main = {
+          gtk-theme = "adw-gtk3-dark";
+          idle-hide = true;
+          idle-timeout = 10;
+        };
+      };
+
+      modules = with pkgs; [
+        gtklock-playerctl-module
+        gtklock-powerbar-module
+        gtklock-userinfo-module
+      ];
+    };
+
+    environment.systemPackages = with pkgs; [
+      adw-gtk3
+    ];
+
     systemd.user.services.swayidle = {
       description = "Idle manager for Wayland";
       documentation = ["man:swayidle(1)"];
@@ -34,6 +56,7 @@ in {
         ConditionEnvironment = "WAYLAND_DISPLAY";
       };
 
+      # TODO Make monitor command configurable
       serviceConfig = {
         Environment = ["PATH=${lib.makeBinPath [pkgs.bash]}"];
         Type = "simple";
