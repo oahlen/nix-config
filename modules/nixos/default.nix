@@ -1,6 +1,7 @@
 {user, ...}: {
   imports = [
-    ./options
+    ./modules.nix
+    ./options.nix
   ];
 
   # Nixpkgs settings

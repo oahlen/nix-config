@@ -5,9 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    "${nixos-modules}/profiles/gaming"
     "${nixos-modules}/profiles/niri"
-    "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/rbw"
     "${nixos-modules}/services/bluetooth"
@@ -24,6 +22,9 @@
     kernelPackages = pkgs.linuxPackages_6_17;
     kernelModules = ["amdgpu"];
   };
+
+  modules.development.enable = true;
+  modules.gaming.enable = true;
 
   services = {
     fstrim.enable = true;

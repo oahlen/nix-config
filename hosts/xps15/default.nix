@@ -6,7 +6,6 @@
   imports = [
     ./hardware-configuration.nix
     "${nixos-modules}/profiles/niri"
-    "${nixos-modules}/profiles/terminal"
     "${nixos-modules}/programs/podman"
     "${nixos-modules}/programs/rbw"
     "${nixos-modules}/programs/virt-manager"
@@ -25,6 +24,8 @@
     loader.systemd-boot.enable = true;
     blacklistedKernelModules = ["nouveau"];
   };
+
+  modules.development.enable = true;
 
   services = {
     fstrim.enable = true;
