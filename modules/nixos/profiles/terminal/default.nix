@@ -4,17 +4,23 @@
   ...
 }: {
   imports = [
-    "${nixos-modules}/programs/direnv"
     "${nixos-modules}/programs/neovim"
   ];
-
-  programs.git.enable = true;
-  programs.less.enable = true;
 
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
     PAGER = "less";
+  };
+
+  programs = {
+    git.enable = true;
+    less.enable = true;
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [

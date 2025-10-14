@@ -1,12 +1,4 @@
-{
-  nixos-modules,
-  pkgs,
-  ...
-}: {
-  imports = [
-    "${nixos-modules}/programs/gamemode"
-  ];
-
+{pkgs, ...}: {
   hardware = {
     amdgpu.overdrive.enable = true;
 
@@ -24,6 +16,17 @@
   services.udev.packages = with pkgs; [
     game-devices-udev-rules
   ];
+
+  # Gamemode
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      custom = {
+        start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+        end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+      };
+    };
+  };
 
   # Game launchers and utilities
   environment.systemPackages = with pkgs; [
