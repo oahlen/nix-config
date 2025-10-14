@@ -63,7 +63,7 @@
     settings = {
       auto-optimise-store = true;
       experimental-features = "nix-command flakes";
-      use-xdg-base-directories = false;
+      use-xdg-base-directories = false; # Set to true
     };
 
     extraOptions = ''
@@ -99,5 +99,5 @@
   services.dbus.implementation = "broker";
 
   # Enable dconf system wide
-  programs.dconf.enable = true;
+  programs.dconf.enable = true; # TODO move to desktop module
 }
