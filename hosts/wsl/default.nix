@@ -18,6 +18,8 @@
     podman.enable = true;
   };
 
+  services.timesyncd.enable = true;
+
   programs = {
     git.lfs.enable = true;
     ssh.startAgent = true;
@@ -35,8 +37,6 @@
     wl-clipboard
     xdg-utils
   ];
-
-  services.timesyncd.enable = true;
 
   system.stateVersion = "24.11";
 }
