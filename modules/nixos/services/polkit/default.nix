@@ -15,26 +15,28 @@ in
         description = ''
           The systemd target that will automatically start the service.
         '';
-        default = "graphical-session.target";
+        default = config.wayland.systemd.target;
       };
     };
 
     config = mkIf cfg.enable {
       security.polkit.enable = true;
 
-      systemd = {
-        user.services.polkit-gnome-authentication-agent-1 = {
-          description = "Authentication agent";
-          wantedBy = [cfg.systemd.target];
-          wants = [cfg.systemd.target];
-          after = [cfg.systemd.target];
-          serviceConfig = {
-            Type = "simple";
-            ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-            Restart = "on-failure";
-            RestartSec = 1;
-            TimeoutStopSec = 10;
-          };
+      systemd.user.services.polkit-gnome-authentication-agent-1 = {
+        description = "Authentication agent";
+
+        after = [cfg.systemd.target];
+        partOf = [cfg.systemd.target];
+        requires = [cfg.systemd.target];
+        wantedBy = [cfg.systemd.target];
+        wants = [cfg.systemd.target];
+
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
         };
       };
     };

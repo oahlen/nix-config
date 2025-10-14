@@ -1,4 +1,8 @@
 {user, ...}: {
+  imports = [
+    ./options
+  ];
+
   # Nixpkgs settings
   nixpkgs.config.allowUnfree = true;
 

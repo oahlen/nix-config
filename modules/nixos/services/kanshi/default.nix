@@ -15,9 +15,10 @@ in
         description = ''
           The systemd target that will automatically start the service.
         '';
-        default = "graphical-session.target";
+        default = config.wayland.systemd.target;
       };
     };
+
     config = mkIf cfg.enable {
       environment.systemPackages = [
         pkgs.kanshi
@@ -40,7 +41,7 @@ in
         serviceConfig = {
           Type = "simple";
           ExecStart = "${pkgs.kanshi}/bin/kanshi";
-          Restart = "always";
+          Restart = "on-failure";
         };
       };
     };

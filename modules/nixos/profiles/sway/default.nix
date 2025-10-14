@@ -1,4 +1,5 @@
 {
+  config,
   nixos-modules,
   pkgs,
   ...
@@ -11,6 +12,8 @@
     "${nixos-modules}/services/pipewire"
     "${nixos-modules}/services/polkit"
   ];
+
+  wayland.systemd.target = "sway-session.target";
 
   services.displayManager.gdm.enable = true;
 
@@ -46,6 +49,11 @@
   services.polkit-gnome = {
     enable = true;
     systemd.target = "sway-session.target";
+  };
+
+  programs.waybar = {
+    enable = true;
+    systemd.target = config.wayland.systemd.target;
   };
 
   services.gnome.gnome-keyring.enable = true;

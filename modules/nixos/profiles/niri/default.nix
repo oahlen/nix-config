@@ -1,4 +1,5 @@
 {
+  config,
   nixos-modules,
   pkgs,
   ...
@@ -13,14 +14,11 @@
     "${nixos-modules}/services/swayidle"
   ];
 
+  wayland.systemd.target = "niri-session.target";
+
   services.displayManager.gdm.enable = true;
 
   programs.niri.enable = true;
-
-  programs.waybar = {
-    enable = true;
-    systemd.target = "niri-session.target";
-  };
 
   systemd.user.targets.niri-session = {
     description = "niri compositor session";
@@ -46,14 +44,12 @@
   ];
 
   services = {
-    polkit-gnome = {
-      enable = true;
-      systemd.target = "niri-session.target";
-    };
+    polkit-gnome.enable = true;
+    swayidle.enable = true;
+  };
 
-    swayidle = {
-      enable = true;
-      systemd.target = "niri-session.target";
-    };
+  programs.waybar = {
+    enable = true;
+    systemd.target = config.wayland.systemd.target;
   };
 }

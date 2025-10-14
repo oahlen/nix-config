@@ -15,9 +15,10 @@ in
         description = ''
           The systemd target that will automatically start the service.
         '';
-        default = "graphical-session.target";
+        default = config.wayland.systemd.target;
       };
     };
+
     config = mkIf cfg.enable {
       systemd.user.services.swayidle = {
         description = "Idle manager for Wayland";
@@ -43,7 +44,7 @@ in
             timeout 1800 '${pkgs.systemd}/bin/systemctl suspend' \
             before-sleep '${pkgs.gtklock}/bin/gtklock -d'
           '';
-          Restart = "always";
+          Restart = "on-failure";
         };
       };
     };
