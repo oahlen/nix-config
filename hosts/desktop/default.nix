@@ -22,7 +22,7 @@
     fonts.enable = true;
     gaming.enable = true;
     niri.enable = true;
-    podman.enable = true;
+    virtualisation.podman.enable = true;
     splashscreen.enable = true;
     tailscale.enable = true;
     yubikey.enable = true;

@@ -13,9 +13,12 @@
   };
 
   modules = {
-    apptainer.enable = true;
     development.enable = true;
-    podman.enable = true;
+
+    virtualisation = {
+      apptainer.enable = true;
+      podman.enable = true;
+    };
   };
 
   services.timesyncd.enable = true;

@@ -22,10 +22,14 @@
     development.enable = true;
     fonts.enable = true;
     niri.enable = true;
-    podman.enable = true;
     splashscreen.enable = true;
     tailscale.enable = true;
-    virt-manager.enable = true;
+
+    virtualisation = {
+      podman.enable = true;
+      virt-manager.enable = true;
+    };
+
     yubikey.enable = true;
   };
 

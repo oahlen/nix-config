@@ -1,7 +1,6 @@
 {...}: {
   # Common modules
   imports = [
-    ./apptainer
     ./development
     ./flatpak
     ./fonts
@@ -12,13 +11,12 @@
     ./networkmanager
     ./niri
     ./pipewire
-    ./podman
     ./polkit
     ./screenlocker
     ./splashscreen
     ./sway
     ./tailscale
-    ./virt-manager
+    ./virtualisation
     ./yubikey
   ];
 }

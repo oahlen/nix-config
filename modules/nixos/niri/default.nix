@@ -32,28 +32,6 @@ in {
       after = ["graphical-session-pre.target"];
     };
 
-    environment.systemPackages = with pkgs; [
-      adw-gtk3
-      brightnessctl
-      foot
-      fuzzel
-      gnome-multi-writer
-      gnome-text-editor
-      hyprpicker
-      libnotify
-      loupe
-      mako
-      nautilus
-      papirus-icon-theme
-      pavucontrol
-      playerctl
-      swayimg
-      wl-clipboard
-      wl-mirror
-      xdg-utils
-      xwayland-satellite
-    ];
-
     users.users.${user.name} = {
       extraGroups = ["audio" "video"];
     };
@@ -78,5 +56,27 @@ in {
         systemd.target = config.wayland.systemd.target;
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      adw-gtk3
+      brightnessctl
+      foot
+      fuzzel
+      gnome-multi-writer
+      gnome-text-editor
+      hyprpicker
+      libnotify
+      loupe
+      mako
+      nautilus
+      papirus-icon-theme
+      pavucontrol
+      playerctl
+      swayimg
+      wl-clipboard
+      wl-mirror
+      xdg-utils
+      xwayland-satellite
+    ];
   };
 }

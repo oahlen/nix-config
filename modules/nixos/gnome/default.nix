@@ -18,6 +18,15 @@ in {
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
 
+    services.gnome = {
+      evolution-data-server.enable = mkForce false;
+      gnome-online-accounts.enable = false;
+    };
+
+    programs = {
+      evolution.enable = false;
+    };
+
     environment.systemPackages = with pkgs;
       [
         dconf-editor
@@ -29,13 +38,6 @@ in {
         gnome-40-ui-improvements
         places-status-indicator
       ]);
-
-    programs.evolution.enable = false;
-
-    services.gnome = {
-      evolution-data-server.enable = mkForce false;
-      gnome-online-accounts.enable = false;
-    };
 
     environment.gnome.excludePackages = with pkgs; [
       baobab
