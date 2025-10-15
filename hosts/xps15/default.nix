@@ -19,6 +19,7 @@
   powerManagement.powertop.enable = true;
 
   modules = {
+    boot.plymouth.enable = true;
     development.enable = true;
     desktop.niri.enable = true;
     networking.tailscale.enable = true;

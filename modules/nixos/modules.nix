@@ -1,15 +1,14 @@
 {...}: {
   # Common modules
   imports = [
-    ./development
+    ./boot
     ./desktop
-    ./flatpak
+    ./development
     ./gaming
-    ./kanshi
-    ./polkit
-    ./screenlocker
     ./networking
-    ./virtualisation
+    ./screenlocker
     ./security
+    ./services
+    ./virtualisation
   ];
 }

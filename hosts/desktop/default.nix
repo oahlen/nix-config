@@ -18,6 +18,7 @@
   hardware.bluetooth.enable = true;
 
   modules = {
+    boot.plymouth.enable = true;
     development.enable = true;
     gaming.enable = true;
     desktop.niri.enable = true;

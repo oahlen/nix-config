@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.polkit;
+  cfg = config.services.polkit;
 in {
-  options.modules.polkit = {
+  options.services.polkit = {
     enable = mkEnableOption "Enable polkit";
 
     systemd.target = lib.mkOption {

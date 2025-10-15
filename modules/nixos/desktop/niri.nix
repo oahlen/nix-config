@@ -12,8 +12,6 @@ in {
 
   config = mkIf cfg.enable {
     modules = {
-      desktop.enable = true;
-      polkit.enable = true;
       screenlocker.enable = true;
     };
 
@@ -35,6 +33,9 @@ in {
       extraGroups = ["audio" "video"];
     };
 
+    networking.networkmanager.enable = true;
+    security.rtkit.enable = true;
+
     services = {
       blueman.enable = config.hardware.bluetooth.enable;
 
@@ -44,11 +45,21 @@ in {
       };
 
       gvfs.enable = true;
+
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+
+      polkit.enable = true;
       tumbler.enable = true;
     };
 
     programs = {
       gnome-disks.enable = true;
+      nm-applet.enable = true;
 
       waybar = {
         enable = true;
@@ -76,6 +87,13 @@ in {
       wl-mirror
       xdg-utils
       xwayland-satellite
+    ];
+
+    fonts.packages = with pkgs; [
+      dejavu_fonts
+      liberation_ttf
+      nerd-fonts.jetbrains-mono
+      noto-fonts-emoji
     ];
   };
 }

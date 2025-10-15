@@ -98,6 +98,7 @@
 
   # General overrides
   services.dbus.implementation = "broker";
+  networking.networkmanager.wifi.backend = "iwd";
 
   # Enable dconf system wide
   programs.dconf.enable = true; # TODO move to desktop module

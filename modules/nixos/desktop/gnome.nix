@@ -10,14 +10,21 @@ in {
   options.modules.desktop.gnome.enable = mkEnableOption "Enable the Gnome desktop environment";
 
   config = mkIf cfg.enable {
-    modules.desktop.enable = true;
-
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
 
-    services.gnome = {
-      evolution-data-server.enable = mkForce false;
-      gnome-online-accounts.enable = false;
+    services = {
+      gnome = {
+        evolution-data-server.enable = mkForce false;
+        gnome-online-accounts.enable = false;
+      };
+
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
     };
 
     programs = {
@@ -61,6 +68,13 @@ in {
       simple-scan
       totem
       yelp
+    ];
+
+    fonts.packages = with pkgs; [
+      dejavu_fonts
+      liberation_ttf
+      nerd-fonts.jetbrains-mono
+      noto-fonts-emoji
     ];
   };
 }
