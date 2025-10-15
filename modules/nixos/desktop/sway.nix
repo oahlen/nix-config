@@ -6,14 +6,13 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.sway;
+  cfg = config.modules.desktop.sway;
 in {
-  options.modules.sway.enable = mkEnableOption "Enable the Sway window manager";
+  options.modules.desktop.sway.enable = mkEnableOption "Enable the Sway window manager";
 
   config = mkIf cfg.enable {
     modules = {
-      networkmanager.enable = true;
-      pipewire.enable = true;
+      desktop.enable = true;
       polkit.enable = true;
       screenlocker.enable = true;
     };

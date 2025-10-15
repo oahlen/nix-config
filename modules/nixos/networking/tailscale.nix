@@ -4,9 +4,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.tailscale;
+  cfg = config.modules.networking.tailscale;
 in {
-  options.modules.tailscale.enable = mkEnableOption "Enable tailscale";
+  options.modules.networking.tailscale.enable = mkEnableOption "Enable tailscale";
 
   config = mkIf cfg.enable {
     services.tailscale.enable = true;

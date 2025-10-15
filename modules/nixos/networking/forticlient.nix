@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.forticlient;
+  cfg = config.modules.networking.forticlient;
 in {
-  options.modules.forticlient.enable = mkEnableOption "Enable forticlient";
+  options.modules.networking.forticlient.enable = mkEnableOption "Enable forticlient";
 
   config = mkIf cfg.enable {
     services.pppd.enable = true;

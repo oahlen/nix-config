@@ -6,14 +6,13 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.niri;
+  cfg = config.modules.desktop.niri;
 in {
-  options.modules.niri.enable = mkEnableOption "Enable the Niri window manager";
+  options.modules.desktop.niri.enable = mkEnableOption "Enable the Niri window manager";
 
   config = mkIf cfg.enable {
     modules = {
-      networkmanager.enable = true;
-      pipewire.enable = true;
+      desktop.enable = true;
       polkit.enable = true;
       screenlocker.enable = true;
     };

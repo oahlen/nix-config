@@ -20,17 +20,15 @@
 
   modules = {
     development.enable = true;
-    fonts.enable = true;
-    niri.enable = true;
-    splashscreen.enable = true;
-    tailscale.enable = true;
+    desktop.niri.enable = true;
+    networking.tailscale.enable = true;
 
     virtualisation = {
       podman.enable = true;
       virt-manager.enable = true;
     };
 
-    yubikey.enable = true;
+    security.yubikey.enable = true;
   };
 
   services = {

@@ -2,21 +2,14 @@
   # Common modules
   imports = [
     ./development
+    ./desktop
     ./flatpak
-    ./fonts
-    ./forticlient
     ./gaming
-    ./gnome
     ./kanshi
-    ./networkmanager
-    ./niri
-    ./pipewire
     ./polkit
     ./screenlocker
-    ./splashscreen
-    ./sway
-    ./tailscale
+    ./networking
     ./virtualisation
-    ./yubikey
+    ./security
   ];
 }

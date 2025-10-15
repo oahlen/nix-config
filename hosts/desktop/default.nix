@@ -19,13 +19,11 @@
 
   modules = {
     development.enable = true;
-    fonts.enable = true;
     gaming.enable = true;
-    niri.enable = true;
+    desktop.niri.enable = true;
     virtualisation.podman.enable = true;
-    splashscreen.enable = true;
-    tailscale.enable = true;
-    yubikey.enable = true;
+    networking.tailscale.enable = true;
+    security.yubikey.enable = true;
   };
 
   services = {

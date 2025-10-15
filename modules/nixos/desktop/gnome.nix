@@ -5,15 +5,12 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.gnome;
+  cfg = config.modules.desktop.gnome;
 in {
-  options.modules.gnome.enable = mkEnableOption "Enable the Gnome desktop environment";
+  options.modules.desktop.gnome.enable = mkEnableOption "Enable the Gnome desktop environment";
 
   config = mkIf cfg.enable {
-    modules = {
-      networkmanager.enable = true;
-      pipewire.enable = true;
-    };
+    modules.desktop.enable = true;
 
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
