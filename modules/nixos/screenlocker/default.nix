@@ -56,7 +56,12 @@ in {
         ConditionEnvironment = "WAYLAND_DISPLAY";
       };
 
+      # timeout = 900;
+      # command = "${swaymsg} 'output * power off'";
+      # resumeCommand = "${swaymsg} 'output * power on'";
+
       # TODO Make monitor command configurable
+      # Sway: timeout 900 '${pkgs.sway}/bin/swaymsg "output * power off"' resume '${pkgs.sway}/bin/swaymsg "output * power on"' \
       serviceConfig = {
         Environment = ["PATH=${lib.makeBinPath [pkgs.bash]}"];
         Type = "simple";

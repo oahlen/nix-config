@@ -1,15 +1,10 @@
 {
   config,
-  hm-modules,
   lib,
   pkgs,
   ...
 }:
 with lib.hm.gvariant; {
-  imports = [
-    "${hm-modules}/programs/kitty"
-  ];
-
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
