@@ -1,4 +1,5 @@
-{hm-modules, ...}: {
+{ hm-modules, ... }:
+{
   # imports = [
   #   "${hm-modules}/profiles/sway"
   # ];

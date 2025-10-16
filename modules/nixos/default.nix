@@ -1,4 +1,5 @@
-{user, ...}: {
+{ user, ... }:
+{
   imports = [
     ./modules.nix
     ./options.nix
@@ -84,7 +85,7 @@
     uid = 1000;
     description = user.fullName;
     isNormalUser = true;
-    extraGroups = ["wheel"];
+    extraGroups = [ "wheel" ];
   };
 
   # General overrides

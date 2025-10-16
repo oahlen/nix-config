@@ -1,8 +1,10 @@
 {
   config,
   lib,
-}: {
-  mkSystemdTargetOption = {}:
+}:
+{
+  mkSystemdTargetOption =
+    { }:
     lib.mkOption {
       type = lib.types.str;
       description = ''
@@ -11,28 +13,29 @@
       default = config.wayland.systemd.target;
     };
 
-  mkWaylandService = {
-    description,
-    documentation ? [],
-    target,
-    execStart,
-    extraServiceConfig ? {},
-  }: {
-    description = description;
-    documentation = documentation;
+  mkWaylandService =
+    {
+      description,
+      documentation ? [ ],
+      target,
+      execStart,
+      extraServiceConfig ? { },
+    }:
+    {
+      description = description;
+      documentation = documentation;
 
-    after = [target];
-    partOf = [target];
-    requires = [target];
-    wantedBy = [target];
-    wants = [target];
+      after = [ target ];
+      partOf = [ target ];
+      requires = [ target ];
+      wantedBy = [ target ];
+      wants = [ target ];
 
-    unitConfig = {
-      ConditionEnvironment = "WAYLAND_DISPLAY";
-    };
+      unitConfig = {
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
 
-    serviceConfig =
-      {
+      serviceConfig = {
         Type = "simple";
         ExecStart = execStart;
         Restart = "on-failure";
@@ -40,5 +43,5 @@
         TimeoutStopSec = 10;
       }
       // extraServiceConfig;
-  };
+    };
 }

@@ -75,7 +75,7 @@ enable("nixd", {
                 expr = "import <nixpkgs> { }",
             },
             formatting = {
-                command = { "alejandra" },
+                command = { "treefmt" },
             },
         },
     },

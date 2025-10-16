@@ -4,13 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.wlsunset;
-  shared = import ./shared {inherit config lib;};
-in {
+  shared = import ./shared { inherit config lib; };
+in
+{
   options.services.wlsunset = {
     enable = mkEnableOption "TODO Add description";
-    systemd.target = shared.mkSystemdTargetOption {};
+    systemd.target = shared.mkSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {

@@ -5,10 +5,12 @@
   user,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.desktop.niri;
-  shared = import ./shared {inherit pkgs;};
-in {
+  shared = import ./shared { inherit pkgs; };
+in
+{
   options.modules.desktop.niri.enable = mkEnableOption "Enable the Niri window manager";
 
   config = mkIf cfg.enable {
@@ -22,14 +24,17 @@ in {
 
     systemd.user.targets.niri-session = {
       description = "niri compositor session";
-      documentation = ["man:systemd.special(7)"];
-      bindsTo = ["graphical-session.target"];
-      wants = ["graphical-session-pre.target"];
-      after = ["graphical-session-pre.target"];
+      documentation = [ "man:systemd.special(7)" ];
+      bindsTo = [ "graphical-session.target" ];
+      wants = [ "graphical-session-pre.target" ];
+      after = [ "graphical-session-pre.target" ];
     };
 
     users.users.${user.name} = {
-      extraGroups = ["audio" "video"];
+      extraGroups = [
+        "audio"
+        "video"
+      ];
     };
 
     networking.networkmanager.enable = true;
@@ -40,7 +45,10 @@ in {
 
       dbus = {
         enable = true;
-        packages = with pkgs; [gcr_4 mako];
+        packages = with pkgs; [
+          gcr_4
+          mako
+        ];
       };
 
       gvfs.enable = true;

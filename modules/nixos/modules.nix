@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Common modules
   imports = [
     ./boot

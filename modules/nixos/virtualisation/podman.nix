@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.virtualisation.podman;
-in {
+in
+{
   options.modules.virtualisation.podman.enable = mkEnableOption "Enable Podman";
 
   config = mkIf cfg.enable {
@@ -15,7 +17,7 @@ in {
 
       autoPrune = {
         enable = true;
-        flags = ["--all"];
+        flags = [ "--all" ];
         dates = "weekly";
       };
 

@@ -4,13 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.swayidle;
-  shared = import ./shared {inherit config lib;};
-in {
+  shared = import ./shared { inherit config lib; };
+in
+{
   options.services.swayidle = {
     enable = mkEnableOption "TODO Add description";
-    systemd.target = shared.mkSystemdTargetOption {};
+    systemd.target = shared.mkSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {
@@ -27,7 +29,7 @@ in {
 
     systemd.user.services.swayidle = shared.mkWaylandService {
       description = "Idle manager for Wayland";
-      documentation = ["man:swayidle(1)"];
+      documentation = [ "man:swayidle(1)" ];
       target = cfg.systemd.target;
       execStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
@@ -37,7 +39,7 @@ in {
         before-sleep '${pkgs.gtklock}/bin/gtklock -d'
       '';
       extraServiceConfig = {
-        Environment = ["PATH=${lib.makeBinPath [pkgs.bash]}"];
+        Environment = [ "PATH=${lib.makeBinPath [ pkgs.bash ]}" ];
       };
     };
   };

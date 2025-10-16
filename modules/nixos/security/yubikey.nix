@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.security.yubikey;
-in {
+in
+{
   options.modules.security.yubikey.enable = mkEnableOption "Enable Yubikey support";
 
   config = mkIf cfg.enable {

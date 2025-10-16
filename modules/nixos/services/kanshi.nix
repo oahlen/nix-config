@@ -4,13 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.kanshi;
-  shared = import ./shared {inherit config lib;};
-in {
+  shared = import ./shared { inherit config lib; };
+in
+{
   options.services.kanshi = {
     enable = mkEnableOption "Kanshi, a Wayland daemon that automatically configures outputs";
-    systemd.target = shared.mkSystemdTargetOption {};
+    systemd.target = shared.mkSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {
@@ -20,7 +22,7 @@ in {
 
     systemd.user.services.kanshi = shared.mkWaylandService {
       description = "Dynamic output configuration";
-      documentation = ["man:kanshi(1)"];
+      documentation = [ "man:kanshi(1)" ];
       execStart = "${pkgs.kanshi}/bin/kanshi";
       target = cfg.systemd.target;
     };

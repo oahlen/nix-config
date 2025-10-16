@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./apptainer.nix
     ./podman.nix

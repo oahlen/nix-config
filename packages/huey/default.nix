@@ -20,7 +20,7 @@ rustPlatform.buildRustPackage rec {
     description = "Neovim lua color scheme generator written in Rust.";
     mainProgram = "huey";
     homepage = "https://github.com/oahlen/huey";
-    license = with licenses; [mit];
+    license = with licenses; [ mit ];
     # maintainers = [];
   };
 }

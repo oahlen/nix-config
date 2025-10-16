@@ -15,41 +15,50 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nixos-wsl,
-    ...
-  } @ inputs: let
-    lib = import ./lib.nix {defaultSystems = ["x86_64-linux"];};
-    users = import ./users.nix;
-    common-modules = "${self}/modules/common";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nixos-wsl,
+      ...
+    }@inputs:
+    let
+      lib = import ./lib.nix { defaultSystems = [ "x86_64-linux" ]; };
+      users = import ./users.nix;
+      common-modules = "${self}/modules/common";
 
-    makeNixosConfiguration = hostname: username:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          customPackages = self.outputs.packages;
-          user = users.${username};
+      makeNixosConfiguration =
+        hostname: username:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            customPackages = self.outputs.packages;
+            user = users.${username};
+          };
+
+          modules = [
+            ./hosts/${hostname}
+            ./modules/nixos
+            nixos-wsl.nixosModules.wsl
+          ];
         };
 
-        modules = [
-          ./hosts/${hostname}
-          ./modules/nixos
-          nixos-wsl.nixosModules.wsl
-        ];
-      };
-
-    makeHomeConfiguration = let
-      hm-modules = "${self}/modules/home-manager";
-    in
-      system: hostname: username:
+      makeHomeConfiguration =
+        let
+          hm-modules = "${self}/modules/home-manager";
+        in
+        system: hostname: username:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
 
           extraSpecialArgs = {
-            inherit inputs common-modules hm-modules system;
+            inherit
+              inputs
+              common-modules
+              hm-modules
+              system
+              ;
             user = users.${username};
             customPackages = self.outputs.packages.${system};
           };
@@ -60,39 +69,41 @@
             "${hm-modules}"
           ];
         };
-  in {
-    nixosConfigurations = {
-      desktop = makeNixosConfiguration "desktop" "oahlen";
-      nixos = makeNixosConfiguration "wsl" "oahlen";
-      xps15 = makeNixosConfiguration "xps15" "oahlen";
-    };
+    in
+    {
+      nixosConfigurations = {
+        desktop = makeNixosConfiguration "desktop" "oahlen";
+        nixos = makeNixosConfiguration "wsl" "oahlen";
+        xps15 = makeNixosConfiguration "xps15" "oahlen";
+      };
 
-    homeConfigurations = {
-      "oahlen@desktop" = makeHomeConfiguration "x86_64-linux" "desktop" "oahlen";
-      "oahlen@nixos" = makeHomeConfiguration "x86_64-linux" "wsl" "oahlen";
-      "oahlen@xps15" = makeHomeConfiguration "x86_64-linux" "xps15" "oahlen";
-    };
+      homeConfigurations = {
+        "oahlen@desktop" = makeHomeConfiguration "x86_64-linux" "desktop" "oahlen";
+        "oahlen@nixos" = makeHomeConfiguration "x86_64-linux" "wsl" "oahlen";
+        "oahlen@xps15" = makeHomeConfiguration "x86_64-linux" "xps15" "oahlen";
+      };
 
-    packages = lib.forEachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
-      in
-        import ./packages {inherit pkgs;}
-    );
+      packages = lib.forEachDefaultSystem (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        import ./packages { inherit pkgs; }
+      );
 
-    devShells = lib.forEachDefaultSystem (
-      system: {
-        dotnet = import ./shells/dotnet {inherit nixpkgs system;};
-        fhs = import ./shells/fhs {inherit nixpkgs system;};
+      devShells = lib.forEachDefaultSystem (system: {
+        dotnet = import ./shells/dotnet { inherit nixpkgs system; };
+        fhs = import ./shells/fhs { inherit nixpkgs system; };
         huey = import ./shells/huey {
           customPackages = self.outputs.packages.${system};
           inherit nixpkgs system;
         };
-        hugo = import ./shells/hugo {inherit nixpkgs system;};
-        java = import ./shells/java {inherit nixpkgs system;};
-        python = import ./shells/python {inherit nixpkgs system;};
-        rust = import ./shells/rust {inherit nixpkgs system;};
-      }
-    );
-  };
+        hugo = import ./shells/hugo { inherit nixpkgs system; };
+        java = import ./shells/java { inherit nixpkgs system; };
+        python = import ./shells/python { inherit nixpkgs system; };
+        rust = import ./shells/rust { inherit nixpkgs system; };
+      });
+
+      formatter = lib.forEachDefaultSystem (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+    };
 }

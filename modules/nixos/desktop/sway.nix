@@ -5,10 +5,12 @@
   user,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.desktop.sway;
-  shared = import ./shared {inherit pkgs;};
-in {
+  shared = import ./shared { inherit pkgs; };
+in
+{
   options.modules.desktop.sway.enable = mkEnableOption "Enable the Sway window manager";
 
   config = mkIf cfg.enable {
@@ -50,13 +52,16 @@ in {
     security.rtkit.enable = true;
 
     users.users.${user.name} = {
-      extraGroups = ["audio" "video"];
+      extraGroups = [
+        "audio"
+        "video"
+      ];
     };
 
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
     services = {
@@ -64,7 +69,10 @@ in {
 
       dbus = {
         enable = true;
-        packages = with pkgs; [gcr_4 mako];
+        packages = with pkgs; [
+          gcr_4
+          mako
+        ];
       };
 
       gnome.gnome-keyring.enable = true;

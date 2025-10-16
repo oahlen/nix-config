@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.boot.plymouth;
-in {
+in
+{
   options.modules.boot.plymouth.enable = mkEnableOption "Enable Plymouth";
 
   config = mkIf cfg.enable {

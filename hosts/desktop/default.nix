@@ -2,7 +2,8 @@
   customPackages,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -12,7 +13,7 @@
   boot = {
     loader.systemd-boot.enable = true;
     kernelPackages = pkgs.linuxPackages_6_17;
-    kernelModules = ["amdgpu"];
+    kernelModules = [ "amdgpu" ];
   };
 
   hardware.bluetooth.enable = true;
@@ -46,8 +47,16 @@
   ];
 
   fileSystems = {
-    "/".options = ["noatime" "nodiratime" "discard"];
-    "/mnt/backup".options = ["noatime" "nodiratime" "discard"];
+    "/".options = [
+      "noatime"
+      "nodiratime"
+      "discard"
+    ];
+    "/mnt/backup".options = [
+      "noatime"
+      "nodiratime"
+      "discard"
+    ];
   };
 
   system.stateVersion = "22.11";

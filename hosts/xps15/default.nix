@@ -2,7 +2,8 @@
   customPackages,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -11,7 +12,7 @@
 
   boot = {
     loader.systemd-boot.enable = true;
-    blacklistedKernelModules = ["nouveau"];
+    blacklistedKernelModules = [ "nouveau" ];
   };
 
   hardware.bluetooth.enable = true;
@@ -55,7 +56,11 @@
     customPackages.${pkgs.stdenv.hostPlatform.system}.rbw
   ];
 
-  fileSystems."/".options = ["noatime" "nodiratime" "discard"];
+  fileSystems."/".options = [
+    "noatime"
+    "nodiratime"
+    "discard"
+  ];
 
   system.stateVersion = "25.05";
 }

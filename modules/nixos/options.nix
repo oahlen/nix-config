@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   # Top level options
   options.wayland.systemd.target = lib.mkOption {
     type = lib.types.str;

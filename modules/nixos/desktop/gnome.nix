@@ -4,10 +4,12 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.desktop.gnome;
-  shared = import ./shared {inherit pkgs;};
-in {
+  shared = import ./shared { inherit pkgs; };
+in
+{
   options.modules.desktop.gnome.enable = mkEnableOption "Enable the Gnome desktop environment";
 
   config = mkIf cfg.enable {
@@ -29,7 +31,8 @@ in {
       evolution.enable = false;
     };
 
-    environment.systemPackages = with pkgs;
+    environment.systemPackages =
+      with pkgs;
       [
         dconf-editor
         gnome-tweaks

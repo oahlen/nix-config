@@ -5,9 +5,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.development;
-in {
+in
+{
   options.modules.development = {
     enable = mkEnableOption "Enable development module";
   };
@@ -29,9 +31,9 @@ in {
       };
     };
 
-    environment.systemPackages = with pkgs;
+    environment.systemPackages =
+      with pkgs;
       [
-        alejandra
         bat
         bat-extras.batman
         bottom
@@ -51,6 +53,7 @@ in {
         jless
         jq
         nfs-utils
+        nixfmt-tree
         nix-prefetch-git
         nix-search-cli
         nix-tree

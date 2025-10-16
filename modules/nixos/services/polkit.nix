@@ -4,13 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.polkit;
-  shared = import ./shared {inherit config lib;};
-in {
+  shared = import ./shared { inherit config lib; };
+in
+{
   options.services.polkit = {
     enable = mkEnableOption "Enable polkit";
-    systemd.target = shared.mkSystemdTargetOption {};
+    systemd.target = shared.mkSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {

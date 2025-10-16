@@ -4,23 +4,27 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.flatpak;
-in {
+in
+{
   options.services.flatpak = {
     repositories = mkOption {
-      type = types.listOf (types.submodule {
-        options = {
-          name = mkOption {
-            type = types.str;
-            description = "The flatpak repository name";
+      type = types.listOf (
+        types.submodule {
+          options = {
+            name = mkOption {
+              type = types.str;
+              description = "The flatpak repository name";
+            };
+            location = mkOption {
+              type = types.str;
+              description = "The flatpak repository location";
+            };
           };
-          location = mkOption {
-            type = types.str;
-            description = "The flatpak repository location";
-          };
-        };
-      });
+        }
+      );
 
       description = " The flatpak repositories to configure";
       default = [
@@ -32,8 +36,8 @@ in {
     };
 
     packages = mkOption {
-      type = types.listOf (types.either
-        (types.submodule {
+      type = types.listOf (
+        types.either (types.submodule {
           options = {
             repository = mkOption {
               type = types.str;
@@ -45,39 +49,36 @@ in {
               description = "The flatpak package reference";
             };
           };
-        })
-        types.str);
+        }) types.str
+      );
       description = "The flatpak packages to install";
-      default = [];
+      default = [ ];
     };
   };
 
   config = mkIf (builtins.length cfg.packages > 0) {
     services.flatpak.enable = true;
 
-    environment.systemPackages = let
-      isUrl = str: builtins.match "^https?://[^ ]+$" str != null;
-      mapEntry = entry:
-        if builtins.isString entry
-        then
-          if isUrl entry
-          then entry
-          else "flathub " + entry + "\n"
-        else entry.repository + " " + entry.ref + "\"\n";
-    in
-      with pkgs; [
+    environment.systemPackages =
+      let
+        isUrl = str: builtins.match "^https?://[^ ]+$" str != null;
+        mapEntry =
+          entry:
+          if builtins.isString entry then
+            if isUrl entry then entry else "flathub " + entry + "\n"
+          else
+            entry.repository + " " + entry.ref + "\"\n";
+      in
+      with pkgs;
+      [
         (writeShellApplication {
           name = "flatpak-sync";
-          runtimeInputs = [flatpak];
+          runtimeInputs = [ flatpak ];
           text = ''
-            ${
-              concatMapStrings (x: "flatpak remote-add --if-not-exists " + x.name + " " + x.location + "\n")
-              cfg.repositories
-            }
-            ${
-              concatMapStrings (x: "flatpak install --or-update ${mapEntry x}\n")
-              cfg.packages
-            }
+            ${concatMapStrings (
+              x: "flatpak remote-add --if-not-exists " + x.name + " " + x.location + "\n"
+            ) cfg.repositories}
+            ${concatMapStrings (x: "flatpak install --or-update ${mapEntry x}\n") cfg.packages}
           '';
         })
       ];

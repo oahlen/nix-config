@@ -5,10 +5,13 @@
   user,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.virtualisation.virt-manager;
-in {
-  options.modules.virtualisation.virt-manager.enable = mkEnableOption "Enable Virtual Machine Manager";
+in
+{
+  options.modules.virtualisation.virt-manager.enable =
+    mkEnableOption "Enable Virtual Machine Manager";
 
   config = mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;
@@ -20,7 +23,7 @@ in {
     ];
 
     users.users.${user.name} = {
-      extraGroups = ["libvirtd"];
+      extraGroups = [ "libvirtd" ];
     };
   };
 }

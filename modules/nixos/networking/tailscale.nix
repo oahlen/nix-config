@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.networking.tailscale;
-in {
+in
+{
   options.modules.networking.tailscale.enable = mkEnableOption "Enable tailscale";
 
   config = mkIf cfg.enable {

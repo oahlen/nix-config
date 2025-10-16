@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.virtualisation.apptainer;
-in {
+in
+{
   options.modules.virtualisation.apptainer.enable = mkEnableOption "Enable Apptainer";
 
   config = mkIf cfg.enable {

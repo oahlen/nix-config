@@ -5,15 +5,19 @@
     "x86_64-darwin"
     "x86_64-linux"
   ],
-}: let
-  forEachSystem = systems: f:
-    builtins.listToAttrs (map (system: {
+}:
+let
+  forEachSystem =
+    systems: f:
+    builtins.listToAttrs (
+      map (system: {
         name = system;
         value = f system;
-      })
-      systems);
+      }) systems
+    );
 
   forEachDefaultSystem = forEachSystem defaultSystems;
-in {
+in
+{
   inherit forEachSystem forEachDefaultSystem;
 }

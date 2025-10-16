@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   wayland.systemd.target = "sway-session.target";
 
   home.pointerCursor.sway.enable = true;
@@ -26,7 +27,7 @@
 
     config = {
       fonts = {
-        names = [config.font.name];
+        names = [ config.font.name ];
         size = config.font.size;
       };
 
@@ -97,9 +98,10 @@
         inner = 8;
       };
 
-      keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-      in
+      keybindings =
+        let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
         pkgs.lib.mkOptionDefault {
           "${modifier}+Alt+l" = "exec gtklock";
           "Ctrl+Alt+Delete" = "exec wl-logout";
@@ -153,7 +155,7 @@
         };
       };
 
-      bars = [];
+      bars = [ ];
     };
 
     extraConfig = ''

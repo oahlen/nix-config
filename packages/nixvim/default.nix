@@ -7,59 +7,51 @@
   symlinkJoin,
   full ? false,
   ...
-}: let
+}:
+let
   packageName = "nixvim";
 
-  startPlugins = import ./plugins.nix {inherit pkgs;};
+  startPlugins = import ./plugins.nix { inherit pkgs; };
 
   foldPlugins = builtins.foldl' (
     acc: next:
-      acc
-      ++ [
-        next
-      ]
-      ++ (foldPlugins (next.dependencies or []))
-  ) [];
+    acc
+    ++ [
+      next
+    ]
+    ++ (foldPlugins (next.dependencies or [ ]))
+  ) [ ];
 
   startPluginsWithDeps = lib.unique (foldPlugins startPlugins);
 
-  packpath = runCommandLocal "packpath" {} ''
+  packpath = runCommandLocal "packpath" { } ''
     mkdir -p $out/pack/${packageName}/{start,opt}
 
     ln -vsfT ${./start-plugin} $out/pack/${packageName}/start/start-plugin
 
-    ${
-      lib.concatMapStringsSep
-      "\n"
-      (plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/start/${lib.getName plugin}")
-      startPluginsWithDeps
-    }
+    ${lib.concatMapStringsSep "\n" (
+      plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/start/${lib.getName plugin}"
+    ) startPluginsWithDeps}
   '';
 in
-  symlinkJoin {
-    name = "nvim";
+symlinkJoin {
+  name = "nvim";
 
-    paths =
-      [neovim-unwrapped]
-      ++ (
-        if full
-        then (import ./tools.nix {inherit pkgs;})
-        else []
-      );
+  paths = [ neovim-unwrapped ] ++ (if full then (import ./tools.nix { inherit pkgs; }) else [ ]);
 
-    nativeBuildInputs = [makeWrapper];
+  nativeBuildInputs = [ makeWrapper ];
 
-    postBuild = ''
-      wrapProgram $out/bin/nvim \
-        --add-flags '-u' \
-        --add-flags 'NORC' \
-        --add-flags '--cmd' \
-        --add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
-        --set-default NVIM_APPNAME nixvim \
-        --set-default NIXVIM_FULL ${toString full}
-    '';
+  postBuild = ''
+    wrapProgram $out/bin/nvim \
+      --add-flags '-u' \
+      --add-flags 'NORC' \
+      --add-flags '--cmd' \
+      --add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
+      --set-default NVIM_APPNAME nixvim \
+      --set-default NIXVIM_FULL ${toString full}
+  '';
 
-    passthru = {
-      inherit packpath;
-    };
-  }
+  passthru = {
+    inherit packpath;
+  };
+}

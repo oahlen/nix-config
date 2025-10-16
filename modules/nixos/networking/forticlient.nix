@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.networking.forticlient;
-in {
+in
+{
   options.modules.networking.forticlient.enable = mkEnableOption "Enable forticlient";
 
   config = mkIf cfg.enable {
