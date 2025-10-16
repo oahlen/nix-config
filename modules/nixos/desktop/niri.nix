@@ -68,6 +68,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
+      adwaita-icon-theme
       adw-gtk3
       brightnessctl
       foot
@@ -83,11 +84,78 @@ in {
       pavucontrol
       playerctl
       swayimg
+      swayosd
+      swww
       wl-clipboard
       wl-mirror
+      wlsunset
       xdg-utils
       xwayland-satellite
     ];
+
+    systemd.user.services.swww = {
+      description = "Wallpaper service for Wayland";
+      documentation = ["man:swww(1)"];
+
+      after = [config.wayland.systemd.target];
+      partOf = [config.wayland.systemd.target];
+      requires = [config.wayland.systemd.target];
+      wantedBy = [config.wayland.systemd.target];
+      wants = [config.wayland.systemd.target];
+
+      unitConfig = {
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.swww}/bin/swww-daemon";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+
+    systemd.user.services.swayosd = {
+      description = "Volume/backlight OSD indicator";
+
+      after = [config.wayland.systemd.target];
+      partOf = [config.wayland.systemd.target];
+      requires = [config.wayland.systemd.target];
+      wantedBy = [config.wayland.systemd.target];
+      wants = [config.wayland.systemd.target];
+
+      unitConfig = {
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.swayosd}/bin/swayosd-server";
+        Restart = "on-failure";
+        RestartSec = 2;
+      };
+    };
+
+    systemd.user.services.wlsunset = {
+      description = "Day/night gamma adjustments for Wayland compositors.";
+
+      after = [config.wayland.systemd.target];
+      partOf = [config.wayland.systemd.target];
+      requires = [config.wayland.systemd.target];
+      wantedBy = [config.wayland.systemd.target];
+      wants = [config.wayland.systemd.target];
+
+      unitConfig = {
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.wlsunset}/bin/wlsunset -L 17.64 -l 59.85 -T 6500 -t 4500";
+        Restart = "on-failure";
+      };
+    };
 
     fonts.packages = with pkgs; [
       dejavu_fonts

@@ -1,15 +1,9 @@
 {
   config,
-  hm-modules,
   lib,
   pkgs,
   ...
 }: {
-  imports = [
-    "${hm-modules}/services/swayosd"
-    "${hm-modules}/services/wl-sunset"
-  ];
-
   wayland.systemd.target = "sway-session.target";
 
   home.pointerCursor.sway.enable = true;

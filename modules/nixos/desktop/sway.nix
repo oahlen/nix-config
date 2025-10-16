@@ -23,6 +23,7 @@ in {
       enable = true;
 
       extraPackages = with pkgs; [
+        adwaita-icon-theme
         adw-gtk3
         brightnessctl
         gnome-multi-writer
