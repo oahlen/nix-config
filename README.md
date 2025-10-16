@@ -74,7 +74,6 @@ sudo nixos-install
 
 ```bash
 nixos-rebuild boot --sudo --flake .$(hostname)
-home-manager switch --flake .#$(whoami)@$(hostname)
 ```
 
 ## Development shell

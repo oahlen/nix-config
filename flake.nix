@@ -71,7 +71,6 @@
 
       homeConfigurations = {
         "oahlen@desktop" = makeHomeConfiguration "x86_64-linux" "desktop" "oahlen";
-        "oahlen@xps15" = makeHomeConfiguration "x86_64-linux" "xps15" "oahlen";
       };
 
       packages = lib.forEachDefaultSystem (
