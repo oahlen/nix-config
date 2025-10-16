@@ -7,14 +7,11 @@
 }:
 with lib; let
   cfg = config.modules.desktop.sway;
+  shared = import ./shared {inherit pkgs;};
 in {
   options.modules.desktop.sway.enable = mkEnableOption "Enable the Sway window manager";
 
   config = mkIf cfg.enable {
-    modules = {
-      screenlocker.enable = true;
-    };
-
     wayland.systemd.target = "sway-session.target";
 
     services.displayManager.gdm.enable = true;
@@ -26,6 +23,8 @@ in {
         adwaita-icon-theme
         adw-gtk3
         brightnessctl
+        foot
+        fuzzel
         gnome-multi-writer
         gnome-text-editor
         grim
@@ -38,13 +37,14 @@ in {
         pavucontrol
         playerctl
         slurp
-        swayimg
         wf-recorder
         wl-clipboard
         wl-mirror
         xdg-utils
       ];
     };
+
+    environment.sessionVariables = shared.sessionVariables;
 
     networking.networkmanager.enable = true;
     security.rtkit.enable = true;
@@ -69,20 +69,19 @@ in {
 
       gnome.gnome-keyring.enable = true;
       gvfs.enable = true;
-
-      pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
-
+      pipewire = shared.pipewire;
       polkit.enable = true;
+      swayidle.enable = true;
+      swayosd.enable = true;
+      swww.enable = true;
       tumbler.enable = true;
+      wlsunset.enable = true;
     };
 
     programs = {
+      dconf.enable = true;
       gnome-disks.enable = true;
+      gtklock = shared.gtklock;
       nm-applet.enable = true;
 
       waybar = {
@@ -93,11 +92,6 @@ in {
       xwayland.enable = true;
     };
 
-    fonts.packages = with pkgs; [
-      dejavu_fonts
-      liberation_ttf
-      nerd-fonts.jetbrains-mono
-      noto-fonts-emoji
-    ];
+    fonts.packages = shared.fonts;
   };
 }

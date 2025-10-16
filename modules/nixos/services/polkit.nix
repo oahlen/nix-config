@@ -6,38 +6,20 @@
 }:
 with lib; let
   cfg = config.services.polkit;
+  shared = import ./shared {inherit config lib;};
 in {
   options.services.polkit = {
     enable = mkEnableOption "Enable polkit";
-
-    systemd.target = lib.mkOption {
-      type = lib.types.str;
-      description = ''
-        The systemd target that will automatically start the service.
-      '';
-      default = config.wayland.systemd.target;
-    };
+    systemd.target = shared.mkSystemdTargetOption {};
   };
 
   config = mkIf cfg.enable {
     security.polkit.enable = true;
 
-    systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    systemd.user.services.polkit-gnome-authentication-agent-1 = shared.mkWaylandService {
       description = "Authentication agent";
-
-      after = [cfg.systemd.target];
-      partOf = [cfg.systemd.target];
-      requires = [cfg.systemd.target];
-      wantedBy = [cfg.systemd.target];
-      wants = [cfg.systemd.target];
-
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
+      target = cfg.systemd.target;
+      execStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     };
   };
 }

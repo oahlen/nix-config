@@ -24,6 +24,7 @@
   services.timesyncd.enable = true;
 
   programs = {
+    dconf.enable = true;
     git.lfs.enable = true;
     ssh.startAgent = true;
   };

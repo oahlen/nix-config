@@ -7,19 +7,18 @@
 }:
 with lib; let
   cfg = config.modules.desktop.niri;
+  shared = import ./shared {inherit pkgs;};
 in {
   options.modules.desktop.niri.enable = mkEnableOption "Enable the Niri window manager";
 
   config = mkIf cfg.enable {
-    modules = {
-      screenlocker.enable = true;
-    };
-
     wayland.systemd.target = "niri-session.target";
 
     services.displayManager.gdm.enable = true;
 
     programs.niri.enable = true;
+
+    environment.sessionVariables = shared.sessionVariables;
 
     systemd.user.targets.niri-session = {
       description = "niri compositor session";
@@ -45,20 +44,19 @@ in {
       };
 
       gvfs.enable = true;
-
-      pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
-
+      pipewire = shared.pipewire;
       polkit.enable = true;
+      swayidle.enable = true;
+      swayosd.enable = true;
+      swww.enable = true;
       tumbler.enable = true;
+      wlsunset.enable = true;
     };
 
     programs = {
+      dconf.enable = true;
       gnome-disks.enable = true;
+      gtklock = shared.gtklock;
       nm-applet.enable = true;
 
       waybar = {
@@ -83,85 +81,13 @@ in {
       papirus-icon-theme
       pavucontrol
       playerctl
-      swayimg
-      swayosd
-      swww
+      wf-recorder
       wl-clipboard
       wl-mirror
-      wlsunset
       xdg-utils
       xwayland-satellite
     ];
 
-    systemd.user.services.swww = {
-      description = "Wallpaper service for Wayland";
-      documentation = ["man:swww(1)"];
-
-      after = [config.wayland.systemd.target];
-      partOf = [config.wayland.systemd.target];
-      requires = [config.wayland.systemd.target];
-      wantedBy = [config.wayland.systemd.target];
-      wants = [config.wayland.systemd.target];
-
-      unitConfig = {
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-      };
-
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.swww}/bin/swww-daemon";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-
-    systemd.user.services.swayosd = {
-      description = "Volume/backlight OSD indicator";
-
-      after = [config.wayland.systemd.target];
-      partOf = [config.wayland.systemd.target];
-      requires = [config.wayland.systemd.target];
-      wantedBy = [config.wayland.systemd.target];
-      wants = [config.wayland.systemd.target];
-
-      unitConfig = {
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-      };
-
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.swayosd}/bin/swayosd-server";
-        Restart = "on-failure";
-        RestartSec = 2;
-      };
-    };
-
-    systemd.user.services.wlsunset = {
-      description = "Day/night gamma adjustments for Wayland compositors.";
-
-      after = [config.wayland.systemd.target];
-      partOf = [config.wayland.systemd.target];
-      requires = [config.wayland.systemd.target];
-      wantedBy = [config.wayland.systemd.target];
-      wants = [config.wayland.systemd.target];
-
-      unitConfig = {
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-      };
-
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.wlsunset}/bin/wlsunset -L 17.64 -l 59.85 -T 6500 -t 4500";
-        Restart = "on-failure";
-      };
-    };
-
-    fonts.packages = with pkgs; [
-      dejavu_fonts
-      liberation_ttf
-      nerd-fonts.jetbrains-mono
-      noto-fonts-emoji
-    ];
+    fonts.packages = shared.fonts;
   };
 }

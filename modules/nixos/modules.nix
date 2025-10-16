@@ -6,7 +6,6 @@
     ./development
     ./gaming
     ./networking
-    ./screenlocker
     ./security
     ./services
     ./virtualisation

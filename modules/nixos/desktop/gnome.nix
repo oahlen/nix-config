@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.modules.desktop.gnome;
+  shared = import ./shared {inherit pkgs;};
 in {
   options.modules.desktop.gnome.enable = mkEnableOption "Enable the Gnome desktop environment";
 
@@ -13,18 +14,15 @@ in {
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
 
+    environment.sessionVariables = shared.sessionVariables;
+
     services = {
       gnome = {
         evolution-data-server.enable = mkForce false;
         gnome-online-accounts.enable = false;
       };
 
-      pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
+      pipewire = shared.pipewire;
     };
 
     programs = {
@@ -70,11 +68,6 @@ in {
       yelp
     ];
 
-    fonts.packages = with pkgs; [
-      dejavu_fonts
-      liberation_ttf
-      nerd-fonts.jetbrains-mono
-      noto-fonts-emoji
-    ];
+    fonts.packages = shared.fonts;
   };
 }

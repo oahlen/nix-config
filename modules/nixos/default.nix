@@ -87,19 +87,7 @@
     extraGroups = ["wheel"];
   };
 
-  # Session variables
-  environment.sessionVariables = {
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    SDL_VIDEODRIVER = "wayland";
-  };
-
   # General overrides
-  services.dbus.implementation = "broker";
   networking.networkmanager.wifi.backend = "iwd";
-
-  # Enable dconf system wide
-  programs.dconf.enable = true; # TODO move to desktop module
+  services.dbus.implementation = "broker";
 }
