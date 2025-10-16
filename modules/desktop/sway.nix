@@ -39,6 +39,7 @@ in
         pavucontrol
         playerctl
         slurp
+        swaybg
         wf-recorder
         wl-clipboard
         wl-mirror
@@ -81,7 +82,6 @@ in
       polkit.enable = true;
       swayidle.enable = true;
       swayosd.enable = true;
-      swww.enable = true;
       tumbler.enable = true;
       wlsunset.enable = true;
     };

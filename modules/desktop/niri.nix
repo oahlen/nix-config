@@ -56,7 +56,6 @@ in
       polkit.enable = true;
       swayidle.enable = true;
       swayosd.enable = true;
-      swww.enable = true;
       tumbler.enable = true;
       wlsunset.enable = true;
     };
@@ -89,6 +88,7 @@ in
       papirus-icon-theme
       pavucontrol
       playerctl
+      swaybg
       wf-recorder
       wl-clipboard
       wl-mirror

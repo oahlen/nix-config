@@ -6,7 +6,6 @@
     ./polkit.nix
     ./swayidle.nix
     ./swayosd.nix
-    ./swww.nix
     ./wlsunset.nix
   ];
 }
