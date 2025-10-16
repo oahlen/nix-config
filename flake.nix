@@ -26,7 +26,6 @@
     let
       lib = import ./lib.nix { defaultSystems = [ "x86_64-linux" ]; };
       users = import ./users.nix;
-      common-modules = "${self}/modules/common";
 
       makeNixosConfiguration =
         hostname: username:
@@ -39,15 +38,12 @@
 
           modules = [
             ./hosts/${hostname}
-            ./modules/nixos
+            ./modules
             nixos-wsl.nixosModules.wsl
           ];
         };
 
       makeHomeConfiguration =
-        let
-          hm-modules = "${self}/modules/home-manager";
-        in
         system: hostname: username:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
@@ -55,8 +51,6 @@
           extraSpecialArgs = {
             inherit
               inputs
-              common-modules
-              hm-modules
               system
               ;
             user = users.${username};
@@ -65,8 +59,6 @@
 
           modules = [
             ./hosts/${hostname}/home/${username}
-            "${common-modules}"
-            "${hm-modules}"
           ];
         };
     in
@@ -79,7 +71,6 @@
 
       homeConfigurations = {
         "oahlen@desktop" = makeHomeConfiguration "x86_64-linux" "desktop" "oahlen";
-        "oahlen@nixos" = makeHomeConfiguration "x86_64-linux" "wsl" "oahlen";
         "oahlen@xps15" = makeHomeConfiguration "x86_64-linux" "xps15" "oahlen";
       };
 
