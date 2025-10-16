@@ -13,6 +13,6 @@ with pkgs;
 # Linters
 ++ [
   jq
-  nixfmt-tree
+  nixfmt
   stylua
 ]
