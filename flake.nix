@@ -38,7 +38,7 @@
 
           modules = [
             ./hosts/${hostname}
-            ./modules
+            self.nixosModules.default
             nixos-wsl.nixosModules.wsl
           ];
         };
@@ -63,6 +63,8 @@
         };
     in
     {
+      nixosModules.default = import ./modules;
+
       nixosConfigurations = {
         desktop = makeNixosConfiguration "desktop" "oahlen";
         nixos = makeNixosConfiguration "wsl" "oahlen";
