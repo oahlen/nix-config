@@ -9,7 +9,7 @@ let
   cfg = config.modules.virtualisation.podman;
 in
 {
-  options.modules.virtualisation.podman.enable = mkEnableOption "Enable Podman";
+  options.modules.virtualisation.podman.enable = mkEnableOption "Whether to enable Podman.";
 
   config = mkIf cfg.enable {
     virtualisation.podman = {

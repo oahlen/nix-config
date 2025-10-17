@@ -11,8 +11,8 @@ let
 in
 {
   options.services.wlsunset = {
-    enable = mkEnableOption "TODO Add description";
-    systemd.target = shared.mkSystemdTargetOption { };
+    enable = mkEnableOption "Whether to enable wlsunset.";
+    systemd.target = shared.mkWaylandSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {
@@ -22,7 +22,6 @@ in
 
     systemd.user.services.wlsunset = shared.mkWaylandService {
       description = "Day/night gamma adjustments for Wayland compositors.";
-      # documentation = [""]; TODO Add doc
       execStart = "${pkgs.wlsunset}/bin/wlsunset -L 17.64 -l 59.85 -T 6500 -t 4500";
       target = cfg.systemd.target;
     };

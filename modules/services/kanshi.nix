@@ -11,8 +11,8 @@ let
 in
 {
   options.services.kanshi = {
-    enable = mkEnableOption "Kanshi, a Wayland daemon that automatically configures outputs";
-    systemd.target = shared.mkSystemdTargetOption { };
+    enable = mkEnableOption "Whether to enable kanshi, a Wayland daemon that automatically configures outputs.";
+    systemd.target = shared.mkWaylandSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {

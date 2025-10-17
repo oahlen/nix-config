@@ -11,8 +11,8 @@ let
 in
 {
   options.services.polkit = {
-    enable = mkEnableOption "Enable polkit";
-    systemd.target = shared.mkSystemdTargetOption { };
+    enable = mkEnableOption "Whether to enable polkit.";
+    systemd.target = shared.mkWaylandSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {

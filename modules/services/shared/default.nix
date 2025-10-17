@@ -3,7 +3,7 @@
   lib,
 }:
 {
-  mkSystemdTargetOption =
+  mkWaylandSystemdTargetOption =
     { }:
     lib.mkOption {
       type = lib.types.str;

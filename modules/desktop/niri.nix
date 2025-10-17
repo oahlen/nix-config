@@ -11,7 +11,7 @@ let
   shared = import ./shared { inherit config pkgs; };
 in
 {
-  options.modules.desktop.niri.enable = mkEnableOption "Enable the Niri window manager";
+  options.modules.desktop.niri.enable = mkEnableOption "Whether to enable the Niri window manager.";
 
   config = mkIf cfg.enable {
     wayland.systemd.target = "niri-session.target";
@@ -36,7 +36,16 @@ in
     networking.networkmanager.enable = true;
     security.rtkit.enable = true;
 
-    services = shared.services;
+    services = {
+      swayidle.command = ''
+        ${pkgs.swayidle}/bin/swayidle -w \
+        timeout 300 '${pkgs.gtklock}/bin/gtklock -d' \
+        timeout 900 '${pkgs.niri}/bin/niri msg action power-off-monitors' resume '${pkgs.niri}/bin/niri msg action power-on-monitors' \
+        timeout 1800 '${pkgs.systemd}/bin/systemctl suspend' \
+        before-sleep '${pkgs.gtklock}/bin/gtklock -d'
+      '';
+    }
+    // shared.services;
 
     environment.systemPackages =
       with pkgs;

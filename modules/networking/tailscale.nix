@@ -8,7 +8,7 @@ let
   cfg = config.modules.networking.tailscale;
 in
 {
-  options.modules.networking.tailscale.enable = mkEnableOption "Enable tailscale";
+  options.modules.networking.tailscale.enable = mkEnableOption "Whether to enable Tailscale.";
 
   config = mkIf cfg.enable {
     services.tailscale.enable = true;

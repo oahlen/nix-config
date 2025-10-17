@@ -11,7 +11,7 @@ let
   shared = import ./shared { inherit config pkgs; };
 in
 {
-  options.modules.desktop.sway.enable = mkEnableOption "Enable the Sway window manager";
+  options.modules.desktop.sway.enable = mkEnableOption "Whether to enable the Sway window manager.";
 
   config = mkIf cfg.enable {
     wayland.systemd.target = "sway-session.target";
@@ -48,6 +48,14 @@ in
 
     services = {
       gnome.gnome-keyring.enable = true;
+
+      swayidle.command = ''
+        ${pkgs.swayidle}/bin/swayidle -w \
+        timeout 300 '${pkgs.gtklock}/bin/gtklock -d' \
+        timeout 900 '${pkgs.sway}/bin/swaymsg "output * power off"' resume '${pkgs.sway}/bin/swaymsg "output * power on"' \
+        timeout 1800 '${pkgs.systemd}/bin/systemctl suspend' \
+        before-sleep '${pkgs.gtklock}/bin/gtklock -d'
+      '';
     }
     // shared.services;
 

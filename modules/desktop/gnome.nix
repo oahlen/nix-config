@@ -10,7 +10,8 @@ let
   shared = import ./shared { inherit config pkgs; };
 in
 {
-  options.modules.desktop.gnome.enable = mkEnableOption "Enable the Gnome desktop environment";
+  options.modules.desktop.gnome.enable =
+    mkEnableOption "Whether to enable the Gnome desktop environment.";
 
   config = mkIf cfg.enable {
     services = {

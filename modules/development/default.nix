@@ -11,7 +11,7 @@ let
 in
 {
   options.modules.development = {
-    enable = mkEnableOption "Enable development module";
+    enable = mkEnableOption "Whether to enable development support.";
   };
 
   config = mkIf cfg.enable {

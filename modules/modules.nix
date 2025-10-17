@@ -1,6 +1,5 @@
 { ... }:
 {
-  # Common modules
   imports = [
     ./boot
     ./desktop

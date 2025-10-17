@@ -11,18 +11,16 @@ let
 in
 {
   options.services.swayidle = {
-    enable = mkEnableOption "TODO Add description";
-    systemd.target = shared.mkSystemdTargetOption { };
+    enable = mkEnableOption "Whether to enable idle manager for Wayland.";
+    systemd.target = shared.mkWaylandSystemdTargetOption { };
+
+    command = lib.mkOption {
+      type = lib.types.str;
+      default = "${pkgs.swayidle}/bin/swayidle -w";
+    };
   };
 
   config = mkIf cfg.enable {
-    # timeout = 900;
-    # command = "${swaymsg} 'output * power off'";
-    # resumeCommand = "${swaymsg} 'output * power on'";
-
-    # TODO Make monitor command configurable
-    # Sway: timeout 900 '${pkgs.sway}/bin/swaymsg "output * power off"' resume '${pkgs.sway}/bin/swaymsg "output * power on"' \
-
     environment.systemPackages = with pkgs; [
       swayidle
     ];
@@ -31,13 +29,7 @@ in
       description = "Idle manager for Wayland";
       documentation = [ "man:swayidle(1)" ];
       target = cfg.systemd.target;
-      execStart = ''
-        ${pkgs.swayidle}/bin/swayidle -w \
-        timeout 300 '${pkgs.gtklock}/bin/gtklock -d' \
-        timeout 900 '${pkgs.niri}/bin/niri msg action power-off-monitors' resume '${pkgs.niri}/bin/niri msg action power-on-monitors' \
-        timeout 1800 '${pkgs.systemd}/bin/systemctl suspend' \
-        before-sleep '${pkgs.gtklock}/bin/gtklock -d'
-      '';
+      execStart = cfg.command;
       extraServiceConfig = {
         Environment = [ "PATH=${lib.makeBinPath [ pkgs.bash ]}" ];
       };

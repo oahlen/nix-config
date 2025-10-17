@@ -9,7 +9,7 @@ let
   cfg = config.modules.virtualisation.apptainer;
 in
 {
-  options.modules.virtualisation.apptainer.enable = mkEnableOption "Enable Apptainer";
+  options.modules.virtualisation.apptainer.enable = mkEnableOption "Whether to enable Apptainer.";
 
   config = mkIf cfg.enable {
     programs.singularity = {

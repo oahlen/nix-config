@@ -11,8 +11,8 @@ let
 in
 {
   options.services.swayosd = {
-    enable = mkEnableOption "TODO Add description";
-    systemd.target = shared.mkSystemdTargetOption { };
+    enable = mkEnableOption "Whether to enable swayosd, a GTK based on screen display for keyboard shortcuts like caps-lock and volume.";
+    systemd.target = shared.mkWaylandSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {
@@ -22,7 +22,7 @@ in
 
     systemd.user.services.swayosd = shared.mkWaylandService {
       description = "Volume/backlight OSD indicator";
-      # documentation = [""]; TODO Add doc
+      documentation = [ "man:swayosd(1)" ];
       target = cfg.systemd.target;
       execStart = "${pkgs.swayosd}/bin/swayosd-server";
     };

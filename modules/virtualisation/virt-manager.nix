@@ -11,7 +11,7 @@ let
 in
 {
   options.modules.virtualisation.virt-manager.enable =
-    mkEnableOption "Enable Virtual Machine Manager";
+    mkEnableOption "Whether to enable Virtual Machine Manager.";
 
   config = mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;

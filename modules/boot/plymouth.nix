@@ -8,7 +8,7 @@ let
   cfg = config.modules.boot.plymouth;
 in
 {
-  options.modules.boot.plymouth.enable = mkEnableOption "Enable Plymouth";
+  options.modules.boot.plymouth.enable = mkEnableOption "Whether to enable Plymouth.";
 
   config = mkIf cfg.enable {
     boot = {
