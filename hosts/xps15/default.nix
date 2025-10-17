@@ -1,5 +1,5 @@
 {
-  customPackages,
+  packages,
   pkgs,
   ...
 }:
@@ -58,7 +58,7 @@
   environment.systemPackages = with pkgs; [
     nodejs
     powertop
-    customPackages.${pkgs.stdenv.hostPlatform.system}.rbw
+    packages.${pkgs.stdenv.hostPlatform.system}.rbw
   ];
 
   fileSystems."/".options = [

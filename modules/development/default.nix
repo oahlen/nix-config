@@ -1,7 +1,7 @@
 {
   config,
-  customPackages,
   lib,
+  packages,
   pkgs,
   ...
 }:
@@ -69,7 +69,7 @@ in
         zoxide
       ]
       ++ [
-        customPackages.${pkgs.stdenv.hostPlatform.system}.nixvim-full
+        packages.${pkgs.stdenv.hostPlatform.system}.nixvim-full
       ];
   };
 }

@@ -1,6 +1,6 @@
 {
-  customPackages,
   nixpkgs,
+  packages,
   system,
   ...
 }:
@@ -9,5 +9,5 @@ let
 in
 pkgs.mkShell {
   NIX_SHELL = "Huey";
-  buildInputs = [ customPackages.huey ];
+  buildInputs = [ packages.huey ];
 }

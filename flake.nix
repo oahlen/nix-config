@@ -32,7 +32,7 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            customPackages = self.outputs.packages;
+            packages = self.outputs.packages;
             user = users.${username};
           };
 
@@ -54,7 +54,6 @@
               system
               ;
             user = users.${username};
-            customPackages = self.outputs.packages.${system};
           };
 
           modules = [
@@ -87,7 +86,7 @@
         dotnet = import ./shells/dotnet { inherit nixpkgs system; };
         fhs = import ./shells/fhs { inherit nixpkgs system; };
         huey = import ./shells/huey {
-          customPackages = self.outputs.packages.${system};
+          packages = self.outputs.packages.${system};
           inherit nixpkgs system;
         };
         hugo = import ./shells/hugo { inherit nixpkgs system; };
