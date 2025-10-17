@@ -7,25 +7,25 @@
 with lib;
 let
   cfg = config.modules.desktop.gnome;
-  shared = import ./shared { inherit pkgs; };
+  shared = import ./shared { inherit config pkgs; };
 in
 {
   options.modules.desktop.gnome.enable = mkEnableOption "Enable the Gnome desktop environment";
 
   config = mkIf cfg.enable {
-    services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable = true;
-
-    environment.sessionVariables = shared.sessionVariables;
-
     services = {
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+
       gnome = {
         evolution-data-server.enable = mkForce false;
         gnome-online-accounts.enable = false;
       };
 
-      pipewire = shared.pipewire;
+      pipewire = shared.services.pipewire;
     };
+
+    environment.sessionVariables = shared.sessionVariables;
 
     programs = {
       evolution.enable = false;

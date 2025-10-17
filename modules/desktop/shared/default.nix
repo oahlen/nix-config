@@ -1,4 +1,4 @@
-{ pkgs }:
+{ config, pkgs }:
 {
   fonts = with pkgs; [
     dejavu_fonts
@@ -7,29 +7,92 @@
     noto-fonts-emoji
   ];
 
-  gtklock = {
-    enable = true;
+  groups = [
+    "audio"
+    "video"
+  ];
 
-    config = {
-      main = {
-        gtk-theme = "adw-gtk3-dark";
-        idle-hide = true;
-        idle-timeout = 10;
+  packages = with pkgs; [
+    adwaita-icon-theme
+    adw-gtk3
+    brightnessctl
+    foot
+    fuzzel
+    gnome-multi-writer
+    gnome-text-editor
+    hyprpicker
+    libnotify
+    loupe
+    mako
+    nautilus
+    papirus-icon-theme
+    pavucontrol
+    playerctl
+    swaybg
+    wf-recorder
+    wl-clipboard
+    wl-mirror
+    xdg-utils
+  ];
+
+  programs = {
+    dconf.enable = true;
+    gnome-disks.enable = true;
+
+    gtklock = {
+      enable = true;
+
+      config = {
+        main = {
+          gtk-theme = "adw-gtk3-dark";
+          idle-hide = true;
+          idle-timeout = 10;
+        };
       };
+
+      modules = with pkgs; [
+        gtklock-playerctl-module
+        gtklock-powerbar-module
+        gtklock-userinfo-module
+      ];
     };
 
-    modules = with pkgs; [
-      gtklock-playerctl-module
-      gtklock-powerbar-module
-      gtklock-userinfo-module
-    ];
+    nm-applet.enable = true;
+
+    waybar = {
+      enable = true;
+      systemd.target = config.wayland.systemd.target;
+    };
+
+    xwayland.enable = true;
   };
 
-  pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  services = {
+    blueman.enable = config.hardware.bluetooth.enable;
+    displayManager.gdm.enable = true;
+
+    dbus = {
+      enable = true;
+      packages = with pkgs; [
+        gcr_4
+        mako
+      ];
+    };
+
+    gvfs.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    polkit.enable = true;
+    swayidle.enable = true;
+    swayosd.enable = true;
+    tumbler.enable = true;
+    wlsunset.enable = true;
   };
 
   sessionVariables = {
