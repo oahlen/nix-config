@@ -37,13 +37,13 @@ in
     security.rtkit.enable = true;
 
     services = {
-      swayidle.command = ''
-        ${pkgs.swayidle}/bin/swayidle -w \
-        timeout 300 '${pkgs.gtklock}/bin/gtklock -d' \
-        timeout 900 '${pkgs.niri}/bin/niri msg action power-off-monitors' resume '${pkgs.niri}/bin/niri msg action power-on-monitors' \
-        timeout 1800 '${pkgs.systemd}/bin/systemctl suspend' \
-        before-sleep '${pkgs.gtklock}/bin/gtklock -d'
-      '';
+      swayidle.timeouts = [
+        {
+          timeout = 900;
+          command = "${lib.getExe niri} msg action power-off-monitors";
+          resumeCommand = "${lib.getExe niri} msg action power-on-monitors";
+        }
+      ];
     }
     // shared.services;
 

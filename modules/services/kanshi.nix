@@ -12,18 +12,17 @@ in
 {
   options.services.kanshi = {
     enable = mkEnableOption "Whether to enable kanshi, a Wayland daemon that automatically configures outputs.";
+    package = lib.mkPackageOption pkgs "kanshi" { };
     systemd.target = shared.mkWaylandSystemdTargetOption { };
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgs.kanshi
-    ];
+    environment.systemPackages = [ cfg.package ];
 
     systemd.user.services.kanshi = shared.mkWaylandService {
       description = "Dynamic output configuration";
       documentation = [ "man:kanshi(1)" ];
-      execStart = "${pkgs.kanshi}/bin/kanshi";
+      execStart = "${lib.getExe cfg.package}";
       target = cfg.systemd.target;
     };
   };

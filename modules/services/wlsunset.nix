@@ -12,17 +12,22 @@ in
 {
   options.services.wlsunset = {
     enable = mkEnableOption "Whether to enable wlsunset.";
+    package = lib.mkPackageOption pkgs "wlsunset" { };
     systemd.target = shared.mkWaylandSystemdTargetOption { };
+
+    args = mkOption {
+      type = with types; listOf str;
+      default = [ ];
+      description = "Arguments to pass to wlsunset.";
+    };
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgs.wlsunset
-    ];
+    environment.systemPackages = [ cfg.package ];
 
     systemd.user.services.wlsunset = shared.mkWaylandService {
       description = "Day/night gamma adjustments for Wayland compositors.";
-      execStart = "${pkgs.wlsunset}/bin/wlsunset -L 17.64 -l 59.85 -T 6500 -t 4500";
+      execStart = "${lib.getExe cfg.package} ${lib.escapeShellArgs cfg.args}";
       target = cfg.systemd.target;
     };
   };

@@ -2,15 +2,16 @@
   config,
   lib,
 }:
+with lib;
 {
   mkWaylandSystemdTargetOption =
     { }:
-    lib.mkOption {
+    mkOption {
       type = lib.types.str;
-      description = ''
-        The systemd target that will automatically start the service.
-      '';
+      description = "Systemd target to bind to.";
       default = config.wayland.systemd.target;
+      defaultText = literalExpression "config.wayland.systemd.target";
+      example = "sway-session.target";
     };
 
   mkWaylandService =

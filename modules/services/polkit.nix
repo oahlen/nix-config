@@ -12,6 +12,7 @@ in
 {
   options.services.polkit = {
     enable = mkEnableOption "Whether to enable polkit.";
+    package = lib.mkPackageOption pkgs "polkit_gnome" { };
     systemd.target = shared.mkWaylandSystemdTargetOption { };
   };
 
@@ -21,7 +22,7 @@ in
     systemd.user.services.polkit-gnome-authentication-agent-1 = shared.mkWaylandService {
       description = "Authentication agent";
       target = cfg.systemd.target;
-      execStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      execStart = "${cfg.package}/libexec/polkit-gnome-authentication-agent-1";
     };
   };
 }

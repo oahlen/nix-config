@@ -22,7 +22,12 @@
   modules = {
     boot.plymouth.enable = true;
     development.enable = true;
-    desktop.niri.enable = true;
+
+    desktop = {
+      gnome.enable = true;
+      niri.enable = true;
+    };
+
     networking.tailscale.enable = true;
 
     virtualisation = {

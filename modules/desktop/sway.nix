@@ -49,13 +49,13 @@ in
     services = {
       gnome.gnome-keyring.enable = true;
 
-      swayidle.command = ''
-        ${pkgs.swayidle}/bin/swayidle -w \
-        timeout 300 '${pkgs.gtklock}/bin/gtklock -d' \
-        timeout 900 '${pkgs.sway}/bin/swaymsg "output * power off"' resume '${pkgs.sway}/bin/swaymsg "output * power on"' \
-        timeout 1800 '${pkgs.systemd}/bin/systemctl suspend' \
-        before-sleep '${pkgs.gtklock}/bin/gtklock -d'
-      '';
+      swayidle.timeouts = [
+        {
+          timeout = 900;
+          command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
+          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
+        }
+      ];
     }
     // shared.services;
 

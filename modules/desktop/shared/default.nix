@@ -92,10 +92,45 @@
     };
 
     polkit.enable = true;
-    swayidle.enable = true;
+
+    swayidle = {
+      enable = true;
+
+      events = [
+        {
+          event = "before-sleep";
+          command = "${pkgs.gtklock}/bin/gtklock -d";
+        }
+      ];
+
+      timeouts = [
+        {
+          timeout = 300;
+          command = "${pkgs.gtklock}/bin/gtklock -d";
+        }
+        {
+          timeout = 1800;
+          command = "${pkgs.systemd}/bin/systemctl suspend";
+        }
+      ];
+    };
+
     swayosd.enable = true;
     tumbler.enable = true;
-    wlsunset.enable = true;
+
+    wlsunset = {
+      enable = true;
+      args = [
+        "-L"
+        "17.64"
+        "-l"
+        "59.85"
+        "-T"
+        "6500"
+        "-t"
+        "4500"
+      ];
+    };
   };
 
   sessionVariables = {
