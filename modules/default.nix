@@ -1,4 +1,8 @@
-{ user, ... }:
+{
+  pkgs,
+  user,
+  ...
+}:
 {
   imports = [
     ./modules.nix
@@ -87,6 +91,19 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
+
+  # Common packages
+  environment.systemPackages = with pkgs; [
+    calc
+    curl
+    nfs-utils
+    stow
+    tree
+    unzip
+    wget
+    xdg-user-dirs
+    zip
+  ];
 
   # General overrides
   networking.networkmanager.wifi.backend = "iwd";

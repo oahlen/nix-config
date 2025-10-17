@@ -37,8 +37,6 @@ in
         bat
         bat-extras.batman
         bottom
-        calc
-        curl
         dogdns
         dos2unix
         du-dust
@@ -52,7 +50,6 @@ in
         hexyl
         jless
         jq
-        nfs-utils
         nixfmt-tree
         nix-prefetch-git
         nix-search-cli
@@ -63,18 +60,12 @@ in
         ripgrep
         scooter
         sd
-        stow
         stylua
         tmux
         tmuxp
         tokei
-        tree
         typos
-        unzip
-        wget
-        xdg-user-dirs
         yazi
-        zip
         zoxide
       ]
       ++ [
