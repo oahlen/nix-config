@@ -66,8 +66,6 @@
       enable = true;
       systemd.target = config.wayland.systemd.target;
     };
-
-    xwayland.enable = true;
   };
 
   services = {
