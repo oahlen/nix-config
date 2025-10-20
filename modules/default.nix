@@ -92,6 +92,12 @@
     extraGroups = [ "wheel" ];
   };
 
+  # Common variables
+  environment.variables = {
+    # There can only exist a single flake per system
+    FLAKE = "/home/${user}/nix-config";
+  };
+
   # Common packages
   environment.systemPackages = with pkgs; [
     calc
