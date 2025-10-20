@@ -95,7 +95,7 @@
   # Common variables
   environment.variables = {
     # There can only exist a single flake per system
-    FLAKE = "/home/${user}/nix-config";
+    FLAKE = "/home/${user.name}/nix-config";
   };
 
   # Common packages
