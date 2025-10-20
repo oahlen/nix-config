@@ -34,7 +34,7 @@ pkgs.mkShell {
       xorg.libXrandr
     ];
 
-  buildInputs = with pkgs; [
+  packages = with pkgs; [
     combined
     # netcoredbg # Currently broken
     nodejs

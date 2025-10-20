@@ -17,7 +17,7 @@ pkgs.mkShell {
       openssl
     ];
 
-  buildInputs = with pkgs; [
+  packages = with pkgs; [
     gradle
     jdk
     jdt-language-server

@@ -9,10 +9,10 @@ in
 pkgs.mkShell {
   NIX_SHELL = "Python";
 
-  buildInputs = [
-    pkgs.python312
+  packages = [
+    pkgs.python313
   ]
-  ++ (with pkgs.python312Packages; [
+  ++ (with pkgs.python313Packages; [
     pandas
     numpy
   ]);

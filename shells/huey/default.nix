@@ -9,5 +9,5 @@ let
 in
 pkgs.mkShell {
   NIX_SHELL = "Huey";
-  buildInputs = [ packages.huey ];
+  packages = [ packages.huey ];
 }

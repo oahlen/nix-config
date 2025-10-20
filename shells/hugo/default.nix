@@ -9,7 +9,7 @@ in
 pkgs.mkShell {
   NIX_SHELL = "Hugo";
 
-  buildInputs = with pkgs; [
+  packages = with pkgs; [
     hugo
     nodejs
     nodePackages.npm

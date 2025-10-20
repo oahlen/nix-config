@@ -11,7 +11,7 @@ symlinkJoin {
     pinentry-gnome3
     rbw
   ];
-  buildInputs = [ makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ];
   postBuild = ''
     wrapProgram $out/bin/rbw
   '';
