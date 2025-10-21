@@ -103,7 +103,6 @@
     calc
     curl
     nfs-utils
-    stow
     tree
     unzip
     wget

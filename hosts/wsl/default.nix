@@ -35,7 +35,6 @@
     # awscli2 # Currently broken
     _1password-cli
     duckdb
-    packages.${pkgs.stdenv.hostPlatform.system}.dotfiles-manager
     hyperfine
     nodejs # For Github Copilot
     pqrs
