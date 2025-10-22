@@ -4,11 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +14,6 @@
     {
       self,
       nixpkgs,
-      home-manager,
       nixos-wsl,
       ...
     }@inputs:
@@ -42,24 +36,6 @@
             nixos-wsl.nixosModules.wsl
           ];
         };
-
-      makeHomeConfiguration =
-        system: hostname: username:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-
-          extraSpecialArgs = {
-            inherit
-              inputs
-              system
-              ;
-            user = users.${username};
-          };
-
-          modules = [
-            ./hosts/${hostname}/home/${username}
-          ];
-        };
     in
     {
       nixosModules.default = import ./modules;
@@ -68,10 +44,6 @@
         desktop = makeNixosConfiguration "desktop" "oahlen";
         nixos = makeNixosConfiguration "wsl" "oahlen";
         xps15 = makeNixosConfiguration "xps15" "oahlen";
-      };
-
-      homeConfigurations = {
-        "oahlen@desktop" = makeHomeConfiguration "x86_64-linux" "desktop" "oahlen";
       };
 
       packages = lib.forEachDefaultSystem (
