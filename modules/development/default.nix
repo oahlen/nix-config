@@ -69,6 +69,7 @@ in
         zoxide
       ]
       ++ [
+        packages.${pkgs.stdenv.hostPlatform.system}.homeage
         packages.${pkgs.stdenv.hostPlatform.system}.nixvim-full
       ];
   };
