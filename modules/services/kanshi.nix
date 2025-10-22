@@ -22,8 +22,8 @@ in
     systemd.user.services.kanshi = shared.mkWaylandService {
       description = "Dynamic output configuration";
       documentation = [ "man:kanshi(1)" ];
-      execStart = "${lib.getExe cfg.package}";
       target = cfg.systemd.target;
+      execStart = "${lib.getExe cfg.package}";
     };
   };
 }

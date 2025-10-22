@@ -27,8 +27,8 @@ in
 
     systemd.user.services.wlsunset = shared.mkWaylandService {
       description = "Day/night gamma adjustments for Wayland compositors.";
-      execStart = "${lib.getExe cfg.package} ${lib.escapeShellArgs cfg.args}";
       target = cfg.systemd.target;
+      execStart = "${lib.getExe cfg.package} ${lib.escapeShellArgs cfg.args}";
     };
   };
 }

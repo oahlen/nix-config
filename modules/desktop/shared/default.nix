@@ -78,11 +78,6 @@
     };
 
     nm-applet.enable = true;
-
-    waybar = {
-      enable = true;
-      systemd.target = config.wayland.systemd.target;
-    };
   };
 
   services = {
@@ -132,6 +127,15 @@
 
     swayosd.enable = true;
     tumbler.enable = true;
+
+    waybar = {
+      enable = true;
+      extraPackages = with pkgs; [
+        hyprpicker
+        pavucontrol
+        wl-clipboard
+      ];
+    };
 
     wlsunset = {
       enable = true;
