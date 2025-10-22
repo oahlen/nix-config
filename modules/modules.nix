@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ./boot
     ./desktop
     ./development
     ./gaming

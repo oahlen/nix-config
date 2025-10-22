@@ -33,6 +33,8 @@ in
     }
     // shared.programs;
 
+    boot = shared.boot;
+
     environment.sessionVariables = shared.sessionVariables;
 
     networking.networkmanager.enable = true;

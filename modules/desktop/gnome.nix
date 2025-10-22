@@ -26,6 +26,8 @@ in
       pipewire = shared.services.pipewire;
     };
 
+    boot = shared.boot;
+
     environment.sessionVariables = shared.sessionVariables;
 
     programs = {

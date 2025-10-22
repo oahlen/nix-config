@@ -20,7 +20,6 @@
   powerManagement.powertop.enable = true;
 
   modules = {
-    boot.plymouth.enable = true;
     development.enable = true;
 
     desktop = {

@@ -21,6 +21,8 @@ in
     }
     // shared.programs;
 
+    boot = shared.boot;
+
     environment.sessionVariables = shared.sessionVariables;
 
     systemd.user.targets.niri-session = {
