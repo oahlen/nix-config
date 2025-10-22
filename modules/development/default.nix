@@ -54,6 +54,7 @@ in
         nix-prefetch-git
         nix-search-cli
         nix-tree
+        npins
         pokeget-rs
         procs
         rage
