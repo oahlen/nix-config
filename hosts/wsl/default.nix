@@ -32,12 +32,12 @@
 
   environment.systemPackages = with pkgs; [
     # awscli2 # Currently broken
-    _1password-cli
     duckdb
     hyperfine
     nodejs # For Github Copilot
     pqrs
     qsv
+    ruff
     typst
     wl-clipboard
     xdg-utils
