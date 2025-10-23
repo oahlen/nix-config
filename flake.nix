@@ -18,16 +18,14 @@
       ...
     }@inputs:
     let
-      lib = import ./lib.nix { defaultSystems = [ "x86_64-linux" ]; };
-      users = import ./users.nix;
+      config = import ./config.nix { defaultSystems = [ "x86_64-linux" ]; };
 
       makeNixosConfiguration =
         hostname: username:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            packages = self.outputs.packages;
-            user = users.${username};
+            user = config.users.${username};
           };
 
           modules = [
@@ -46,7 +44,7 @@
         xps15 = makeNixosConfiguration "xps15" "oahlen";
       };
 
-      packages = lib.forEachDefaultSystem (
+      packages = config.forEachDefaultSystem (
         system:
         let
           pkgs = import nixpkgs { inherit system; };
@@ -54,19 +52,14 @@
         import ./packages { inherit pkgs; }
       );
 
-      devShells = lib.forEachDefaultSystem (system: {
-        dotnet = import ./shells/dotnet { inherit nixpkgs system; };
-        fhs = import ./shells/fhs { inherit nixpkgs system; };
-        huey = import ./shells/huey {
-          packages = self.outputs.packages.${system};
-          inherit nixpkgs system;
-        };
-        hugo = import ./shells/hugo { inherit nixpkgs system; };
-        java = import ./shells/java { inherit nixpkgs system; };
-        python = import ./shells/python { inherit nixpkgs system; };
-        rust = import ./shells/rust { inherit nixpkgs system; };
-      });
+      devShells = config.forEachDefaultSystem (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        import ./shells { inherit pkgs; }
+      );
 
-      formatter = lib.forEachDefaultSystem (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+      formatter = config.forEachDefaultSystem (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
     };
 }

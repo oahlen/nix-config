@@ -7,5 +7,5 @@ in
   huey = callPackage ./huey { };
   nixvim = callPackage ./nixvim { };
   nixvim-full = callPackage ./nixvim { full = true; };
-  rbw = callPackage ./rbw { };
+  rbw-wrapped = callPackage ./rbw { };
 }

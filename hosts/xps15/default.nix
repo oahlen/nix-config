@@ -1,8 +1,4 @@
-{
-  packages,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -54,10 +50,11 @@
     ];
   };
 
+  programs.rbw-wrapped.enable = true;
+
   environment.systemPackages = with pkgs; [
     nodejs
     powertop
-    packages.${pkgs.stdenv.hostPlatform.system}.rbw
   ];
 
   fileSystems."/".options = [

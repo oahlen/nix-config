@@ -1,11 +1,4 @@
-{
-  nixpkgs,
-  system,
-  ...
-}:
-let
-  pkgs = import nixpkgs { inherit system; };
-in
+{ pkgs }:
 pkgs.mkShell {
   NIX_SHELL = "Java";
   JAVA_HOME = "${pkgs.jdk.home}";

@@ -1,3 +1,4 @@
+# Global flake configuration
 {
   defaultSystems ? [
     "aarch64-linux"
@@ -15,9 +16,14 @@ let
         value = f system;
       }) systems
     );
-
-  forEachDefaultSystem = forEachSystem defaultSystems;
 in
 {
-  inherit forEachSystem forEachDefaultSystem;
+  forEachDefaultSystem = forEachSystem defaultSystems;
+
+  users = {
+    oahlen = {
+      name = "oahlen";
+      fullName = "Oscar Ahlén";
+    };
+  };
 }

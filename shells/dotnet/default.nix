@@ -1,15 +1,6 @@
-{
-  nixpkgs,
-  system,
-  ...
-}:
+{ pkgs }:
 let
-  pkgs = import nixpkgs { inherit system; };
-  combined =
-    with pkgs.dotnetCorePackages;
-    combinePackages [
-      sdk_8_0
-    ];
+  combined = with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 ];
 in
 pkgs.mkShell {
   NIX_SHELL = "DotNet";

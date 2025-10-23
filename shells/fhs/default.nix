@@ -1,10 +1,5 @@
-{
-  nixpkgs,
-  system,
-  ...
-}:
+{ pkgs }:
 let
-  pkgs = import nixpkgs { inherit system; };
   base = pkgs.appimageTools.defaultFhsEnvArgs;
 in
 (pkgs.buildFHSEnv (

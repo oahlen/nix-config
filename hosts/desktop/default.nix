@@ -1,8 +1,4 @@
-{
-  packages,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -40,10 +36,7 @@
       "org.mozilla.firefox"
     ];
   };
-
-  environment.systemPackages = [
-    packages.${pkgs.stdenv.hostPlatform.system}.rbw
-  ];
+  programs.rbw-wrapped.enable = true;
 
   fileSystems = {
     "/".options = [
