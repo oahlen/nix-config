@@ -32,6 +32,13 @@ in
     };
 
     environment.systemPackages =
+      let
+        packagesForSystem = with packages.${pkgs.stdenv.hostPlatform.system}; [
+          homeage
+          huey
+          nixvim-full
+        ];
+      in
       with pkgs;
       [
         bat
@@ -69,9 +76,6 @@ in
         yazi
         zoxide
       ]
-      ++ [
-        packages.${pkgs.stdenv.hostPlatform.system}.homeage
-        packages.${pkgs.stdenv.hostPlatform.system}.nixvim-full
-      ];
+      ++ packagesForSystem;
   };
 }
