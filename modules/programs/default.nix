@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./homeage.nix
+    ./homage.nix
     ./huey.nix
     ./nixvim.nix
     ./rbw-wrapped.nix

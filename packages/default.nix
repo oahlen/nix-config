@@ -3,7 +3,7 @@ let
   callPackage = pkgs.callPackage;
 in
 {
-  homeage = callPackage ./homeage { };
+  homage = callPackage ./homage { };
   huey = callPackage ./huey { };
   nixvim = callPackage ./nixvim { };
   nixvim-full = callPackage ./nixvim { full = true; };
