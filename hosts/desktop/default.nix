@@ -24,11 +24,18 @@
   };
 
   services = {
-    flatpak.enable = true;
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
-  };
 
+    flatpak.packages = [
+      "com.bitwarden.desktop"
+      "com.github.PintaProject.Pinta"
+      "md.obsidian.Obsidian"
+      "org.inkscape.Inkscape"
+      "org.keepassxc.KeePassXC"
+      "org.mozilla.firefox"
+    ];
+  };
   programs.rbw-wrapped.enable = true;
 
   fileSystems = {
