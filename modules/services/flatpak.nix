@@ -61,11 +61,10 @@ in
 
     environment.systemPackages =
       let
-        isUrl = str: builtins.match "^https?://[^ ]+$" str != null;
         mapEntry =
           entry:
           if builtins.isString entry then
-            if isUrl entry then entry else "flathub " + entry + "\n"
+            "flathub " + entry + "\n"
           else
             entry.repository + " " + entry.ref + "\"\n";
       in

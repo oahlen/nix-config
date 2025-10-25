@@ -24,9 +24,6 @@
   };
 
   services = {
-    fstrim.enable = true;
-    power-profiles-daemon.enable = true;
-
     flatpak.packages = [
       "com.bitwarden.desktop"
       "com.github.PintaProject.Pinta"
@@ -35,7 +32,11 @@
       "org.keepassxc.KeePassXC"
       "org.mozilla.firefox"
     ];
+
+    fstrim.enable = true;
+    power-profiles-daemon.enable = true;
   };
+
   programs.rbw-wrapped.enable = true;
 
   fileSystems = {
