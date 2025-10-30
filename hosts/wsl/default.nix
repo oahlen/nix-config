@@ -31,7 +31,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # awscli2 # Currently broken
+    awscli2
     duckdb
     hyperfine
     nodejs # For Github Copilot
