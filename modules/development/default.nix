@@ -28,7 +28,7 @@ in
 
       git.enable = true;
       homage.enable = true;
-      huey.enable = true;
+      huevim.enable = true;
       less.enable = true;
       nixvim.enable = true;
     };

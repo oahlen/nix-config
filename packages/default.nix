@@ -4,7 +4,7 @@ let
 in
 {
   homage = callPackage ./homage { };
-  huey = callPackage ./huey { };
+  huevim = callPackage ./huevim { };
   nixvim = callPackage ./nixvim { };
   nixvim-full = callPackage ./nixvim { full = true; };
   rbw-wrapped = callPackage ./rbw { };

@@ -2,7 +2,7 @@
 {
   imports = [
     ./homage.nix
-    ./huey.nix
+    ./huevim.nix
     ./nixvim.nix
     ./rbw-wrapped.nix
   ];

@@ -4,22 +4,22 @@
   fetchFromGitHub,
 }:
 rustPlatform.buildRustPackage rec {
-  pname = "huey";
-  version = "0.4.0";
+  pname = "huevim";
+  version = "0.5.0";
 
   src = fetchFromGitHub {
     owner = "oahlen";
-    repo = "huey";
+    repo = "huevim";
     rev = version;
-    sha256 = "sha256-bRQ0bMKRNoccRxXXuND/dGzV5oYJhiKvLXlUZ8taTTc=";
+    sha256 = "sha256-BryjhKAG6nVGpeaCWV686RpWv4xgHTjg3etsMEMua9w=";
   };
 
-  cargoHash = "sha256-cnJcO5ZxsPZjyuSTYnRar4ZdEidGiOoBGW1icgDnOBg=";
+  cargoHash = "sha256-ttsDiIFW4VSw12/eGdNE6QV4hgFJpUI4zpoZzQuc+CQ=";
 
   meta = with lib; {
     description = "Neovim lua color scheme generator written in Rust.";
-    mainProgram = "huey";
-    homepage = "https://github.com/oahlen/huey";
+    mainProgram = "huevim";
+    homepage = "https://github.com/oahlen/huevim";
     license = with licenses; [ mit ];
     # maintainers = [];
   };
