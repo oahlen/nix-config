@@ -5,16 +5,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "homage";
-  version = "0.1.0";
+  version = "0.3.0";
 
   src = fetchFromGitHub {
     owner = "oahlen";
     repo = "homage";
     rev = version;
-    sha256 = "sha256-oRiVSy4M/acBPva4KdxpqRaGAqEepgQznxd4OjwMycA=";
+    sha256 = "sha256-yqGzNAlYDnykBSy3k+iDzyGdn4ff47Oa21+VxFGl1zg=";
   };
 
-  cargoHash = "sha256-wDZd8XlU1/NGQG2wJQ7Mb9eewikjr1dgnY/TBu+1sSs=";
+  cargoHash = "sha256-VgSQKgr+jCgQHC4PFVQiS3zIawXyuOtCPal5fs97i2k=";
 
   meta = with lib; {
     description = "Simple and effective dotfiles manager for your home.";
