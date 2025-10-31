@@ -33,6 +33,7 @@
   environment.systemPackages = with pkgs; [
     awscli2
     duckdb
+    fastfetchMinimal
     hyperfine
     nodejs # For Github Copilot
     pqrs
