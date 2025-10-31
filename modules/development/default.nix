@@ -41,7 +41,6 @@ in
       dos2unix
       du-dust
       eza
-      fastfetch
       fd
       figlet
       fish
@@ -66,7 +65,7 @@ in
       tmuxp
       tokei
       typos
-      yazi
+      yazi-unwrapped # Wrapped variant includes a lot of bloat
       zoxide
     ];
   };

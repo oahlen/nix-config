@@ -53,6 +53,7 @@
 
   environment.systemPackages = with pkgs; [
     _1password-gui
+    fastfetch
     nodejs
     powertop
   ];

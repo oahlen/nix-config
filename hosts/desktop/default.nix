@@ -39,6 +39,10 @@
 
   programs.rbw-wrapped.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    fastfetch
+  ];
+
   fileSystems = {
     "/".options = [
       "noatime"
