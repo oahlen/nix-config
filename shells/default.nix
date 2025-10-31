@@ -1,4 +1,6 @@
-{ pkgs }:
+{
+  pkgs ? import <nixpkgs> { },
+}:
 {
   dotnet = import ./dotnet { inherit pkgs; };
   fhs = import ./fhs { inherit pkgs; };
