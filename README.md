@@ -73,7 +73,7 @@ sudo nixos-install
 ### Initial install (NixOS WSL)
 
 ```bash
-nixos-rebuild boot --sudo --flake .$(hostname)
+nixos-rebuild boot --file ./hosts/wsl --sudo
 ```
 
 ## Development shell

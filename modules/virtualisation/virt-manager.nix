@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  user,
   ...
 }:
 with lib;
@@ -22,7 +21,7 @@ in
       virt-manager
     ];
 
-    users.users.${user.name} = {
+    users.users.${config.user.name} = {
       extraGroups = [ "libvirtd" ];
     };
   };

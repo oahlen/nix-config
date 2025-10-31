@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  user,
   ...
 }:
 with lib;
@@ -33,7 +32,7 @@ in
       after = [ "graphical-session-pre.target" ];
     };
 
-    users.users.${user.name}.extraGroups = shared.groups;
+    users.users.${config.user.name}.extraGroups = shared.groups;
 
     networking.networkmanager.enable = true;
     security.rtkit.enable = true;

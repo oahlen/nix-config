@@ -1,8 +1,12 @@
 {
+  config,
+  lib,
   pkgs,
-  user,
   ...
 }:
+let
+  sources = import ../npins;
+in
 {
   imports = [
     ./modules.nix
@@ -10,7 +14,7 @@
   ];
 
   # Nixpkgs settings
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # Boot settings
   boot = {
@@ -68,7 +72,7 @@
 
     settings = {
       auto-optimise-store = true;
-      experimental-features = "nix-command flakes";
+      experimental-features = "nix-command";
       use-xdg-base-directories = false; # Set to true
     };
 
@@ -85,9 +89,9 @@
   };
 
   # User configuration
-  users.users.${user.name} = {
+  users.users.${config.user.name} = {
     uid = 1000;
-    description = user.fullName;
+    description = config.user.fullName;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
@@ -95,7 +99,8 @@
   # Common variables
   environment.variables = {
     # There can only exist a single flake per system
-    FLAKE = "/home/${user.name}/nix-config";
+    FLAKE = "/home/${config.user.name}/nix-config";
+    NIX_PATH = lib.mkForce "nixpkgs=${sources.nixos-unstable}";
   };
 
   # Common packages

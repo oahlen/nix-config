@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  user,
   ...
 }:
 with lib;
@@ -40,7 +39,7 @@ in
     networking.networkmanager.enable = true;
     security.rtkit.enable = true;
 
-    users.users.${user.name}.extraGroups = shared.groups;
+    users.users.${config.user.name}.extraGroups = shared.groups;
 
     xdg.portal = {
       enable = true;

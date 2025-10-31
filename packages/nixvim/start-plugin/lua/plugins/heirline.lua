@@ -8,7 +8,7 @@ local function setup_colors()
         orange = utils.get_highlight("Constant").fg,
         blue = utils.get_highlight("Function").fg,
         purple = utils.get_highlight("Statement").fg,
-        cyan = utils.get_highlight("Type").fg,
+        cyan = utils.get_highlight("PreProc").fg,
         fg = utils.get_highlight("StatusLine").fg,
         bg = utils.get_highlight("StatusLine").bg,
 

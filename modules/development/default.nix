@@ -39,7 +39,7 @@ in
       bottom
       dogdns
       dos2unix
-      du-dust
+      dust
       eza
       fd
       figlet
