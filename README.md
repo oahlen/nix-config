@@ -78,11 +78,10 @@ nixos-rebuild boot --sudo --flake .$(hostname)
 
 ## Development shell
 
-To enter the default dev shell run the following command:
+To enter a development dev shell run the following command:
 
 ```bash
-export NIX_CONFIG="experimental-features = nix-command flakes"
-nix develop
+nix-shell $FLAKE/shells -A "<shell>" --command "$SHELL"
 ```
 
 ### direnv
@@ -90,6 +89,14 @@ nix develop
 To use with direnv run the following commands:
 
 ```bash
-echo "use flake github:oahlen/nix-config#{SHELL}" >> .envrc
+echo "use nix $FLAKE/shells -A <shell>" >> .envrc
 direnv allow
+```
+
+## Packages
+
+To build and test a package definition run the following command:
+
+```bash
+nix run -f $FLAKE/packages/default.nix "<package>"
 ```
