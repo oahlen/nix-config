@@ -9,5 +9,5 @@ function shell --argument-names name --description "Enters the dev shell of the 
         return
     end
 
-    nix-shell "$DOTFILES/shells" -A "$name" --command "$SHELL"
+    nix-shell "$DOTFILES" -A "shells.$name" --command "$SHELL"
 end
