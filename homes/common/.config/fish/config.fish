@@ -5,25 +5,24 @@ end
 status is-interactive; and begin
     # Abbreviations
     abbr --add -- bash /run/current-system/sw/bin/bash
-    abbr --add -- extract tar xzf \"targz_file\"
     abbr --add -- compress tar czf \"tar_name.tar.gz\" \<files\>
+    abbr --add -- extract tar xzf \"targz_file\"
 
     # Aliases
     alias cat bat
     alias di dev-session
+    alias dotfiles 'tmuxp load -y dotfiles'
     alias gi gitui
     alias la 'eza -a'
     alias lf yazi
-    alias ll 'eza -l'
     alias lla 'eza -la'
+    alias ll 'eza -l'
     alias ls eza
     alias lt 'eza --tree'
-    alias dot-edit 'tmuxp load -y dotfiles'
-    alias nix-edit 'tmuxp load -y nix-config'
-    alias note-edit 'tmuxp load -y notes'
+    alias notes 'tmuxp load -y notes'
     alias tree 'eza --tree'
-    alias vi nvim
     alias vim nvim
+    alias vi nvim
 
     # Interactive shell initialisation
     fzf --fish | source
