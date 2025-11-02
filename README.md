@@ -81,7 +81,7 @@ nixos-rebuild boot --file ./hosts/wsl --sudo
 To enter a development dev shell run the following command:
 
 ```bash
-nix-shell $FLAKE/shells -A "<shell>" --command "$SHELL"
+nix-shell $DOTFILES/shells -A "<shell>" --command "$SHELL"
 ```
 
 ### direnv
@@ -89,7 +89,7 @@ nix-shell $FLAKE/shells -A "<shell>" --command "$SHELL"
 To use with direnv run the following commands:
 
 ```bash
-echo "use nix $FLAKE/shells -A <shell>" >> .envrc
+echo "use nix $DOTFILES/shells -A <shell>" >> .envrc
 direnv allow
 ```
 
@@ -98,5 +98,5 @@ direnv allow
 To build and test a package definition run the following command:
 
 ```bash
-nix run -f $FLAKE/packages/default.nix "<package>"
+nix run -f $DOTFILES/packages/default.nix "<package>"
 ```

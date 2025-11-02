@@ -6,13 +6,13 @@ with lib;
       name = mkOption {
         type = lib.types.str;
         default = "oahlen";
-        description = "The name of the user name";
+        description = "The name of the primary user";
       };
 
       fullName = mkOption {
         type = lib.types.str;
         default = "Oscar Ahlén";
-        description = "The full name of the user.";
+        description = "The full name of the primary user.";
       };
     };
 

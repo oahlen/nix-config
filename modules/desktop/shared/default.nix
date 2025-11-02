@@ -24,7 +24,7 @@
     dejavu_fonts
     liberation_ttf
     nerd-fonts.jetbrains-mono
-    noto-fonts-emoji
+    noto-fonts-color-emoji
   ];
 
   groups = [

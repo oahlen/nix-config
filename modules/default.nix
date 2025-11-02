@@ -98,8 +98,7 @@ in
 
   # Common variables
   environment.variables = {
-    # There can only exist a single flake per system
-    FLAKE = "/home/${config.user.name}/nix-config";
+    DOTFILES = "/home/${config.user.name}/nix-config";
     NIX_PATH = lib.mkForce "nixpkgs=${sources.nixos-unstable}";
   };
 

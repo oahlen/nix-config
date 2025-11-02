@@ -10,7 +10,6 @@ modules:
 pkgs.nixos (
   [
     ../modules
-    "${sources.NixOS-WSL}/modules"
   ]
   ++ modules
 )
