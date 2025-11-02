@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+if [ $# -ge 1 ] && [ -n "$1" ]; then
+    FINDER=$1
+else
+    FINDER=fzf
+fi
+
+RESULT=$(printf "Default\nDark\nLight" | $FINDER) || true
+
+if [ -n "$RESULT" ]; then
+    case "${RESULT,,}" in
+        default)
+            dconf write /org/gnome/desktop/interface/color-scheme "'default'"
+            pkill -USR2 foot
+            ;;
+        dark)
+            dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+            pkill -USR1 foot
+            ;;
+        light)
+            dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+            pkill -USR2 foot
+            ;;
+    esac
+fi
