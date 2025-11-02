@@ -1,4 +1,4 @@
-# Nix Config
+# Dotfiles and Nix configuration
 
 ## XPS15
 ![Screenshot](https://github.com/oahlen/assets/raw/main/nix-config/laptop.png)
