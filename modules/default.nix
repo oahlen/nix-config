@@ -98,7 +98,7 @@ in
 
   # Common variables
   environment.variables = {
-    DOTFILES = "/home/${config.user.name}/nix-config";
+    DOTFILES = "/home/${config.user.name}/dotfiles";
     NIX_PATH = lib.mkForce "nixpkgs=${sources.nixos-unstable}";
   };
 
