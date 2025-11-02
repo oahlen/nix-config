@@ -73,7 +73,7 @@ sudo nixos-install
 ### Initial install (NixOS WSL)
 
 ```bash
-nixos-rebuild boot --file ./hosts/wsl --sudo
+nixos-rebuild boot --file . -A hosts.wsl --no-reexec --sudo
 ```
 
 ## Development shell
@@ -81,7 +81,7 @@ nixos-rebuild boot --file ./hosts/wsl --sudo
 To enter a development dev shell run the following command:
 
 ```bash
-nix-shell $DOTFILES/shells -A "<shell>" --command "$SHELL"
+nix-shell $DOTFILES -A "shells/<shell>" --command "$SHELL"
 ```
 
 ### direnv
@@ -89,7 +89,7 @@ nix-shell $DOTFILES/shells -A "<shell>" --command "$SHELL"
 To use with direnv run the following commands:
 
 ```bash
-echo "use nix $DOTFILES/shells -A <shell>" >> .envrc
+echo "use nix $DOTFILES -A shells/<shell>" >> .envrc
 direnv allow
 ```
 
@@ -98,5 +98,5 @@ direnv allow
 To build and test a package definition run the following command:
 
 ```bash
-nix run -f $DOTFILES/packages/default.nix "<package>"
+nix run -f $DOTFILES "packages/<package>"
 ```

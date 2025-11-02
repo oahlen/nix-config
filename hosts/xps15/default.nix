@@ -1,3 +1,0 @@
-import ../. [
-  ./configuration.nix
-]
