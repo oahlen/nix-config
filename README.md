@@ -1,4 +1,4 @@
-# Dotfiles and Nix configuration
+# Nix configuration and dotfiles
 
 ## XPS15
 ![Screenshot](https://github.com/oahlen/assets/raw/main/nix-config/laptop.png)
@@ -89,7 +89,7 @@ nix-shell $DOTFILES -A "shells/<shell>" --command "$SHELL"
 To use with direnv run the following commands:
 
 ```bash
-echo "use nix $DOTFILES -A shells/<shell>" >> .envrc
+echo "use nix $DOTFILES -A "shells/<shell>" >> .envrc
 direnv allow
 ```
 
