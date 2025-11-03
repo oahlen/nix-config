@@ -70,10 +70,10 @@ cd /mnt
 sudo nixos-install
 ```
 
-### Initial install (NixOS WSL)
+### Initial install
 
 ```bash
-nixos-rebuild boot --file . -A hosts.wsl --no-reexec --sudo
+nixos-rebuild boot --file . -A hosts.$(hostname) --no-reexec --sudo
 ```
 
 ## Development shell

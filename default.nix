@@ -13,7 +13,7 @@ in
     in
     {
       desktop = mkHost [ ./hosts/desktop/configuration.nix ];
-      wsl = mkHost [
+      nixos = mkHost [
         ./hosts/wsl/configuration.nix
         "${sources.NixOS-WSL}/modules"
       ];
