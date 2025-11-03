@@ -22,7 +22,7 @@ in
     systemd.user.services.swayosd = shared.mkWaylandService {
       description = "Volume/backlight OSD indicator";
       documentation = [ "man:swayosd(1)" ];
-      target = cfg.systemd.target;
+      inherit (cfg.systemd) target;
       execStart = "${cfg.package}/bin/swayosd-server";
     };
   };

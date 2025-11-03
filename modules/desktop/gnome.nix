@@ -23,10 +23,10 @@ in
         gnome-online-accounts.enable = false;
       };
 
-      pipewire = shared.services.pipewire;
+      inherit (shared.services) pipewire;
     };
 
-    boot = shared.boot;
+    inherit (shared) boot;
 
     environment.sessionVariables = shared.sessionVariables;
 

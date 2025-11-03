@@ -21,7 +21,7 @@ in
 
     systemd.user.services.polkit-gnome-authentication-agent-1 = shared.mkWaylandService {
       description = "Authentication agent";
-      target = cfg.systemd.target;
+      inherit (cfg.systemd) target;
       execStart = "${cfg.package}/libexec/polkit-gnome-authentication-agent-1";
     };
   };

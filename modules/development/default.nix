@@ -49,7 +49,6 @@ in
       hexyl
       jless
       jq
-      nh
       nixfmt-tree
       nix-prefetch-git
       nix-search-cli
@@ -61,6 +60,7 @@ in
       ripgrep
       scooter
       sd
+      statix
       stylua
       tmux
       tmuxp

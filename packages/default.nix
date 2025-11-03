@@ -1,6 +1,6 @@
 { pkgs }:
 let
-  callPackage = pkgs.callPackage;
+  inherit (pkgs) callPackage;
 in
 {
   homage = callPackage ./homage { };

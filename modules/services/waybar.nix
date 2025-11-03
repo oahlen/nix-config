@@ -29,7 +29,7 @@ in
 
     systemd.user.services.waybar = shared.mkWaylandService {
       description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
-      target = cfg.systemd.target;
+      inherit (cfg.systemd) target;
       execStart = "${lib.getExe cfg.package}";
 
       extraServiceConfig = {

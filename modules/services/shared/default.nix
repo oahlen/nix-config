@@ -5,7 +5,7 @@
 with lib;
 {
   mkWaylandSystemdTargetOption =
-    { }:
+    _:
     mkOption {
       type = lib.types.str;
       description = "Systemd target to bind to.";
@@ -23,8 +23,8 @@ with lib;
       extraServiceConfig ? { },
     }:
     {
-      description = description;
-      documentation = documentation;
+      inherit description;
+      inherit documentation;
 
       after = [ target ];
       partOf = [ target ];

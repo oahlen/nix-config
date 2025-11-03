@@ -20,7 +20,7 @@ in
     }
     // shared.programs;
 
-    boot = shared.boot;
+    inherit (shared) boot;
 
     environment.sessionVariables = shared.sessionVariables;
 
