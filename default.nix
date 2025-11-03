@@ -5,9 +5,7 @@ in
   hosts =
     let
       pkgs = import sources.nixos-unstable {
-        config = {
-          allowUnfree = true;
-        };
+        config.allowUnfree = true;
         overlays = [ (import ./packages/overlay.nix) ];
       };
 
@@ -22,15 +20,11 @@ in
       xps15 = mkHost [ ./hosts/xps15/configuration.nix ];
     };
 
-  packages =
-    let
-      pkgs = import sources.nixos-unstable { };
-    in
-    import ./packages { inherit pkgs; };
+  packages = import ./packages {
+    pkgs = import sources.nixos-unstable { };
+  };
 
-  shells =
-    let
-      pkgs = import sources.nixos-unstable { };
-    in
-    import ./shells { inherit pkgs; };
+  shells = import ./shells {
+    pkgs = import sources.nixos-unstable { };
+  };
 }
