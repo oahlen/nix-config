@@ -14,5 +14,5 @@ with pkgs;
 ++ [
   jq
   nixfmt
-  stylua
+  stylua-wrapped
 ]

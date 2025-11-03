@@ -27,10 +27,7 @@ in
       };
 
       git.enable = true;
-      homage.enable = true;
-      huevim.enable = true;
       less.enable = true;
-      nixvim.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
@@ -47,12 +44,15 @@ in
       fzf
       gitui
       hexyl
+      homage
+      huevim
       jless
       jq
       nixfmt-tree
       nix-prefetch-git
       nix-search-cli
       nix-tree
+      nixvim
       npins
       pokeget-rs
       procs
@@ -61,7 +61,7 @@ in
       scooter
       sd
       statix
-      stylua
+      stylua-wrapped
       tmux
       tmuxp
       tokei

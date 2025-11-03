@@ -7,5 +7,6 @@ in
   huevim = callPackage ./huevim { };
   nixvim = callPackage ./nixvim { };
   nixvim-full = callPackage ./nixvim { full = true; };
-  rbw-wrapped = callPackage ./rbw { };
+  rbw = callPackage ./rbw { };
+  stylua = callPackage ./stylua { };
 }

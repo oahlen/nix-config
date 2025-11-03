@@ -37,10 +37,9 @@
     power-profiles-daemon.enable = true;
   };
 
-  programs.rbw-wrapped.enable = true;
-
   environment.systemPackages = with pkgs; [
     fastfetch
+    rbw-wrapped
   ];
 
   fileSystems = {

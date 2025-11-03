@@ -49,13 +49,12 @@
     thermald.enable = true;
   };
 
-  programs.rbw-wrapped.enable = true;
-
   environment.systemPackages = with pkgs; [
     _1password-gui
     fastfetch
     nodejs
     powertop
+    rbw-wrapped
   ];
 
   fileSystems."/".options = [
