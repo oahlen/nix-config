@@ -8,5 +8,6 @@ in
   nixvim = callPackage ./nixvim { };
   nixvim-full = callPackage ./nixvim { full = true; };
   rbw = callPackage ./rbw { };
+  rebuild = callPackage ./rebuild { };
   stylua = callPackage ./stylua { };
 }

@@ -57,6 +57,7 @@ in
       pokeget-rs
       procs
       rage
+      rebuild
       ripgrep
       scooter
       sd
