@@ -11,7 +11,7 @@ status is-interactive; and begin
     # Aliases
     alias cat bat
     alias di dev-session
-    alias dotfiles 'tmuxp load -y dotfiles'
+    alias dots 'tmuxp load -y dotfiles'
     alias gi gitui
     alias la 'eza -a'
     alias lf yazi
