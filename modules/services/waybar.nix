@@ -31,10 +31,7 @@ in
       description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
       inherit (cfg.systemd) target;
       execStart = "${lib.getExe cfg.package}";
-
-      extraServiceConfig = {
-        Environment = [ "PATH=${lib.makeBinPath cfg.extraPackages}" ];
-      };
+      path = cfg.extraPackages;
     };
   };
 }

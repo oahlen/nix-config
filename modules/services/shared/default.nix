@@ -18,13 +18,13 @@ with lib;
     {
       description,
       documentation ? [ ],
+      path ? [ ],
       target,
       execStart,
       extraServiceConfig ? { },
     }:
     {
-      inherit description;
-      inherit documentation;
+      inherit description documentation path;
 
       after = [ target ];
       partOf = [ target ];
