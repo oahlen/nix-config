@@ -18,6 +18,6 @@
     danger_fg: Some("LightRed"),
     push_gauge_bg: Some("Blue"),
     push_gauge_fg: Some("Black"),
-    tag_fg: Some("LightYellow"),
+    tag_fg: Some("Yellow"),
     branch_fg: Some("LightMagenta")
 )

@@ -49,8 +49,3 @@ fg = "Black"
 [status.overall]
 bg = "Black"
 fg = "White"
-
-[filetype]
-rules = [
-    { name = "*", is = "link", fg = "cyan" },
-] 
