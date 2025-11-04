@@ -16,7 +16,7 @@
       "url": "https://api.github.com/repos/nix-community/NixOS-WSL/tarball/2505.7.0",
       "hash": "0khwas4icq6x7xb7gsaqwnihfllfz4cs0rn15xcg9b9vm6vx98dd"
     },
-    "nixos-unstable": {
+    "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
       "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre886100.08dacfca559e/nixexprs.tar.xz",

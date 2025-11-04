@@ -4,7 +4,7 @@ in
 {
   hosts =
     let
-      pkgs = import sources.nixos-unstable {
+      pkgs = import sources.nixpkgs {
         config.allowUnfree = true;
         overlays = [ (import ./packages/overlay.nix) ];
       };
@@ -21,10 +21,10 @@ in
     };
 
   packages = import ./packages {
-    pkgs = import sources.nixos-unstable { };
+    pkgs = import sources.nixpkgs { };
   };
 
   shells = import ./shells {
-    pkgs = import sources.nixos-unstable { };
+    pkgs = import sources.nixpkgs { };
   };
 }
