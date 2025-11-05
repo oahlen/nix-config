@@ -9,5 +9,6 @@ in
   nixvim-full = callPackage ./nixvim { full = true; };
   rbw = callPackage ./rbw { };
   rebuild = callPackage ./rebuild { };
+  ripgrep = callPackage ./ripgrep { };
   stylua = callPackage ./stylua { };
 }

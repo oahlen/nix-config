@@ -54,7 +54,7 @@
     fastfetch
     nodejs
     powertop
-    rbw-wrapped
+    rbw
   ];
 
   fileSystems."/".options = [

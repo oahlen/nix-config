@@ -14,6 +14,5 @@ with pkgs;
 ++ [
   jq
   nixfmt
-  # stylua-wrapped might not be overlayed
-  (pkgs.callPackage ./../stylua { })
+  stylua
 ]

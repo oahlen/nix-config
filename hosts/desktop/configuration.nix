@@ -39,7 +39,7 @@
 
   environment.systemPackages = with pkgs; [
     fastfetch
-    rbw-wrapped
+    rbw
   ];
 
   fileSystems = {
