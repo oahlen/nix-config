@@ -14,6 +14,5 @@ with pkgs;
 ++ [
   jq
   nixfmt
-  # To prevent infinite recursion
-  (pkgs.callPackage ./../stylua { })
+  stylua
 ]
