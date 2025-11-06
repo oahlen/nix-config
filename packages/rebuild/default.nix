@@ -1,10 +1,10 @@
 {
-  nixos-rebuild-ng,
+  nh,
   writeShellApplication,
 }:
 writeShellApplication {
   name = "rebuild";
-  runtimeInputs = [ nixos-rebuild-ng ];
+  runtimeInputs = [ nh ];
   text = ''
     if [[ $# -eq 0 ]]; then
         nh os --help
