@@ -3,10 +3,7 @@ require("plugins.treesitter")
 require("plugins.blink")
 require("plugins.gitsigns")
 require("plugins.heirline")
-
-if os.getenv("NIXVIM_FULL") == "1" then
-    require("plugins.lsp")
-end
+require("plugins.lsp")
 
 require("nvim-autopairs").setup()
 require("Comment").setup()

@@ -1,13 +1,13 @@
 {
   makeWrapper,
-  pkgs,
+  pinentry-gnome3,
+  rbw,
   symlinkJoin,
-  ...
 }:
 # Create an rbw wrapper with pinentry-gnome3 accessible
 symlinkJoin {
   name = "rbw";
-  paths = with pkgs; [
+  paths = [
     pinentry-gnome3
     rbw
   ];

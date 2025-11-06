@@ -5,8 +5,6 @@
   pkgs,
   runCommandLocal,
   symlinkJoin,
-  full ? false,
-  ...
 }:
 let
   packageName = "nixvim";
@@ -37,7 +35,7 @@ in
 symlinkJoin {
   name = "nvim";
 
-  paths = [ neovim-unwrapped ] ++ (if full then (import ./tools.nix { inherit pkgs; }) else [ ]);
+  paths = [ neovim-unwrapped ] ++ (import ./tools.nix { inherit pkgs; });
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -47,8 +45,7 @@ symlinkJoin {
       --add-flags 'NORC' \
       --add-flags '--cmd' \
       --add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
-      --set-default NVIM_APPNAME nixvim \
-      --set-default NIXVIM_FULL ${toString full}
+      --set-default NVIM_APPNAME nixvim
   '';
 
   passthru = {
