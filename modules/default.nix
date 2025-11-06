@@ -96,13 +96,26 @@ in
     extraGroups = [ "wheel" ];
   };
 
-  # Common variables
+  # Environment variables
   environment.variables = {
     DOTFILES = "/home/${config.user.name}/dotfiles";
+    EDITOR = "nvim";
     NIX_PATH = lib.mkForce "nixpkgs=${sources.nixpkgs}";
+    PAGER = "less";
+    VISUAL = "nvim";
   };
 
-  # Common packages
+  # Common programs and packages
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    git.enable = true;
+    less.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     calc
     curl

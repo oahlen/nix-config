@@ -76,6 +76,14 @@ sudo nixos-install
 nixos-rebuild boot --file . -A hosts.$(hostname) --no-reexec --sudo
 ```
 
+## User environment
+
+To install the user environment of packages run the following command:
+
+```bash
+nix-env --install --remove-all --file $DOTFILES -A "homes.{host}"
+```
+
 ## Development shell
 
 To enter a development dev shell run the following command:
@@ -98,5 +106,5 @@ direnv allow
 To build and test a package definition run the following command:
 
 ```bash
-nix run -f $DOTFILES "packages/<package>"
+nix run -f $DOTFILES "packages.<package>"
 ```

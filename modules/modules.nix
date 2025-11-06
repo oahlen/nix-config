@@ -2,7 +2,6 @@
 {
   imports = [
     ./desktop
-    ./development
     ./gaming
     ./networking
     ./security

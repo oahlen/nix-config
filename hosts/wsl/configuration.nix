@@ -13,13 +13,9 @@
     useWindowsDriver = true;
   };
 
-  modules = {
-    development.enable = true;
-
-    virtualisation = {
-      apptainer.enable = true;
-      podman.enable = true;
-    };
+  modules.virtualisation = {
+    apptainer.enable = true;
+    podman.enable = true;
   };
 
   services.timesyncd.enable = true;

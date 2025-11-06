@@ -1,36 +1,13 @@
 {
-  config,
-  lib,
+  buildEnv,
+  extraPackages ? [ ],
   pkgs,
-  ...
 }:
-with lib;
-let
-  cfg = config.modules.development;
-in
-{
-  options.modules.development = {
-    enable = mkEnableOption "Whether to enable development support.";
-  };
-
-  config = mkIf cfg.enable {
-    environment.variables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      PAGER = "less";
-    };
-
-    programs = {
-      direnv = {
-        enable = true;
-        nix-direnv.enable = true;
-      };
-
-      git.enable = true;
-      less.enable = true;
-    };
-
-    environment.systemPackages = with pkgs; [
+buildEnv {
+  name = "environment";
+  paths =
+    with pkgs;
+    [
       bat
       bat-extras.batman
       bottom
@@ -69,6 +46,16 @@ in
       typos
       yazi-unwrapped # Wrapped variant includes a lot of bloat
       zoxide
-    ];
-  };
+    ]
+    ++ extraPackages;
+
+  pathsToLink = [
+    "/share/man"
+    "/share/doc"
+    "/bin"
+  ];
+  extraOutputsToInstall = [
+    "man"
+    "doc"
+  ];
 }

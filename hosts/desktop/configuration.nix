@@ -15,7 +15,6 @@
   hardware.bluetooth.enable = true;
 
   modules = {
-    development.enable = true;
     gaming.enable = true;
     desktop.niri.enable = true;
     virtualisation.podman.enable = true;
@@ -36,11 +35,6 @@
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    fastfetch
-    rbw-wrapped
-  ];
 
   fileSystems = {
     "/".options = [
