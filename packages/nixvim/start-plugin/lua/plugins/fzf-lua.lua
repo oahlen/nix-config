@@ -17,6 +17,12 @@ fzf_lua.setup({
         ["hl+"] = { "fg", { "Constant" } },
         ["info"] = { "fg", { "LineNr" } },
     },
+    files = {
+        hidden = true,
+    },
+    grep = {
+        hidden = true,
+    },
 })
 
 fzf_lua.register_ui_select()

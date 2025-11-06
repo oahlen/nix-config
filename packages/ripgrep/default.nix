@@ -6,7 +6,6 @@
 }:
 let
   args = [
-    "--hidden"
     "--glob"
     "!.cache/"
     "--glob"

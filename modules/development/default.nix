@@ -62,7 +62,7 @@ in
       scooter
       sd
       statix
-      stylua
+      stylua-wrapped
       tmux
       tmuxp
       tokei

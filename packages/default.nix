@@ -3,6 +3,7 @@ let
   inherit (pkgs) callPackage;
 in
 {
+  fd = callPackage ./fd { };
   homage = callPackage ./homage { };
   huevim = callPackage ./huevim { };
   nixvim = callPackage ./nixvim { };
