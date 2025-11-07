@@ -18,8 +18,9 @@ in
       yubikey-personalization
     ];
 
+    programs.yubikey-touch-detector.enable = true;
+
     environment.systemPackages = with pkgs; [
-      yubikey-touch-detector
       yubioath-flutter
     ];
   };

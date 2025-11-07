@@ -100,7 +100,6 @@ in
     DOTFILES = "/home/${config.user.name}/dotfiles";
     EDITOR = "nvim";
     NIX_PATH = lib.mkForce "nixpkgs=${sources.nixpkgs}";
-    PAGER = "less";
     VISUAL = "nvim";
   };
 
@@ -112,7 +111,6 @@ in
     };
 
     git.enable = true;
-    less.enable = true;
   };
 
   # General overrides
