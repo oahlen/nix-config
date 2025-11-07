@@ -81,7 +81,7 @@ nixos-rebuild boot --file . -A hosts.$(hostname) --no-reexec --sudo
 To install the user environment of packages run the following command:
 
 ```bash
-nix profile add --file $DOTFILES "homes.{host}"
+nix-env --set --file $DOTFILES -A "homes.{host}"
 ```
 
 ## Development shell
