@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -115,17 +114,6 @@ in
     git.enable = true;
     less.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    calc
-    curl
-    nfs-utils
-    tree
-    unzip
-    wget
-    xdg-user-dirs
-    zip
-  ];
 
   # General overrides
   networking.networkmanager.wifi.backend = "iwd";

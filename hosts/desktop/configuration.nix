@@ -36,6 +36,15 @@
     power-profiles-daemon.enable = true;
   };
 
+  environment.systemPackages =
+    with pkgs;
+    [
+      fastfetch
+      nfs-utils
+      rbw-wrapped
+    ]
+    ++ (import ../packages.nix pkgs);
+
   fileSystems = {
     "/".options = [
       "noatime"

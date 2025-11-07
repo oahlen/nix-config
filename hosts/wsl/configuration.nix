@@ -26,20 +26,23 @@
     ssh.startAgent = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    awscli2
-    duckdb
-    fastfetchMinimal
-    hyperfine
-    nodejs # For Github Copilot
-    pqrs
-    qsv
-    ruff
-    trash-cli
-    typst
-    wl-clipboard
-    xdg-utils
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      awscli2
+      duckdb
+      fastfetchMinimal
+      hyperfine
+      nodejs # For Github Copilot
+      pqrs
+      qsv
+      ruff
+      trash-cli
+      typst
+      wl-clipboard
+      xdg-utils
+    ]
+    ++ (import ../packages.nix pkgs);
 
   system.stateVersion = "24.11";
 }

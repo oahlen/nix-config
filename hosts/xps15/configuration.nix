@@ -47,6 +47,17 @@
     thermald.enable = true;
   };
 
+  environment.systemPackages =
+    with pkgs;
+    [
+      _1password-gui
+      fastfetch
+      nodejs
+      powertop
+      rbw-wrapped
+    ]
+    ++ (import ../packages.nix pkgs);
+
   fileSystems."/".options = [
     "noatime"
     "nodiratime"

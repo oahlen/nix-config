@@ -78,10 +78,10 @@ nixos-rebuild boot --file . -A hosts.$(hostname) --no-reexec --sudo
 
 ## User environment
 
-To install the user environment of packages run the following command:
+To install the generic user environment of packages run the following command:
 
 ```bash
-nix run -f $DOTFILES "homes.$(hostname).switch"
+nix run -f $DOTFILES "homes.generic.switch"
 ```
 
 ## Development shell
