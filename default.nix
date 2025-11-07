@@ -4,10 +4,7 @@ in
 {
   hosts =
     let
-      pkgs = import sources.nixpkgs {
-        config.allowUnfree = true;
-        overlays = [ (import ./packages/overlay.nix) ];
-      };
+      pkgs = import sources.nixpkgs { config.allowUnfree = true; };
 
       mkHost = modules: pkgs.nixos ([ ./modules ] ++ modules);
     in
