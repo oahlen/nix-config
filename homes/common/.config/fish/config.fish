@@ -4,7 +4,7 @@ end
 
 status is-interactive; and begin
     # Abbreviations
-    abbr --add -- bash /run/current-system/sw/bin/bash
+    abbr --add -- bash /bin/bash
     abbr --add -- compress tar czf \"tar_name.tar.gz\" \<files\>
     abbr --add -- extract tar xzf \"targz_file\"
 
@@ -25,12 +25,15 @@ status is-interactive; and begin
     alias vi nvim
 
     # Interactive shell initialisation
+    batman --export-env | source
+    direnv hook fish | source
     fzf --fish | source
+    zoxide init fish | source
 
     set fish_greeting
 
     # For tmux
-    set -gx SHELL /home/oahlen/.nix-profile/bin/fish
+    set -gx SHELL $(which fish)
 
     fish_vi_key_bindings
     set fish_vi_force_cursor
@@ -39,10 +42,4 @@ status is-interactive; and begin
 
     # The superior note taking system
     bind \cn 'nvim $HOME/notes.txt'
-
-    batman --export-env | source
-
-    zoxide init fish | source
-
-    direnv hook fish | source
 end
