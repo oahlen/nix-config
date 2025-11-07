@@ -24,12 +24,16 @@ in
         overlays = [ (import ./packages/overlay.nix) ];
       };
 
-      mkHome = module: pkgs.callPackage module { };
+      mkHome =
+        module:
+        pkgs.callPackage ./homes {
+          extraPackages = (import module) pkgs;
+        };
     in
     {
-      desktop = mkHome ./hosts/desktop/home.nix;
-      nixos = mkHome ./hosts/wsl/home.nix;
-      xps15 = mkHome ./hosts/xps15/home.nix;
+      desktop = mkHome ./homes/desktop;
+      nixos = mkHome ./homes/wsl;
+      xps15 = mkHome ./homes/xps15;
     };
 
   packages = import ./packages {
