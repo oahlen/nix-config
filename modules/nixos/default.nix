@@ -68,7 +68,7 @@ in
     settings = {
       auto-optimise-store = true;
       experimental-features = "nix-command flakes";
-      use-xdg-base-directories = false; # Set to true
+      use-xdg-base-directories = true;
     };
 
     extraOptions = ''
