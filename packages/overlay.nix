@@ -1,7 +1,10 @@
-final: prev: {
-  homage = final.callPackage ./homage { };
-  huevim = final.callPackage ./huevim { };
-  nixvim = final.callPackage ./nixvim { };
-  rbw-wrapped = final.callPackage ./rbw-wrapped { };
-  rebuild = final.callPackage ./rebuild { };
-}
+final: prev:
+let
+  entries = builtins.readDir ./.;
+  dirs = builtins.filter (name: entries.${name} == "directory") (builtins.attrNames entries);
+  mkAttr = name: {
+    name = name;
+    value = final.callPackage ./${name} { };
+  };
+in
+builtins.listToAttrs (map mkAttr dirs)

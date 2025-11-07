@@ -1,11 +1,10 @@
 { pkgs }:
 let
-  inherit (pkgs) callPackage;
+  entries = builtins.readDir ./.;
+  dirs = builtins.filter (name: entries.${name} == "directory") (builtins.attrNames entries);
+  mkAttr = name: {
+    name = name;
+    value = pkgs.callPackage ./${name} { };
+  };
 in
-{
-  homage = callPackage ./homage { };
-  huevim = callPackage ./huevim { };
-  nixvim = callPackage ./nixvim { };
-  rbw-wrapped = callPackage ./rbw-wrapped { };
-  rebuild = callPackage ./rebuild { };
-}
+builtins.listToAttrs (map mkAttr dirs)
