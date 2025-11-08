@@ -8,7 +8,7 @@
 
   boot = {
     loader.systemd-boot.enable = true;
-    kernelPackages = pkgs.linuxPackages_6_17;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "amdgpu" ];
   };
 
