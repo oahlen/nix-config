@@ -68,19 +68,6 @@ enable("lua_ls", {
     },
 })
 
-enable("nixd", {
-    settings = {
-        nixd = {
-            nixpkgs = {
-                expr = "import <nixpkgs> { }",
-            },
-            formatting = {
-                command = { "nixfmt" },
-            },
-        },
-    },
-})
-
 enable("omnisharp", {
     cmd = {
         "OmniSharp",
@@ -104,6 +91,7 @@ enable("omnisharp", {
 
 enable("cssls")
 enable("html")
+enable("nil_ls")
 enable("pyright")
 enable("rust_analyzer")
 enable("svelte")

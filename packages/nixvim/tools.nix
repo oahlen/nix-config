@@ -3,7 +3,7 @@ with pkgs;
 # Language servers
 [
   lua-language-server
-  nixd
+  nil
   nodePackages.svelte-language-server
   nodePackages.typescript-language-server
   nodePackages.vscode-langservers-extracted
@@ -13,6 +13,5 @@ with pkgs;
 # Linters
 ++ [
   jq
-  nixfmt
   stylua
 ]
