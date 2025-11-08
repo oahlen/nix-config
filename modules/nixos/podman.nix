@@ -25,8 +25,6 @@ in
       defaultNetwork.settings.dns_enabled = true;
     };
 
-    environment.systemPackages = with pkgs; [
-      podman-compose
-    ];
+    environment.systemPackages = [ pkgs.podman-compose ];
   };
 }

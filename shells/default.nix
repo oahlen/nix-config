@@ -1,9 +1,10 @@
 { pkgs }:
-{
-  dotnet = import ./dotnet { inherit pkgs; };
-  fhs = import ./fhs { inherit pkgs; };
-  hugo = import ./hugo { inherit pkgs; };
-  java = import ./java { inherit pkgs; };
-  python = import ./python { inherit pkgs; };
-  rust = import ./rust { inherit pkgs; };
-}
+let
+  entries = builtins.readDir ./.;
+  dirs = builtins.filter (name: entries.${name} == "directory") (builtins.attrNames entries);
+  mkAttr = name: {
+    inherit name;
+    value = import ./${name} { inherit pkgs; };
+  };
+in
+builtins.listToAttrs (map mkAttr dirs)

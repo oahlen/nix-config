@@ -86,9 +86,9 @@
 
     dbus = {
       enable = true;
-      packages = with pkgs; [
-        gcr_4
-        mako
+      packages = [
+        pkgs.gcr_4
+        pkgs.mako
       ];
     };
 

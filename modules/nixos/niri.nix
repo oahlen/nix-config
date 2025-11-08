@@ -48,12 +48,10 @@ in
     }
     // shared.services;
 
-    environment.systemPackages =
-      with pkgs;
-      [
-        xwayland-satellite
-      ]
-      ++ shared.packages;
+    environment.systemPackages = [
+      pkgs.xwayland-satellite
+    ]
+    ++ shared.packages;
 
     fonts.packages = shared.fonts;
   };

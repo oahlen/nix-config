@@ -14,9 +14,7 @@ in
   config = mkIf cfg.enable {
     services.pcscd.enable = true;
 
-    services.udev.packages = with pkgs; [
-      yubikey-personalization
-    ];
+    services.udev.packages = [ pkgs.yubikey-personalization ];
 
     programs.yubikey-touch-detector.enable = true;
 

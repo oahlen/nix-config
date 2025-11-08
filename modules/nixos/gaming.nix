@@ -28,9 +28,7 @@ in
     services.lact.enable = true;
 
     # Add udev rules for common game controllers
-    services.udev.packages = with pkgs; [
-      game-devices-udev-rules
-    ];
+    services.udev.packages = [ pkgs.game-devices-udev-rules ];
 
     # Gamemode
     programs.gamemode = {
@@ -44,9 +42,9 @@ in
     };
 
     # Game launchers and utilities
-    environment.systemPackages = with pkgs; [
-      heroic
-      mangohud
+    environment.systemPackages = [
+      pkgs.heroic
+      pkgs.mangohud
     ];
   };
 }

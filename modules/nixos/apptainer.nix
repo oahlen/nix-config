@@ -17,8 +17,6 @@ in
       package = pkgs.apptainer;
     };
 
-    environment.systemPackages = with pkgs; [
-      gocryptfs
-    ];
+    environment.systemPackages = [ pkgs.gocryptfs ];
   };
 }

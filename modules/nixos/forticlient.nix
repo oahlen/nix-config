@@ -20,8 +20,6 @@ in
       ipcp-accept-remote
     '';
 
-    environment.systemPackages = with pkgs; [
-      openfortivpn
-    ];
+    environment.systemPackages = [ pkgs.openfortivpn ];
   };
 }

@@ -19,13 +19,11 @@ in
       sway = {
         enable = true;
 
-        extraPackages =
-          with pkgs;
-          [
-            grim
-            slurp
-          ]
-          ++ shared.packages;
+        extraPackages = [
+          pkgs.grim
+          pkgs.slurp
+        ]
+        ++ shared.packages;
       };
 
       xwayland.enable = true;
