@@ -32,13 +32,7 @@
   };
 
   services = {
-    flatpak.packages = [
-      "com.github.PintaProject.Pinta"
-      "org.chromium.Chromium"
-      "org.inkscape.Inkscape"
-      "org.mozilla.firefox"
-    ];
-
+    flatpak.enable = true;
     fstrim.enable = true;
     fwupd.enable = true;
     hardware.bolt.enable = true;

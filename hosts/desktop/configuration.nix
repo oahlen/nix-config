@@ -23,15 +23,7 @@
   };
 
   services = {
-    flatpak.packages = [
-      "com.bitwarden.desktop"
-      "com.github.PintaProject.Pinta"
-      "md.obsidian.Obsidian"
-      "org.inkscape.Inkscape"
-      "org.keepassxc.KeePassXC"
-      "org.mozilla.firefox"
-    ];
-
+    flatpak.enable = true;
     fstrim.enable = true;
     power-profiles-daemon.enable = true;
   };
