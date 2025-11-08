@@ -17,10 +17,8 @@ fzf_lua.setup({
         ["hl+"] = { "fg", { "Constant" } },
         ["info"] = { "fg", { "LineNr" } },
     },
-    files = {
-        hidden = true,
-    },
     grep = {
+        RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
         hidden = true,
     },
 })
