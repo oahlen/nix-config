@@ -6,11 +6,11 @@
 }:
 with lib;
 let
-  cfg = config.modules.desktop.niri;
-  shared = import ./shared { inherit config pkgs; };
+  cfg = config.modules.niri;
+  shared = import ./../shared/desktop.nix { inherit config pkgs; };
 in
 {
-  options.modules.desktop.niri.enable = mkEnableOption "Whether to enable the Niri window manager.";
+  options.modules.niri.enable = mkEnableOption "Whether to enable the Niri window manager.";
 
   config = mkIf cfg.enable {
     wayland.systemd.target = "niri-session.target";

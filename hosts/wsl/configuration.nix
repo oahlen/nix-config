@@ -13,7 +13,7 @@
     useWindowsDriver = true;
   };
 
-  modules.virtualisation = {
+  modules = {
     apptainer.enable = true;
     podman.enable = true;
   };
@@ -26,23 +26,20 @@
     ssh.startAgent = true;
   };
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      awscli2
-      duckdb
-      fastfetchMinimal
-      hyperfine
-      nodejs # For Github Copilot
-      pqrs
-      qsv
-      ruff
-      trash-cli
-      typst
-      wl-clipboard
-      xdg-utils
-    ]
-    ++ (import ../packages.nix pkgs);
+  environment.systemPackages = with pkgs; [
+    awscli2
+    duckdb
+    fastfetchMinimal
+    hyperfine
+    nodejs # For Github Copilot
+    pqrs
+    qsv
+    ruff
+    trash-cli
+    typst
+    wl-clipboard
+    xdg-utils
+  ];
 
   system.stateVersion = "24.11";
 }

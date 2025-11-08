@@ -6,12 +6,11 @@
 }:
 with lib;
 let
-  cfg = config.modules.desktop.gnome;
-  shared = import ./shared { inherit config pkgs; };
+  cfg = config.modules.gnome;
+  shared = import ./../shared/desktop.nix { inherit config pkgs; };
 in
 {
-  options.modules.desktop.gnome.enable =
-    mkEnableOption "Whether to enable the Gnome desktop environment.";
+  options.modules.gnome.enable = mkEnableOption "Whether to enable the Gnome desktop environment.";
 
   config = mkIf cfg.enable {
     services = {

@@ -6,11 +6,11 @@
 }:
 with lib;
 let
-  cfg = config.modules.desktop.sway;
-  shared = import ./shared { inherit config pkgs; };
+  cfg = config.modules.sway;
+  shared = import ./../shared/desktop.nix { inherit config pkgs; };
 in
 {
-  options.modules.desktop.sway.enable = mkEnableOption "Whether to enable the Sway window manager.";
+  options.modules.sway.enable = mkEnableOption "Whether to enable the Sway window manager.";
 
   config = mkIf cfg.enable {
     wayland.systemd.target = "sway-session.target";

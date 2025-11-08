@@ -9,7 +9,7 @@ in
         overlays = [ (import ./packages/overlay.nix) ];
       };
 
-      mkHost = modules: pkgs.nixos ([ ./modules ] ++ modules);
+      mkHost = modules: pkgs.nixos ([ ./modules/nixos.nix ] ++ modules);
     in
     {
       desktop = mkHost [ ./hosts/desktop/configuration.nix ];

@@ -6,10 +6,10 @@
 }:
 with lib;
 let
-  cfg = config.modules.virtualisation.apptainer;
+  cfg = config.modules.apptainer;
 in
 {
-  options.modules.virtualisation.apptainer.enable = mkEnableOption "Whether to enable Apptainer.";
+  options.modules.apptainer.enable = mkEnableOption "Whether to enable Apptainer.";
 
   config = mkIf cfg.enable {
     programs.singularity = {

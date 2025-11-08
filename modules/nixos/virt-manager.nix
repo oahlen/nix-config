@@ -6,11 +6,10 @@
 }:
 with lib;
 let
-  cfg = config.modules.virtualisation.virt-manager;
+  cfg = config.modules.virt-manager;
 in
 {
-  options.modules.virtualisation.virt-manager.enable =
-    mkEnableOption "Whether to enable Virtual Machine Manager.";
+  options.modules.virt-manager.enable = mkEnableOption "Whether to enable Virtual Machine Manager.";
 
   config = mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;

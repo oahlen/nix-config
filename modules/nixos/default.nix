@@ -1,17 +1,13 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
-  sources = import ../npins;
+  sources = import ../../npins;
 in
 {
-  imports = [
-    ./modules.nix
-    ./options.nix
-  ];
-
   # Nixpkgs settings
   # nixpkgs.config.allowUnfree = true;
 
@@ -95,12 +91,17 @@ in
     extraGroups = [ "wheel" ];
   };
 
-  # Environment variables
-  environment.variables = {
-    DOTFILES = "/home/${config.user.name}/dotfiles";
-    EDITOR = "nvim";
-    NIX_PATH = lib.mkForce "nixpkgs=${sources.nixpkgs}";
-    VISUAL = "nvim";
+  environment = {
+    # Environment variables
+    variables = {
+      DOTFILES = "/home/${config.user.name}/dotfiles";
+      EDITOR = "nvim";
+      NIX_PATH = lib.mkForce "nixpkgs=${sources.nixpkgs}";
+      VISUAL = "nvim";
+    };
+
+    # System packages
+    systemPackages = import ../shared/packages.nix pkgs;
   };
 
   # Common programs and packages

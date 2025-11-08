@@ -16,19 +16,12 @@
   powerManagement.powertop.enable = true;
 
   modules = {
-    desktop = {
-      gnome.enable = true;
-      niri.enable = true;
-    };
-
-    networking.tailscale.enable = true;
-
-    virtualisation = {
-      podman.enable = true;
-      virt-manager.enable = true;
-    };
-
-    security.yubikey.enable = true;
+    gnome.enable = true;
+    niri.enable = true;
+    podman.enable = true;
+    tailscale.enable = true;
+    virt-manager.enable = true;
+    yubikey.enable = true;
   };
 
   services = {
@@ -41,16 +34,13 @@
     thermald.enable = true;
   };
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      _1password-gui
-      fastfetch
-      nodejs
-      powertop
-      rbw-wrapped
-    ]
-    ++ (import ../packages.nix pkgs);
+  environment.systemPackages = with pkgs; [
+    _1password-gui
+    fastfetch
+    nodejs
+    powertop
+    rbw-wrapped
+  ];
 
   fileSystems."/".options = [
     "noatime"

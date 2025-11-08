@@ -6,10 +6,10 @@
 }:
 with lib;
 let
-  cfg = config.modules.virtualisation.podman;
+  cfg = config.modules.podman;
 in
 {
-  options.modules.virtualisation.podman.enable = mkEnableOption "Whether to enable Podman.";
+  options.modules.podman.enable = mkEnableOption "Whether to enable Podman.";
 
   config = mkIf cfg.enable {
     virtualisation.podman = {

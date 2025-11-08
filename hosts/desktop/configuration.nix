@@ -16,10 +16,10 @@
 
   modules = {
     gaming.enable = true;
-    desktop.niri.enable = true;
-    virtualisation.podman.enable = true;
-    networking.tailscale.enable = true;
-    security.yubikey.enable = true;
+    niri.enable = true;
+    podman.enable = true;
+    tailscale.enable = true;
+    yubikey.enable = true;
   };
 
   services = {
@@ -28,14 +28,11 @@
     power-profiles-daemon.enable = true;
   };
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      fastfetch
-      nfs-utils
-      rbw-wrapped
-    ]
-    ++ (import ../packages.nix pkgs);
+  environment.systemPackages = with pkgs; [
+    fastfetch
+    nfs-utils
+    rbw-wrapped
+  ];
 
   fileSystems = {
     "/".options = [

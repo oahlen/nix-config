@@ -1,6 +1,8 @@
 { lib, ... }:
 with lib;
 {
+  imports = map (f: ./nixos/${f}) (builtins.attrNames (builtins.readDir ./nixos));
+
   options = {
     user = {
       name = mkOption {

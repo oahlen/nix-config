@@ -7,7 +7,7 @@
 with lib;
 let
   cfg = config.services.polkit;
-  shared = import ./shared { inherit config lib; };
+  shared = import ./../shared/services.nix { inherit config lib; };
 in
 {
   options.services.polkit = {
