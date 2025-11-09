@@ -4,7 +4,10 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "xps15";
+  networking = {
+    hostName = "xps15";
+    firewall.checkReversePath = "loose";
+  };
 
   boot = {
     loader.systemd-boot.enable = true;
@@ -19,7 +22,6 @@
     gnome.enable = true;
     niri.enable = true;
     podman.enable = true;
-    tailscale.enable = true;
     virt-manager.enable = true;
     yubikey.enable = true;
   };
@@ -31,6 +33,7 @@
     hardware.bolt.enable = true;
     kanshi.enable = true;
     power-profiles-daemon.enable = true;
+    tailscale.enable = true;
     thermald.enable = true;
   };
 
