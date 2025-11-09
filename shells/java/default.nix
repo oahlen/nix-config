@@ -15,6 +15,5 @@ pkgs.mkShell {
     jdk
     jdt-language-server
     maven
-    minikube
   ];
 }
