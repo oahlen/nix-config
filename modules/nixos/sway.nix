@@ -31,11 +31,11 @@ in
     // shared.programs;
 
     inherit (shared) boot;
+    inherit (shared) security;
 
     environment.sessionVariables = shared.sessionVariables;
 
     networking.networkmanager.enable = true;
-    security.rtkit.enable = true;
 
     users.users.${config.user.name}.extraGroups = shared.groups;
 

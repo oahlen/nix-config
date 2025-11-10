@@ -21,6 +21,7 @@ in
     // shared.programs;
 
     inherit (shared) boot;
+    inherit (shared) security;
 
     environment.sessionVariables = shared.sessionVariables;
 
@@ -35,7 +36,6 @@ in
     users.users.${config.user.name}.extraGroups = shared.groups;
 
     networking.networkmanager.enable = true;
-    security.rtkit.enable = true;
 
     services = {
       swayidle.timeouts = [

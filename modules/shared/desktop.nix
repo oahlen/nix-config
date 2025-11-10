@@ -55,6 +55,11 @@
     xdg-utils
   ];
 
+  security = {
+    rtkit.enable = true;
+    soteria.enable = true;
+  };
+
   programs = {
     dconf.enable = true;
     gnome-disks.enable = true;
@@ -100,8 +105,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-
-    polkit.enable = true;
 
     swayidle = {
       enable = true;
