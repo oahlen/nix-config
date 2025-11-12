@@ -70,41 +70,11 @@ cd /mnt
 sudo nixos-install
 ```
 
-### Initial install
+## direnv
+
+To use a specified shell with direnv run the following commands:
 
 ```bash
-nixos-rebuild boot --file . -A hosts.$(hostname) --no-reexec --sudo
-```
-
-## User environment
-
-To install the generic user environment of packages run the following command:
-
-```bash
-nix run -f $DOTFILES "homes.generic.switch"
-```
-
-## Development shell
-
-To enter a development dev shell run the following command:
-
-```bash
-nix-shell $DOTFILES -A "shells/<shell>" --command "$SHELL"
-```
-
-### direnv
-
-To use with direnv run the following commands:
-
-```bash
-echo "use nix $DOTFILES -A "shells/<shell>" >> .envrc
+echo "use nix "$DOTFILES" -A "shells/<shell>" >> .envrc
 direnv allow
-```
-
-## Packages
-
-To build and test a package definition run the following command:
-
-```bash
-nix run -f $DOTFILES "packages.<package>"
 ```

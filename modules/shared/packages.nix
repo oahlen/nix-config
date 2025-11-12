@@ -18,6 +18,7 @@ pkgs: with pkgs; [
   huevim
   jless
   jq
+  just
   nixfmt-tree
   nix-prefetch-git
   nix-search-cli
@@ -27,7 +28,6 @@ pkgs: with pkgs; [
   pokeget-rs
   procs
   rage
-  rebuild
   ripgrep
   scooter
   sd
