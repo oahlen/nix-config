@@ -34,7 +34,6 @@
     nodejs # For Github Copilot
     pqrs
     qsv
-    ruff
     trash-cli
     typst
     wl-clipboard

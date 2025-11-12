@@ -13,5 +13,6 @@ with pkgs;
 # Linters
 ++ [
   jq
+  ruff
   stylua
 ]
