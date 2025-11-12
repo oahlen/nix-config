@@ -32,19 +32,5 @@ pkgs.mkShell {
     nodePackages.npm
     omnisharp-roslyn
     openssl
-    (writeShellApplication {
-      name = "update-packages";
-      runtimeInputs = [ combined ];
-      text = builtins.readFile ./update-packages;
-    })
-    (writeShellApplication {
-      name = "quick-format";
-      runtimeInputs = [
-        combined
-        git
-        gnugrep
-      ];
-      text = builtins.readFile ./quick-format;
-    })
   ];
 }
