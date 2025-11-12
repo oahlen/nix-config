@@ -1,18 +1,18 @@
 {
-  nh,
+  nixos-rebuild-ng,
   writeShellApplication,
 }:
 writeShellApplication {
   name = "rebuild";
-  runtimeInputs = [ nh ];
+  runtimeInputs = [ nixos-rebuild-ng ];
   text = ''
     if [[ $# -eq 0 ]]; then
-        nh os --help
+        nixos-rebuild --help
         exit 0
     fi
 
     HOSTNAME="$(hostname)"
     echo -e "Running nixos-rebuild \e[1;33m$1\e[0m for host \e[1;36m$HOSTNAME\e[0m ..."
-    nh os "$1" --file . "hosts.$HOSTNAME" --no-nom
+    nixos-rebuild "$1" --file "$DOTFILES" -A "hosts.$HOSTNAME" --quiet --no-reexec --sudo
   '';
 }

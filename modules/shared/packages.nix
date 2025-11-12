@@ -18,9 +18,9 @@ pkgs: with pkgs; [
   huevim
   jless
   jq
-  nh
   nixfmt-tree
   nix-prefetch-git
+  nix-search-cli
   nix-tree
   nixvim
   npins
