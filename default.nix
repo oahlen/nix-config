@@ -34,7 +34,7 @@ in
         };
     in
     {
-      generic = mkEnvironment ./hosts/packages.nix;
+      generic = mkEnvironment ./modules/shared/packages.nix;
     };
 
   packages = import ./packages {
