@@ -69,12 +69,3 @@ sudo vim configuration.nix
 cd /mnt
 sudo nixos-install
 ```
-
-## direnv
-
-To use a specified shell with direnv run the following commands:
-
-```bash
-echo "use nix "$DOTFILES" -A "shells/<shell>" >> .envrc
-direnv allow
-```

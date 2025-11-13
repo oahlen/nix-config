@@ -94,7 +94,6 @@ in
   environment = {
     # Environment variables
     variables = {
-      DOTFILES = "/home/${config.user.name}/dotfiles";
       EDITOR = "nvim";
       NIX_PATH = lib.mkForce "nixpkgs=${sources.nixpkgs}";
       VISUAL = "nvim";

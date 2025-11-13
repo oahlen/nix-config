@@ -1,25 +1,41 @@
 set positional-arguments
 
-# Shows available commands
+# Show available commands
 help:
-    @just --list
+    @just --list --unsorted
 
-# Runs nixos-rebuild for the current host
-@rebuild operation:
-    HOSTNAME="$(hostname)"
-    echo -e "Running nixos-rebuild \e[1;33m$1\e[0m for host \e[1;36m$HOSTNAME\e[0m ..."
-    nixos-rebuild "$1" --file "$DOTFILES" -A "hosts.$HOSTNAME" --quiet --no-reexec --sudo
+# Open the pinned nixpkgs release page
+@sources:
+    url=$(jq -r '.pins.nixpkgs.url' npins/sources.json); xdg-open "${url%/*}"
+
+# Run nixos-rebuild boot for the current host
+@boot:
+    nixos-rebuild boot -f . -A "hosts.$(hostname)" --quiet --no-reexec --sudo
+
+# Run nixos-rebuild switch for the current host
+@switch:
+    nixos-rebuild switch -f . -A "hosts.$(hostname)" --quiet --no-reexec --sudo
 
 # Build and switch to the generic user environment
 @env-switch:
-    nix run -f "$DOTFILES" "homes.generic.switch"
+    nix run -f . "homes.generic.switch"
 
-# Runs the specified package
+# Run the specified package
 @run package:
-    echo -e "Running package \e[1;33m$1\e[0m"
-    nix run -f "$DOTFILES" "packages.$1"
+    nix run -f . "packages.$1"
 
-# Enters the specified shell
+# Enter the specified shell
 @shell name:
-    echo -e "Running shell \e[1;33m$1\e[0m"
-    nix-shell "$DOTFILES" -A "shells.$1" --command "$SHELL"
+    nix-shell . -A "shells.$1" --command "$SHELL"
+
+# Format nix code
+@fmt:
+    treefmt
+
+# Lint nix code
+@lint:
+    statix check
+
+# Format lua code
+@lua:
+    stylua packages/nixvim
