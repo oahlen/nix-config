@@ -321,6 +321,7 @@ binds {
 
     Mod+Shift+P { power-off-monitors; }
 
+    Mod+E { spawn "bookmarks" "fuzzel -d"; }
     Mod+P { spawn "password-picker" "fuzzel -d"; }
 
     // Toggle Waybar

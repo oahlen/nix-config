@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ $# -ge 1 ] && [ -n "$1" ]; then
+    FINDER=$1
+else
+    FINDER=fzf
+fi
+
+BOOKMARKS="$HOME/bookmarks"
+
+if [ ! -f "$BOOKMARKS" ]; then
+  command -v notify-send >/dev/null 2>&1 && notify-send "No bookmarks configured"
+  exit 0
+fi
+
+RESULT=$($FINDER < "$HOME/bookmarks")
+
+if [ -n "$RESULT" ]; then
+    xdg-open "https://$RESULT"
+fi
