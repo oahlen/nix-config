@@ -6,6 +6,7 @@ pkgs.mkShell {
     pkgs.python313
   ]
   ++ (with pkgs.python313Packages; [
+    # Python packages
     pandas
     numpy
   ]);

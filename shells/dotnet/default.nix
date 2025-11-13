@@ -7,15 +7,13 @@ pkgs.mkShell {
   ASPNETCORE_ENVIRONMENT = "Development";
   DOTNET_ROOT = "${combined}/share/dotnet/";
 
-  # For GUI based applications
   LD_LIBRARY_PATH =
     with pkgs;
     lib.makeLibraryPath [
+      # For GUI based applications
       fontconfig
       libGL
       libxkbcommon
-      mono # For certain tools like Microsoft sbom tool
-      openssl # Needed by GitVersion
       wayland
       xorg.libICE
       xorg.libSM
@@ -23,13 +21,17 @@ pkgs.mkShell {
       xorg.libXcursor
       xorg.libXi
       xorg.libXrandr
+
+      # For certain tools like Microsoft sbom tool
+      mono
+
+      # Needed by GitVersion
+      openssl
     ];
 
   packages = with pkgs; [
     combined
-    # netcoredbg # Currently broken
-    nodejs
-    nodePackages.npm
+    netcoredbg
     omnisharp-roslyn
     openssl
   ];

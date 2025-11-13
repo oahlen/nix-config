@@ -6,12 +6,11 @@ pkgs.mkShell {
   LD_LIBRARY_PATH =
     with pkgs;
     lib.makeLibraryPath [
-      stdenv.cc.cc
       openssl
     ];
 
   packages = with pkgs; [
-    gradle
+    # gradle
     jdk
     jdt-language-server
     maven
