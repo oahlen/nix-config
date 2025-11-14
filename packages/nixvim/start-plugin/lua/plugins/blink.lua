@@ -37,6 +37,9 @@ require("blink.cmp").setup({
             auto_show = true,
             auto_show_delay_ms = 250,
         },
+        ghost_text = {
+            enabled = false,
+        },
         menu = {
             max_height = 20,
             draw = {
