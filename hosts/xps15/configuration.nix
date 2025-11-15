@@ -12,9 +12,17 @@
   boot = {
     loader.systemd-boot.enable = true;
     blacklistedKernelModules = [ "nouveau" ];
+    initrd.kernelModules = [ "i915" ];
   };
 
-  hardware.bluetooth.enable = true;
+  hardware = {
+    bluetooth.enable = true;
+    graphics.extraPackages = with pkgs; [
+      intel-compute-runtime
+      intel-media-driver
+      vpl-gpu-rt
+    ];
+  };
 
   powerManagement.powertop.enable = true;
 
