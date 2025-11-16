@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  home.stateVersion = "25.05";
+
   # Enable home-manager
   programs.home-manager.enable = true;
 

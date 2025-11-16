@@ -27,19 +27,17 @@ in
         overlays = [ (import ./packages/overlay.nix) ];
       };
 
-      home-manager = import sources.home-manager { };
+      home-manager = import sources.home-manager { inherit pkgs; };
 
-      mkHome =
-        system: hostname: username:
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+      mkHome = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-          modules = [ ./modules/home-manager.nix ];
-        };
+        modules = [ ./modules/home-manager.nix ];
+      };
 
     in
     {
-      generic = mkHome ./modules/shared/packages.nix;
+      generic = mkHome;
     };
 
   environments =
