@@ -20,6 +20,28 @@ in
       xps15 = mkHost [ ./hosts/xps15/configuration.nix ];
     };
 
+  homes =
+    let
+      pkgs = import sources.nixpkgs {
+        config.allowUnfree = true;
+        overlays = [ (import ./packages/overlay.nix) ];
+      };
+
+      home-manager = import sources.home-manager { };
+
+      mkHome =
+        system: hostname: username:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [ ./modules/home-manager.nix ];
+        };
+
+    in
+    {
+      generic = mkHome ./modules/shared/packages.nix;
+    };
+
   environments =
     let
       pkgs = import sources.nixpkgs {
