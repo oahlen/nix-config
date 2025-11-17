@@ -20,21 +20,17 @@ in
       xps15 = mkHost [ ./hosts/xps15/configuration.nix ];
     };
 
-  environments =
+  envs =
     let
       pkgs = import sources.nixpkgs {
         config.allowUnfree = true;
         overlays = [ (import ./packages/overlay.nix) ];
       };
 
-      mkEnvironment =
-        module:
-        pkgs.callPackage ./packages/environment.nix {
-          packagesToInstall = (import module) pkgs;
-        };
+      mkEnv = module: pkgs.callPackage ./environments { packagesToInstall = (import module) pkgs; };
     in
     {
-      generic = mkEnvironment ./modules/shared/packages.nix;
+      ubuntu = mkEnv ./environments/ubuntu;
     };
 
   packages = import ./packages {

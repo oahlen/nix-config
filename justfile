@@ -4,6 +4,10 @@ set positional-arguments
 help:
     @just --list --unsorted
 
+# Enter the bootstrap shell environment
+@bootstrap:
+    nix-shell
+
 # Open the pinned nixpkgs release page
 @sources:
     url=$(jq -r '.pins.nixpkgs.url' npins/sources.json); xdg-open "${url%/*}"
@@ -16,9 +20,9 @@ help:
 @switch:
     nixos-rebuild switch -f . -A "hosts.$(hostname)" --quiet --no-reexec --sudo
 
-# Build and switch to the generic user environment
-@env-switch:
-    nix run -f . "homes.generic.switch"
+# Build and switch to the specified user environment
+@env-switch env:
+    nix run -f . "envs.$1.switch"
 
 # Run the specified package
 @run package:
