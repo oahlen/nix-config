@@ -1,5 +1,68 @@
 [
   {
+    "position": "top",
+    "layer": "top",
+    "height": 32,
+    "spacing": 0,
+    "modules-left": [
+      "niri/workspaces"
+    ],
+    "modules-center": [
+      "clock"
+    ],
+    "modules-right": [
+      "niri/language",
+      "group/expander",
+      "tray",
+      "battery",
+      "pulseaudio",
+      "custom/power"
+    ],
+    "niri/workspaces": {
+      "disable-scroll": true
+    },
+    "clock": {
+      "format": "{:%Y-%m-%d %H:%M}",
+      "tooltip": false
+    },
+    "niri/language": {
+      "format": "{short}"
+    },
+    "group/expander": {
+      "drawer": {
+        "children-class": "expander-group-item",
+        "transition-duration": 250
+      },
+      "modules": [
+        "custom/expand-icon",
+        "custom/color-picker",
+        "power-profiles-daemon"
+      ],
+      "orientation": "inherit"
+    },
+    "custom/expand-icon": {
+      "format": " ",
+      "tooltip": false
+    },
+    "custom/color-picker": {
+      "format": "",
+      "on-click": "hyprpicker -a",
+      "on-click-right": "hyprpicker -a -f hsl",
+      "tooltip-format": "Color Picker"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "format-icons": {
+        "balanced": "",
+        "default": "",
+        "performance": "",
+        "power-saver": ""
+      },
+      "tooltip-format": "Power profile: {profile}"
+    },
+    "tray": {
+      "spacing": 12
+    },
     "battery": {
       "format": "{icon}",
       "format-full": "󰂅",
@@ -38,77 +101,6 @@
       "tooltip-format-charging": "{power:>1.0f}W ↑ {capacity}%",
       "tooltip-format-discharging": "{power:>1.0f}W ↓ {capacity}%"
     },
-    "clock": {
-      "format": "{:%Y-%m-%d %H:%M}",
-      "tooltip": false
-    },
-    "custom/color-picker": {
-      "format": "",
-      "on-click": "hyprpicker -a",
-      "on-click-right": "hyprpicker -a -f hsl",
-      "tooltip-format": "Color Picker"
-    },
-    "custom/expand-icon": {
-      "format": " ",
-      "tooltip": false
-    },
-    "custom/power": {
-      "format": "⏻",
-      "menu": "on-click",
-      "menu-actions": {
-        "reboot": "systemctl reboot",
-        "shutdown": "systemctl poweroff",
-        "suspend": "systemctl suspend"
-      },
-      "menu-file": "$XDG_CONFIG_HOME/waybar/power_menu.xml",
-      "tooltip": false
-    },
-    "group/expander": {
-      "drawer": {
-        "children-class": "expander-group-item",
-        "transition-duration": 250
-      },
-      "modules": [
-        "custom/expand-icon",
-        "custom/color-picker",
-        "power-profiles-daemon"
-      ],
-      "orientation": "inherit"
-    },
-    "height": 32,
-    "layer": "top",
-    "modules-center": [
-      "clock"
-    ],
-    "modules-left": [
-      "niri/workspaces"
-      // "sway/workspaces"
-      // "sway/mode"
-    ],
-    "modules-right": [
-      "group/expander",
-      "tray",
-      "battery",
-      "pulseaudio",
-      "custom/power"
-    ],
-    "niri/workspaces": {
-      "disable-scroll": true
-    },
-    "sway/workspaces": {
-      "disable-scroll": true
-    },
-    "position": "top",
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "format-icons": {
-        "balanced": "",
-        "default": "",
-        "performance": "",
-        "power-saver": ""
-      },
-      "tooltip-format": "Power profile: {profile}"
-    },
     "pulseaudio": {
       "format": "{icon}",
       "format-icons": {
@@ -123,9 +115,16 @@
       "scroll-step": 5,
       "tooltip-format": "Playing at {volume}%"
     },
-    "spacing": 0,
-    "tray": {
-      "spacing": 12
+    "custom/power": {
+      "format": "⏻",
+      "menu": "on-click",
+      "menu-actions": {
+        "reboot": "systemctl reboot",
+        "shutdown": "systemctl poweroff",
+        "suspend": "systemctl suspend"
+      },
+      "menu-file": "$XDG_CONFIG_HOME/waybar/power_menu.xml",
+      "tooltip": false
     }
   }
 ]
