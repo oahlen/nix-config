@@ -14,5 +14,6 @@ pkgs.mkShell {
     git
     just
     nix
+    npins
   ];
 }
