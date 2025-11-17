@@ -55,6 +55,11 @@ window > box {
     font-weight: bold;
 }
 
+#language {
+    font-weight: bold;
+    padding-right: 16px;
+}
+
 #tray {
     padding: 0 6px;
 }
