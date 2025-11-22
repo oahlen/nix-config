@@ -56,15 +56,18 @@ window > box {
 }
 
 #language {
+    background: #a9b1d6;
+    color: #1a1b26;
+    padding: 0 6px;
+    border-radius: 4px;
+    margin: 2 16px 2px 0;
     font-weight: bold;
-    padding-right: 16px;
 }
 
 #tray {
     padding: 0 6px;
 }
 
-#language,
 #custom-expand-icon,
 #custom-color-picker,
 #power-profiles-daemon,
