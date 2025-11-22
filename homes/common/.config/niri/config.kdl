@@ -1,7 +1,7 @@
 input {
     keyboard {
         xkb {
-            layout "se,us"
+            layout "us,se"
             options "caps:escape,grp:win_space_toggle"
         }
 
